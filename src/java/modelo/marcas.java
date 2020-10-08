@@ -1,4 +1,4 @@
-/*
+        /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -13,15 +13,15 @@ import java.sql.PreparedStatement;
  *
  * @author hp
  */
-public class marcas extends producto {
+public class Marcas extends Producto {
  private int idmarca;
 private String marca;
 private Conexioon cn; 
-    public marcas() {
+    public Marcas() {
         
     }
 
-    public marcas(String marca, int idproducto, String producto, int idmarca, String descripcion, String imagen, double precio_costo, double precio_venta, int existencia, String fecha_ingreso) {
+    public Marcas(String marca, int idproducto, String producto, int idmarca, String descripcion, String imagen, double precio_costo, double precio_venta, int existencia, String fecha_ingreso) {
         super(idproducto, producto, idmarca, descripcion, imagen, precio_costo, precio_venta, existencia, fecha_ingreso);
         this.idmarca = idmarca;
         this.marca = marca;
@@ -49,7 +49,7 @@ public HashMap drop_marca(){
         
         try{
             cn = new Conexioon();
-            String query = " SELECT idmarca as id,marca FROM marca; ";
+            String query = "SELECT idmarca as id,marca FROM marcas; ";
             cn.abrir_conexion();
             
             ResultSet consulta = cn.conexioonbd.createStatement().executeQuery(query);

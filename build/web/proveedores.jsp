@@ -4,7 +4,7 @@
     Author     : AlekeyJr
 --%>
 
-<%@page import="modelo.proveedores" %>
+<%@page import="modelo.Proveedores" %>
 <%@page import="java.util.HashMap"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.swing.table.DefaultTableModel"%>
@@ -13,9 +13,9 @@
 
 <!DOCTYPE html>
 <html>
-    proveedores proveedor;
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <title>productos</title>
     </head>
     <body>
@@ -55,7 +55,7 @@
     </thead>
     <tbody id="tbl_productos">
     <% 
-        proveedores proveedor = new proveedores();
+        Proveedores proveedor = new Proveedores();
         DefaultTableModel tabla = new DefaultTableModel();
         tabla = proveedor.leer();
         for (int t=0;t<tabla.getRowCount();t++){

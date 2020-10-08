@@ -15,14 +15,15 @@ import javax.swing.table.DefaultTableModel;
  * @author Kim
  */
 public class Empleado {
-    private int id,dpi,idPuesto;
-    private String nombres, apellidos, direccion, telefono, fecha_nacimiento, fecha_inicio_labores,fechaingreso;
+    private int id,idPuesto;
+    private String dpi,nombres, apellidos, direccion, telefono, fecha_nacimiento, fecha_inicio_labores,fechaingreso;
    private Conexioon cn;
     public Empleado (){}
-    public Empleado(int id, int dpi, int idPuesto, String nombres, String apellidos, String direccion, String telefono, String fecha_nacimiento, String fecha_inicio_labores, String fechaingreso) {
+
+    public Empleado(int id, int idPuesto, String dpi, String nombres, String apellidos, String direccion, String telefono, String fecha_nacimiento, String fecha_inicio_labores, String fechaingreso) {
         this.id = id;
-        this.dpi = dpi;
         this.idPuesto = idPuesto;
+        this.dpi = dpi;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.direccion = direccion;
@@ -32,6 +33,9 @@ public class Empleado {
         this.fechaingreso = fechaingreso;
     }
 
+   
+   
+
     public int getId() {
         return id;
     }
@@ -40,13 +44,15 @@ public class Empleado {
         this.id = id;
     }
 
-    public int getDpi() {
+    public String getDpi() {
         return dpi;
     }
 
-    public void setDpi(int dpi) {
+    public void setDpi(String dpi) {
         this.dpi = dpi;
     }
+
+   
 
     public int getIdPuesto() {
         return idPuesto;
@@ -158,7 +164,7 @@ public class Empleado {
         parametro.setString(2, getApellidos());
         parametro.setString(3, getDireccion());
         parametro.setString(4, getTelefono());
-        parametro.setInt(5, getDpi());
+        parametro.setString(5, getDpi());
         parametro.setString(6, getFecha_nacimiento());
         parametro.setInt(7, getIdPuesto());
         parametro.setString(8, getFecha_inicio_labores());
@@ -180,14 +186,13 @@ public class Empleado {
             PreparedStatement parametro;
             cn = new Conexioon();
             String query = "update empleados set nombres=?, apellidos=?, dirreccion=?, telefono=?, DPI=?, fecha_nacimiento=?, idPuesto=?,fecha_inicio_labores=?,fechaingreso=? where idEmpleado=?;";
-
             cn.abrir_conexion();
             parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
             parametro.setString(1, this.getNombres());
             parametro.setString(2, this.getApellidos());
             parametro.setString(3, this.getDireccion());
             parametro.setString(4, this.getTelefono());
-            parametro.setInt(5, this.getDpi());
+            parametro.setString(5, this.getDpi());
             parametro.setString(6, this.getFecha_nacimiento());
             parametro.setInt(7, this.getIdPuesto());
             parametro.setString(8, this.getFecha_inicio_labores());
@@ -218,4 +223,6 @@ public class Empleado {
         }
         return retorno;  
     }
+
+
 }

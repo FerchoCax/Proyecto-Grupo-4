@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author hp
  */
-public class producto {
+public class Producto {
     private int idproducto;
     private String producto;
     private int idmarca;
@@ -25,8 +25,8 @@ public class producto {
     private Conexioon cn;
     private String fecha_ingreso;
 
-    public producto (){}
-    public producto(int idproducto, String producto, int idmarca, String descripcion, String imagen, double precio_costo, double precio_venta, int existencia, String fecha_ingreso) {
+    public Producto (){}
+    public Producto(int idproducto, String producto, int idmarca, String descripcion, String imagen, double precio_costo, double precio_venta, int existencia, String fecha_ingreso) {
         this.idproducto = idproducto;
         this.producto = producto;
         this.idmarca = idmarca;
@@ -145,23 +145,22 @@ public DefaultTableModel leer(){
             cn = new Conexioon();
             cn.abrir_conexion();
             
-            String query = "SELECT e.idproducto,e.producto,e.idmarca,e.descripcion,e.imagen,e.precio_costo,e.precio_venta,e.existencia,e.fecha_ingreso,p.marca,p.idmarcas FROM productos as e,marcas as p where e.idmarca = p.idmarcas;";
+            String query = "SELECT e.idproducto as id,e.producto,e.descripcion,e.imagen,e.precio_costo,e.precio_venta,e.existencia,e.fecha_ingreso,p.marca,p.idmarca FROM productos as e inner join marcas as p on e.idmarca = p.idmarca;";
             ResultSet consulta = cn.conexioonbd.createStatement().executeQuery(query);
-            String encabezado[] = {"idproducto","producto","idmarca","descripcion","imagen","precio_costo","precio_venta","existencia","fehca:ingreso","marca","idmarca"};
+            String encabezado[] = {"idproducto","producto","descripcion","imagen","precio_costo","precio_venta","existencia","fecha_ingreso","marca","idmarca"};
       tabla.setColumnIdentifiers(encabezado);
       String datos[] = new String[10];
       while (consulta.next()){
-          datos[0] = consulta.getString("idproducto");
+          datos[0] = consulta.getString("id");
           datos[1] = consulta.getString("producto");
-          datos[2] = consulta.getString("idmarca");
-          datos[3] = consulta.getString("descripcion");
-          datos[4] = consulta.getString("imagen");
-          datos[5] = consulta.getString("precio_costo");
-          datos[6] = consulta.getString("precio_venta");
-          datos[7] = consulta.getString("existencia");
-          datos[8] = consulta.getString("fecha_ingreso");
-          datos[9] = consulta.getString("marca");
-          datos[10] = consulta.getString("idmarcas");
+          datos[2] = consulta.getString("descripcion");
+          datos[3] = consulta.getString("imagen");
+          datos[4] = consulta.getString("precio_costo");
+          datos[5] = consulta.getString("precio_venta");
+          datos[6] = consulta.getString("existencia");
+          datos[7] = consulta.getString("fecha_ingreso");
+          datos[8] = consulta.getString("marca");
+          datos[9] = consulta.getString("idmarca");
           tabla.addRow(datos);
       
       } 

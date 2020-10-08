@@ -3,8 +3,8 @@
     Created on : 5/10/2020, 02:47:45 PM
     Author     : ferperez
 --%>
-<%@page import="modelo.marcas" %>
-<%@page import="modelo.producto" %>
+<%@page import="modelo.Marcas" %>
+<%@page import="modelo.Producto" %>
 <%@page import="java.util.HashMap"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.swing.table.DefaultTableModel"%>
@@ -19,19 +19,16 @@
     <h1>productos</h1>
     <div class="container">
         <form action="sr_productos" method="post" class="form-group"> 
-            <label for="lbl_idproducto"><b>id producto:</b></label>
-            <input type="text" name="txt_idproductos" id="txt_idproducto"  class="form-control" placeholder=" idprodcto" required>
+            <label for="lbl_idproducto"><b>Id:</b></label>
+            <input type="text" name="txt_idproductos" id="txt_idproducto"  class="form-control" placeholder="0" readonly>
             <br> 
-            <label for="lbl_producto"><b>producto:</b></label>
-            <input type="text" name="txt_producto" id="txt_producto"  class="form-control" placeholder=" producto" required>
+            <label for="lbl_producto"><b>Producto:</b></label>
+            <input type="text" name="txt_producto" id="txt_producto"  class="form-control" placeholder="" required>
             <br> 
-            <label for="lbl_producto"><b>id marca:</b></label>
+            <label for="lbl_producto"><b>Marca:</b></label>
             <select name="drop_marca" id="drop_marca" class="form-control">
-                 
-                   
-                    
                     <%
-                        marcas marca = new marcas();
+                        Marcas marca = new Marcas();
                         HashMap<String,String> drop = marca.drop_marca();
                         for(String i: drop.keySet()){
                             out.println("<option value='"+ i +"'>"+ drop.get(i) +" </option>");
@@ -42,52 +39,52 @@
                 </select>
             
             <br> 
-            <label for="lbl_descripcion"><b>descripcion:</b></label>
-            <input type="text" name="txt_descripcion" id="txt_descripcion"  class="form-control" placeholder=" descripcion" required>
+            <label for="lbl_descripcion"><b>Descripcion:</b></label>
+            <input type="text" name="txt_descripcion" id="txt_descripcion"  class="form-control" placeholder="" required>
             <br> 
-            <label for="lbl_imagen"><b>imagen:</b></label>
-            <input type="text" name="txt_imagen" id="txt_imagen"  class="form-control" placeholder=" imagen" required>
+            <label for="lbl_imagen"><b>Imagen:</b></label>
+            <input type="text" name="txt_imagen" id="txt_imagen"  class="form-control" placeholder="" required>
             <br> 
-            <label for="lbl_precio_costo"><b>precio_costo:</b></label>
-            <input type="text" name="txt_precio_costo" id="txt_precio_costo"  class="form-control" placeholder=" precio_costo" required>
+            <label for="lbl_precio_costo"><b>Precio costo:</b></label>
+            <input type="number" step="0.01" name="txt_precio_costo" id="txt_precio_costo"  class="form-control" placeholder="0.00" required>
             <br> 
-            <label for="lbl_precio_venta"><b>precio_venta:</b></label>
-            <input type="text" name="txt_precio_venta" id="txt_precio_venta"  class="form-control" placeholder=" precio_venta" required>
+            <label for="lbl_precio_venta"><b>Precio venta:</b></label>
+            <input type="number" step="0.01" name="txt_precio_venta" id="txt_precio_venta"  class="form-control" placeholder="0.00" required>
             <br> 
-            <label for="lbl_existencial"><b>existencia:</b></label>
-            <input type="text" name="txt_existencial" id="txt_existencia"  class="form-control" placeholder=" existencial" required>
+            <label for="lbl_existencial"><b>Existencia:</b></label>
+            <input type="number" name="txt_existencial" id="txt_existencia"  class="form-control" placeholder="0" required>
             <br> 
-            <label for="lbl_fecha_ingreso"><b>fecha_ingreso:</b></label>
-            <input type="date" name="txt_fecha_ingregeso" id="txt_fecha_ingreso"  class="form-control" placeholder=" fecha_ingreso" required>
+            <label for="lbl_fecha_ingreso"><b>Fecha de ingreso:</b></label>
+            <input type="date" name="txt_fecha_ingregeso" id="txt_fecha_ingreso"  class="form-control" required>
              
             
             <br>
-            <button  name="btn_agregar" id="btn_agregar"  value="agregar" class="btn btn-primary">agregar</button>
-             <button name="btn_modificar" id="btn_modificar" value="modificar" class="btn btn-primary" >Modificar</button>  
-              <button name="btn_eliminar" id="btn_eliminar" value="eliminar" class="btn btn-primary" >Eliminar</button>       
+            <button  name="btn_agregar" id="btn_agregar"  value="Agregar" class="btn btn-primary">agregar</button>
+             <button name="btn_modificar" id="btn_modificar" value="Modificar" class="btn btn-primary" >Modificar</button>  
+              <button name="btn_eliminar" id="btn_eliminar" value="Eliminar" class="btn btn-primary" >Eliminar</button>       
         </form>
                      <table class="table table-striped">
                       <thead>
       <tr>
-        <th>idProducto</th>
-          <th>Producto</th>
-          <th>idmarca</th>
+         <th>Marca</th>
+        <th>Producto</th>
         <th>Descripcion</th>
         <th>imagen</th>
         <th>Precio Costo</th>
         <th>Precio Venta</th>
         <th>Existencia</th>
         <th>fecha ingreso</th>
-        <th>Marca</th>
+        
       </tr>
     </thead>
     <tbody id="tbl_productos">
     <% 
-        producto producto = new producto();
+        Producto producto = new Producto();
         DefaultTableModel tabla = new DefaultTableModel();
         tabla = producto.leer();
         for (int t=0;t<tabla.getRowCount();t++){
             out.println("<tr data-id=" + tabla.getValueAt(t,0) + " data-id_m=" + tabla.getValueAt(t,9) + ">");
+            out.println("<td>" + tabla.getValueAt(t,8) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,1) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,2) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,3) + "</td>");
@@ -95,8 +92,7 @@
             out.println("<td>" + tabla.getValueAt(t,5) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,6) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,7) + "</td>");
-            out.println("<td>" + tabla.getValueAt(t,8) + "</td>");
-            out.println("<td>" + tabla.getValueAt(t,9) + "</td>");
+            
             out.println("</tr>");
         }
         %>    

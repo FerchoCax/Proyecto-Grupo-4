@@ -14,13 +14,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author AlekeyJr
  */
-public class proveedores {
+public class Proveedores {
     private int idproveedor;
     private String proveedor, nit, direccion, telefono;
     Conexioon cn;
 
-    public proveedores(){};
-    public proveedores(int idproveedor, String proveedor, String nit, String direccion, String telefono) {
+    public Proveedores(){};
+    public Proveedores(int idproveedor, String proveedor, String nit, String direccion, String telefono) {
         this.idproveedor = idproveedor;
         this.proveedor = proveedor;
         this.nit = nit;

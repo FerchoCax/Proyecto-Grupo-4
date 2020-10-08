@@ -11,7 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.proveedores;
+import modelo.Proveedores;
 
 /**
  *
@@ -28,7 +28,7 @@ public class sr_proveedores extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    proveedores proveedor;
+    Proveedores proveedor;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -41,7 +41,7 @@ public class sr_proveedores extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             if("Agregar".equals(request.getParameter("btn_agregar"))){
-                proveedor = new proveedores (Integer.valueOf(request.getParameter("txt_idproveedor")),request.getParameter("txt_proveedor"),request.getParameter("txt_nit"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"));
+                proveedor = new Proveedores (Integer.valueOf(request.getParameter("txt_idproveedor")),request.getParameter("txt_proveedor"),request.getParameter("txt_nit"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"));
                 if(proveedor.agregar() > 0){
                     response.sendRedirect("proveedores.jsp");
                  //  out.println("<h1>Ingreso Exitoso....................</h1>");
@@ -53,7 +53,7 @@ public class sr_proveedores extends HttpServlet {
             }
             
              if("Modificar".equals(request.getParameter("btn_modificar"))){
-                proveedor = new proveedores (Integer.valueOf(request.getParameter("txt_idproveedor")),request.getParameter("txt_proveedor"),request.getParameter("txt_nit"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"));
+                proveedor = new Proveedores (Integer.valueOf(request.getParameter("txt_idproveedor")),request.getParameter("txt_proveedor"),request.getParameter("txt_nit"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"));
                 if(proveedor.modificar() > 0){
                     response.sendRedirect("proveedores.jsp");
                  /* out.println("<h1>Ingreso Exitoso....................</h1>");
@@ -65,7 +65,7 @@ public class sr_proveedores extends HttpServlet {
             }
              
              if("Eliminar".equals(request.getParameter("btn_eliminar"))){
-                proveedor = new proveedores (Integer.valueOf(request.getParameter("txt_idproveedor")),request.getParameter("txt_proveedor"),request.getParameter("txt_nit"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"));
+                proveedor = new Proveedores (Integer.valueOf(request.getParameter("txt_idproveedor")),request.getParameter("txt_proveedor"),request.getParameter("txt_nit"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"));
                 if(proveedor.eliminar() > 0){
                     response.sendRedirect("proveedores.jsp");
                  //  out.println("<h1>Ingreso Exitoso....................</h1>");
