@@ -17,7 +17,9 @@
         <h2>Por fabor agregen un boton para redirigirse a su pagina web</h2>
         <a href="productos.jsp"><button class="btn btn-primary" >Productos</button></a> 
         
-        <a href="proveedores.jsp"><button class="btn btn-primary" >Proveedores</button></a>  
+        <a href="proveedores.jsp"><button class="btn btn-primary" >Proveedores</button></a> 
+        
+        <a href="empleados.jsp"><button class="btn btn-primary" >Empleados</button></a> 
     </body>
 </html>
 
