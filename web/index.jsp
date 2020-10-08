@@ -20,6 +20,8 @@
         <a href="proveedores.jsp"><button class="btn btn-primary" >Proveedores</button></a> 
         
         <a href="empleados.jsp"><button class="btn btn-primary" >Empleados</button></a> 
+        
+        <a href="clientes.jsp"><button class="btn btn-primary" >Clientes</button></a> 
     </body>
 </html>
 
