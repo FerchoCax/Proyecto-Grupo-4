@@ -102,7 +102,7 @@ public DefaultTableModel leer(){
             ResultSet consulta = cn.conexioonbd.createStatement().executeQuery(query);
             String encabezado[] = {"idproveedor","proveedor","nit","direccion","telefono"};
       tabla.setColumnIdentifiers(encabezado);
-      String datos[] = new String[10];
+      String datos[] = new String[5];
       while (consulta.next()){
           datos[0] = consulta.getString("idproveedor");
           datos[1] = consulta.getString("proveedor");
@@ -126,14 +126,14 @@ public int modificar(){
         try{
             PreparedStatement parametro;
             cn = new Conexioon();
-            String query = "update proveedores set idproveedores=?, proveedores=?,nit=?,direccion=?,telefono=? where idproveedor =? ;";
+            String query = "update proveedores set proveedor=?,nit=?,direccion=?,telefono=? where idproveedor =? ;";
             cn.abrir_conexion();
             parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
-            parametro.setInt(1,getIdproveedor());
-            parametro.setString(2,getProveedor());        
-            parametro.setString(3,getNit()); 
-            parametro.setString(4,getDireccion());
-            parametro.setString(5,getTelefono());
+            parametro.setString(1,getProveedor());        
+            parametro.setString(2,getNit()); 
+            parametro.setString(3,getDireccion());
+            parametro.setString(4,getTelefono());
+            parametro.setInt(5,getIdproveedor());
             retorno = parametro.executeUpdate();
             cn.cerrar_conexion();
         }catch(SQLException ex){  
@@ -143,21 +143,21 @@ public int modificar(){
     return retorno;
 
 }
- public int eliminar(){
-    int retorno =0;
+
+public int eliminar(){
+        int retorno = 0;
         try{
             PreparedStatement parametro;
             cn = new Conexioon();
-            String query = "delete from proveedores where idproveedor =? ;";
+            String query = "delete from proveedores where idproveedor=?;";
             cn.abrir_conexion();
             parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
-           
-            
+            parametro.setInt(1, this.getIdproveedor());
             retorno = parametro.executeUpdate();
             cn.cerrar_conexion();
         }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-}
- return retorno;
- } 
+            System.out.println(ex.getMessage()); 
+        }
+        return retorno;  
+    }
 }
