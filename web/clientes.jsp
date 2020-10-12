@@ -43,7 +43,7 @@
                 <label for="lbl_correo">Correo electronico:</label>
                 <input type="text" name="txt_correo" id="txt_correo" class="form-control" placeholder="Ejemplo: correo_ejemplo@gmail.com" required >
                 <br>
-                <label for="lbl_correo">Fecha de ingreso:</label>
+                <label for="lbl_fechaingreso">Fecha de ingreso:</label>
                 <input type="date" name="txt_fechaingreso" id="txt_fechaingreso" class="form-control" required >
                 <br>
             <button name="btn_agregar" id="btn_agregar" value="agregar" class="btn btn-primary" >Agregar</button>  
@@ -104,7 +104,7 @@
    genero = target.parents("tr").find("td").eq(3).html();
    telefono = target.parents("tr").find("td").eq(4).html();
    correo = target.parents("tr").find("td").eq(5).html();
-   fechaingreso = target.parents("tr").find("td").eq(7).html();
+   fechaingreso = target.parents("tr").find("td").eq(6).html();
    
    $("#txt_id").val(id);
    $("#txt_nombres").val(nombres);
