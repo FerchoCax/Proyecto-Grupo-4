@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1>Buenas</h1>
-        <h2>Por fabor agregen un boton para redirigirse a su pagina web</h2>
+        <h2>Por favor agregen un boton para redirijirse a su pagina web</h2>
         <a href="productos.jsp"><button class="btn btn-primary" >Productos</button></a> 
         
         <a href="proveedores.jsp"><button class="btn btn-primary" >Proveedores</button></a> 

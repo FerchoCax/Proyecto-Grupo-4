@@ -16,6 +16,10 @@
         <servlet-name>sr_cliente</servlet-name>
         <servlet-class>controlador.sr_cliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>sr_marca</servlet-name>
+        <servlet-class>controlador.sr_marca</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sr_productos</servlet-name>
         <url-pattern>/sr_productos</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>sr_cliente</servlet-name>
         <url-pattern>/sr_cliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sr_marca</servlet-name>
+        <url-pattern>/sr_marca</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

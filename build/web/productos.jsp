@@ -18,6 +18,7 @@
     <body>
     <h1>productos</h1>
     <div class="container">
+        <a href="marcas.jsp"><button class="btn btn-primary" >Marcas</button></a> 
         <form action="sr_productos" method="post" class="form-group"> 
             <label for="lbl_idproducto"><b>Id:</b></label>
             <input type="text" name="txt_idproductos" id="txt_idproducto"  class="form-control" placeholder="0" readonly>
