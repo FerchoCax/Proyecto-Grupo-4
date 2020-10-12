@@ -117,18 +117,17 @@ int retorno;
         try{
             PreparedStatement parametro;
             cn = new Conexioon();
-            String query = "INSERT INTO productos (idproducto, producto, idmarca, descripcion, imagen, precio_costo, precio_venta, existencia,fecha_ingreso) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            String query = "INSERT INTO productos (producto, idMarca, Descripcion, Imagen, precio_costo, precio_venta, existencia,fecha_ingreso) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             cn.abrir_conexion();
             parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
-            parametro.setInt(1,getIdproducto());
-            parametro.setString(2,getProducto());        
-            parametro.setInt(3,getId_marca()); 
-            parametro.setString(4,getDescripcion());
-            parametro.setString(5,getImagen());
-            parametro.setDouble(6,getPrecio_costo());
-            parametro.setDouble(7,getPrecio_venta());
-            parametro.setInt(8,getExistencia());
-            parametro.setString(9,getFecha_ingreso());
+            parametro.setString(1,getProducto());        
+            parametro.setInt(2,getId_marca()); 
+            parametro.setString(3,getDescripcion());
+            parametro.setString(4,getImagen());
+            parametro.setDouble(5,getPrecio_costo());
+            parametro.setDouble(6,getPrecio_venta());
+            parametro.setInt(7,getExistencia());
+            parametro.setString(8,getFecha_ingreso());
     
             retorno =parametro.executeUpdate();
             cn.cerrar_conexion();

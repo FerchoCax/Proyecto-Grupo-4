@@ -1,10 +1,9 @@
-package controlador;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,13 +11,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Producto;
+import modelo.Proveedores;
 
 /**
  *
  * @author ferch
  */
-public class sr_productos extends HttpServlet {
+public class sr_provedores extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,7 +28,7 @@ public class sr_productos extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-        Producto producto;
+     Proveedores proveedor;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -38,38 +37,43 @@ public class sr_productos extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet sr_productos</title>");            
+            out.println("<title>Servlet sr_empleado</title>");            
             out.println("</head>");
             out.println("<body>");
             if("Agregar".equals(request.getParameter("btn_agregar"))){
-                producto = new Producto (0,request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),request.getParameter("txt_imagen"),Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
-          if(producto.agregar()>0){  
-              response.sendRedirect("productos.jsp");
-          }else{
-              out.println("<h1>ERROR.............</h1>");
-              out.println("<a href ='productos.jsp'>regresar</a>");       
-           }
-        }  
-        //modificar
-            if("modificar".equals(request.getParameter("btn_modificar"))){
-               producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("txt_idmarca")),request.getParameter("txt_descripcion"),request.getParameter("txt_imagen"),Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
-                if(producto.modificar() > 0){
-                    response.sendRedirect("index.jsp");
+                proveedor = new Proveedores (Integer.valueOf(request.getParameter("txt_idproveedor")),request.getParameter("txt_proveedor"),request.getParameter("txt_nit"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"));
+                if(proveedor.agregar() > 0){
+                    response.sendRedirect("proveedores.jsp");
+                 //  out.println("<h1>Ingreso Exitoso....................</h1>");
+                   // out.println("<a href ='index.jsp'>Regresar</a>");
                 }else{
-                 out.println("<h1>no se modifico......</h1>");
-              out.println("<a href ='index.jsp'>regresar</a>");    
+                    out.println("<h1>Error....................</h1>");
+                    out.println("<a href ='proveedores.jsp'>Regresar</a>");
+                }
             }
-            }
-    
-            //eliminar
-            if("eliminar".equals(request.getParameter("btn_eliminar"))){
-             producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("txt_idmarca")),request.getParameter("txt_descripcion"),request.getParameter("txt_imagen"),Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
-                if(producto.eliminar() > 0){
-                    response.sendRedirect("index.jsp");
+            
+             if("Modificar".equals(request.getParameter("btn_modificar"))){
+                proveedor = new Proveedores (Integer.valueOf(request.getParameter("txt_idproveedor")),request.getParameter("txt_proveedor"),request.getParameter("txt_nit"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"));
+                if(proveedor.modificar() > 0){
+                    response.sendRedirect("proveedores.jsp");
+                 /* out.println("<h1>Ingreso Exitoso....................</h1>");
+                    out.println("<a href ='index.jsp'>Regresar</a>");*/
                 }else{
-                    out.println("<h1>no se elimino........</h1>");
-                    out.println("<a href ='index.jsp'>Regresar</a>");
-             }
+                    out.println("<h1>Error....................</h1>");
+                    out.println("<a href ='proveedores.jsp'>Regresar</a>");
+                }
+            }
+             
+             if("Eliminar".equals(request.getParameter("btn_eliminar"))){
+                proveedor = new Proveedores (Integer.valueOf(request.getParameter("txt_idproveedor")),request.getParameter("txt_proveedor"),request.getParameter("txt_nit"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"));
+                if(proveedor.eliminar() > 0){
+                    response.sendRedirect("proveedores.jsp");
+                 //  out.println("<h1>Ingreso Exitoso....................</h1>");
+                   // out.println("<a href ='index.jsp'>Regresar</a>");
+                }else{
+                    out.println("<h1>Error....................</h1>");
+                    out.println("<a href ='proveedores.jsp'>Regresar</a>");
+                }
             }
             out.println("</body>");
             out.println("</html>");

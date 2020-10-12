@@ -21,7 +21,7 @@
         <a href="marcas.jsp"><button class="btn btn-primary" >Marcas</button></a> 
         <form action="sr_productos" method="post" class="form-group"> 
             <label for="lbl_idproducto"><b>Id:</b></label>
-            <input type="text" name="txt_idproductos" id="txt_idproducto"  class="form-control" placeholder="0" readonly>
+            <input type="text" name="txt_idproducto" id="txt_idproducto"  class="form-control" placeholder="0" readonly>
             <br> 
             <label for="lbl_producto"><b>Producto:</b></label>
             <input type="text" name="txt_producto" id="txt_producto"  class="form-control" placeholder="" required>
@@ -53,10 +53,10 @@
             <input type="number" step="0.01" name="txt_precio_venta" id="txt_precio_venta"  class="form-control" placeholder="0.00" required>
             <br> 
             <label for="lbl_existencial"><b>Existencia:</b></label>
-            <input type="number" name="txt_existencial" id="txt_existencia"  class="form-control" placeholder="0" required>
+            <input type="number" name="txt_existencia" id="txt_existencia"  class="form-control" placeholder="0" required>
             <br> 
             <label for="lbl_fecha_ingreso"><b>Fecha de ingreso:</b></label>
-            <input type="date" name="txt_fecha_ingregeso" id="txt_fecha_ingreso"  class="form-control" required>
+            <input type="date" name="txt_fecha_ingreso" id="txt_fecha_ingreso" class="form-control" required>
              
             
             <br>
@@ -103,37 +103,33 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <script type="txt/javascript">
-          $('#tbl_productos').on('click','tr td',function(evt){
-        var target,idproducto,producto,idmarca,descripcion,imagen,precio_costo,precio_venta,existencia,fecha_ingreso,marca;
+        <script>
+        $('#tbl_productos').on('click','tr td', function(evt){
+   var target,id,id_marcas,producto,descripcion,imagen,precio_costo,precio_venta,existencia,fecha_ingreso,marca;
    
    target = $(event.target);
-   idprodctos= target.parent().data('id');
-   producto = target.parents("tr").find("td").eq(0).html();
-   idmarca=target.parent().data('id_marca');
-   descripcion= target.parents("tr").find("td").eq(1).html();
-   imagen = target.parents("tr").find("td").eq(2).html();
-   precio_costo= target.parents("tr").find("td").eq(3).html();
-   precio_venta= target.parents("tr").find("td").eq(4).html();
-   existencia= target.parents("tr").find("td").eq(4).html();
-   fecha_ingreso= target.parents("tr").find("td").eq(6).html();
-   marca= target.parents("tr").find("td").eq(7).html();
+   id = target.parent().data('id');
+   id_marcas = target.parent().data('id_m');
+   marca= target.parents("tr").find("td").eq(0).html();
+   producto= target.parents("tr").find("td").eq(1).html();
+   descripcion= target.parents("tr").find("td").eq(2).html();
+   imagen= target.parents("tr").find("td").eq(3).html();
+   precio_costo= target.parents("tr").find("td").eq(4).html();
+   precio_venta= target.parents("tr").find("td").eq(5).html();
+   //genero= target.parents("tr").find("td").eq(6).html();
+   existencia= target.parents("tr").find("td").eq(6).html();
+   fecha_ingreso= target.parents("tr").find("td").eq(7).html();
    
-   $("#txt_idproductos").val(idproductos);
+   $("#txt_idproducto").val(id);
    $("#txt_producto").val(producto);
-   $("#txt_idmarcas").val(idmarcas);
    $("#txt_descripcion").val(descripcion);
    $("#txt_imagen").val(imagen);
    $("#txt_precio_costo").val(precio_costo);
    $("#txt_precio_venta").val(precio_venta);
    $("#txt_existencia").val(existencia);
-   $("#txt_fecha_ingreso").val(fecha:ingreso);
-   $("#drop_marca").val(id_m);
-          
-          
-    
-    
-    } ); 
+   $("#txt_fecha_ingreso").val(fecha_ingreso);
+   $("#drop_marca").val(id_marcas);
+});
             
         </script>
     </body>

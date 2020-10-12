@@ -21,7 +21,7 @@
     <body>
     <h1>productos</h1>
     <div class="container">
-        <form action="sr_proveedores" method="post" class="form-group"> 
+        <form action="sr_provedores" method="post" class="form-group"> 
             <label for="lbl_idproveedor"><b>idproveedor:</b></label>
             <input type="text" name="txt_idproveedor" id="txt_idproveedor"  class="form-control" placeholder=" idprodcto" >
             <br> 
