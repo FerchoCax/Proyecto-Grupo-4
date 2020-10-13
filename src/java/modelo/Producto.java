@@ -176,18 +176,19 @@ public int modificar(){
         try{
             PreparedStatement parametro;
             cn = new Conexioon();
-            String query = "update productos set idproducto=?, producto=?,idmarca=?,descripcion=?,imagen=?,precio_costo=?,precio_venta=?,existencia=?,fecha_ingreso=?,where id_producto =? ;";
+            String query = "update productos set producto=?,idmarca=?,Descripcion=?,Imagen=?,precio_costo=?,precio_venta=?,existencia=?,fecha_ingreso=? where idProducto =? ;";
             cn.abrir_conexion();
             parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
-            parametro.setInt(1,getIdproducto());
-            parametro.setString(2,getProducto());
-            parametro.setInt(3,getId_marca());
-            parametro.setString(4,getDescripcion());
-            parametro.setString(5,getImagen());
-            parametro.setDouble(6,getPrecio_costo());
-            parametro.setDouble(7,getPrecio_venta());
-            parametro.setInt(8,getExistencia());
-             parametro.setString(9,getFecha_ingreso());
+            
+            parametro.setString(1,getProducto());
+            parametro.setInt(2,getId_marca());
+            parametro.setString(3,getDescripcion());
+            parametro.setString(4,getImagen());
+            parametro.setDouble(5,getPrecio_costo());
+            parametro.setDouble(6,getPrecio_venta());
+            parametro.setInt(7,getExistencia());
+             parametro.setString(8,getFecha_ingreso());
+             parametro.setInt(9,getIdproducto());
             retorno = parametro.executeUpdate();
             cn.cerrar_conexion();
         }catch(SQLException ex){  
