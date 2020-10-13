@@ -51,10 +51,10 @@ public class sr_productos extends HttpServlet {
            }
         }  
         //modificar
-            if("modificar".equals(request.getParameter("btn_modificar"))){
-               producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("txt_idmarca")),request.getParameter("txt_descripcion"),request.getParameter("txt_imagen"),Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
-                if(producto.modificar() > 0){
-                    response.sendRedirect("index.jsp");
+            if("Modificar".equals(request.getParameter("btn_modificar"))){
+               producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),request.getParameter("txt_imagen"),Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
+              if(producto.modificar() > 0){
+                    response.sendRedirect("productos.jsp");
                 }else{
                  out.println("<h1>no se modifico......</h1>");
               out.println("<a href ='index.jsp'>regresar</a>");    
@@ -62,10 +62,11 @@ public class sr_productos extends HttpServlet {
             }
     
             //eliminar
-            if("eliminar".equals(request.getParameter("btn_eliminar"))){
-             producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("txt_idmarca")),request.getParameter("txt_descripcion"),request.getParameter("txt_imagen"),Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
-                if(producto.eliminar() > 0){
-                    response.sendRedirect("index.jsp");
+            if("Eliminar".equals(request.getParameter("btn_eliminar"))){
+             producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),request.getParameter("txt_imagen"),Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
+             
+             if(producto.eliminar() > 0){
+                    response.sendRedirect("productos.jsp");
                 }else{
                     out.println("<h1>no se elimino........</h1>");
                     out.println("<a href ='index.jsp'>Regresar</a>");

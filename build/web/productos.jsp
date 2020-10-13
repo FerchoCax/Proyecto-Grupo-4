@@ -105,7 +105,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
         <script>
         $('#tbl_productos').on('click','tr td', function(evt){
-   var target,id,id_marcas,producto,descripcion,imagen,precio_costo,precio_venta,existencia,fecha_ingreso,marca;
+   var target,id,id_marcas,producto,descripcion,imagen,precio_costo,precio_venta,existencia,fecha_ingreso;
    
    target = $(event.target);
    id = target.parent().data('id');

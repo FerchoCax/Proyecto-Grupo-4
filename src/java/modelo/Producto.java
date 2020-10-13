@@ -202,11 +202,10 @@ public int modificar(){
         try{
             PreparedStatement parametro;
             cn = new Conexioon();
-            String query = "delete from productos where id_producto =? ;";
+            String query = "delete from productos where idProducto =? ;";
             cn.abrir_conexion();
             parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
-           
-            
+             parametro.setInt(1,getIdproducto());       
             retorno = parametro.executeUpdate();
             cn.cerrar_conexion();
         }catch(SQLException ex){
