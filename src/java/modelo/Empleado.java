@@ -156,6 +156,7 @@ public class Empleado {
         int retorno = 0;
     try{
         PreparedStatement parametro;
+     
         cn = new Conexioon();
         String query="INSERT INTO empleados(nombres,apellidos,dirreccion,telefono,DPI,fecha_nacimiento,idPuesto,fecha_inicio_labores,fechaingreso)VALUES(?,?,?,?,?,?,?,?,?);";
         cn.abrir_conexion();
