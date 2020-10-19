@@ -33,11 +33,17 @@ public class sr_logins extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession misession= request.getSession();
+            
             Login login = new Login(request.getParameter("txt_nom"),request.getParameter("txt_pass"));
+            if(login.verificar()>0){
+                HttpSession misession= request.getSession();
                 misession.setAttribute("inicio","iniciado");
-            try (PrintWriter pw = response.getWriter()) {
-                 response.sendRedirect("index.jsp");
+                response.sendRedirect("index.jsp");
+            }else{
+                response.sendRedirect("login.jsp");
+            }
+                try (PrintWriter pw = response.getWriter()) {
+                 
             }
         }
     }
