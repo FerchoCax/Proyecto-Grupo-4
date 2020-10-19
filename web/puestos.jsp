@@ -9,8 +9,8 @@
 <%@page import="modelo.Puesto"%>
 <%@page import="java.util.HashMap"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="javax.servlet.http.HttpSession"%>
 <!DOCTYPE html>
-<%@include file="header.jsp" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,6 +18,12 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
     <body>
+        <%
+        HttpSession misession= (HttpSession) request.getSession();
+        if(misession.getAttribute("inicio")=="iniciado"){
+        //out.println("Hola");
+        %>
+        <%@include file="header.jsp" %>
         <h1>FORMULARIO PUESTOS</h1>
         <button type="button" name="btn_nuevo" id="btn_nuevo" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_puestos" onclick="limpiar()">Nuevo</button>
         <a href="index.jsp" class="btn btn-info btn-lg" role="button" >Empleados</a>
@@ -97,6 +103,9 @@
    $("#modal_puestos").modal('show');
 });
 </script>
+<%}else{
+    response.sendRedirect("login.jsp");}
+%>
     </body>
 </html>
 

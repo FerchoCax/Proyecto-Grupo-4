@@ -11,13 +11,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelo.Login;
 
 /**
  *
  * @author ferch
  */
-public class sr_login extends HttpServlet {
+public class sr_logins extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,28 +33,12 @@ public class sr_login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet sr_login</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("gola");
-           
-            
-            if("Ingresar".equals(request.getParameter("btn_ingresar"))){
-                Login login = new Login(request.getParameter("txt_nom"),request.getParameter("txt_pass"));
-                if(login.verificar() == 1){
-                    response.sendRedirect("Principal.jsp");
-                 //  out.println("<h1>Ingreso Exitoso....................</h1>");
-                   // out.println("<a href ='index.jsp'>Regresar</a>");
-                }else{
-                    response.sendRedirect("login.jsp");
-                }
+            HttpSession misession= request.getSession();
+            Login login = new Login(request.getParameter("txt_nom"),request.getParameter("txt_pass"));
+                misession.setAttribute("inicio","iniciado");
+            try (PrintWriter pw = response.getWriter()) {
+                 response.sendRedirect("index.jsp");
             }
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 

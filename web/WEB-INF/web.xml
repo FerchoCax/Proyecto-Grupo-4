@@ -32,6 +32,22 @@
         <servlet-name>SimpleServlet</servlet-name>
         <servlet-class>modelo.SimpleServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>controlador.NewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VerSessiones</servlet-name>
+        <servlet-class>controlador.VerSessiones</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sr_logins</servlet-name>
+        <servlet-class>controlador.sr_logins</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>prueba3</servlet-name>
+        <servlet-class>controlador.prueba3</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sr_productos</servlet-name>
         <url-pattern>/sr_productos</url-pattern>
@@ -63,6 +79,22 @@
     <servlet-mapping>
         <servlet-name>SimpleServlet</servlet-name>
         <url-pattern>/SimpleServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerSessiones</servlet-name>
+        <url-pattern>/VerSessiones</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sr_logins</servlet-name>
+        <url-pattern>/sr_logins</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>prueba3</servlet-name>
+        <url-pattern>/prueba3</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

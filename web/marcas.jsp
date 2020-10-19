@@ -8,6 +8,7 @@
 <%@page import="java.util.HashMap"%> 
 <%@page import="javax.swing.table.DefaultTableModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="javax.servlet.http.HttpSession"%>
 <!DOCTYPE html>
 <%@include file="header.jsp" %>
 <html>
@@ -18,6 +19,12 @@
     <title>bienvenido </title>
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     </head>
+    <%
+        HttpSession misession= (HttpSession) request.getSession();
+        if(misession.getAttribute("inicio")=="iniciado"){
+        //out.println("Hola");
+        %>
+        <%@include file="header.jsp" %>
     <body>
         
         <h1>Marcas</h1>
@@ -81,5 +88,8 @@
 });
             
         </script>
+        <%}else{
+    response.sendRedirect("login.jsp");}
+%>
     </body>
 </html>

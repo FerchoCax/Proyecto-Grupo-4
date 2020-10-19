@@ -8,8 +8,8 @@
 <%@page import="java.util.HashMap"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.swing.table.DefaultTableModel"%>
+<%@page import="javax.servlet.http.HttpSession"%>
 <!DOCTYPE html>
- <%@include file="header.jsp" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,6 +18,12 @@
     </head>
     
     <body>
+        <%
+        HttpSession misession= (HttpSession) request.getSession();
+        if(misession.getAttribute("inicio")=="iniciado"){
+        //out.println("Hola");
+        %>
+        <%@include file="header.jsp" %>
     <h1>productos</h1>
     <div class="container">
         
@@ -133,5 +139,8 @@
 });
             
         </script>
+        <%}else{
+    response.sendRedirect("login.jsp");}
+%>
     </body>
 </html>

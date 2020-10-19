@@ -7,9 +7,9 @@
 <%@page import="javax.swing.table.DefaultTableModel"%>
 <%@page import="modelo.Cliente"%>
 <%@page import="java.util.HashMap"%>
+<%@page import="javax.servlet.http.HttpSession"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
-<%@include file="header.jsp" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,6 +17,12 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     </head>
     <body>
+        <%
+        HttpSession misession= (HttpSession) request.getSession();
+        if(misession.getAttribute("inicio")=="iniciado"){
+        //out.println("Hola");
+        %>
+        <%@include file="header.jsp" %>
         <div class="container">
             <h1>FORMULARIO CLIENTES</h1>
         </div>
@@ -118,7 +124,9 @@
    
 });
 </script>
-   
+   <%}else{
+    response.sendRedirect("login.jsp");}
+%>
     </body>
 </html>
 

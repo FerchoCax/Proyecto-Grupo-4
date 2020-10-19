@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : Principal
     Created on : 14/10/2020, 20:33:35
@@ -13,7 +14,7 @@
     </head>
     <body>
         <div class="container col-lg-3">
-            <form action="sr_login" method="post">
+            <form action="sr_logins" method="post">
                 <div class="form-goup text-center">
                     <br>
                     <br>
