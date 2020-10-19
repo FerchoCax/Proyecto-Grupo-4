@@ -32,7 +32,7 @@
 		<nav>
                     
 			<ul>
-				<li><a href="#" style="text-decoration: none;">Inicio</a></li>
+				<li><a href="index.jsp" style="text-decoration: none;">Inicio</a></li>
 				<li class="submenu">
 					<a href="#" style="text-decoration: none;">Productos</a>
 					<ul class="children">
