@@ -9,6 +9,7 @@
 <%@page import="java.util.HashMap"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@include file="header.jsp" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,7 +19,6 @@
     <body>
         <h1>FORMULARIO EMPLEADOS</h1>
         <button type="button" name="btn_nuevo" id="btn_nuevo" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_empleado" onclick="limpiar()">Nuevo</button>
-        <a href="puestos.jsp" class="btn btn-info btn-lg" role="button" >Puestos</a>
         
         <div class="container">
         <div class="modal fade" id="modal_empleado" role="dialog">
@@ -70,7 +70,7 @@
              
                 <input type="submit" class="btn btn-primary" name="btn_agregar" id="btn_agregar" value="agregar" >
                 <input type="submit" class="btn btn-success" name="btn_modificar" id="btn_modificar" value="modificar">
-                <input type="submit" class="btn btn-danger" name="btn_eliminar" id="btn_eliminar" value="eliminar"onclick="javascript:if(!confirm('¿Desea Eliminar?'))return false">
+                <input type="submit" class="btn btn-danger" name="btn_eliminar" id="btn_eliminar" value="eliminar"  onclick="javascript:if(!confirm('¿Desea Eliminar?'))return false">
                 <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
                 
                
