@@ -31,7 +31,9 @@
                     <input type="password" name="txt_pass" placeholder="Ingrese su contraseña" class="form-control">
                 </div>
                 <br><input class="btn btn-danger btn-block" type="submit" name="btn_ingresar" value="Ingresar">
-                
+                <label>Primero agregar nuevamente la base de datos ya que sino no funcionara :p</label>
+                <label>despues usuario: admin</label>
+                <label>contraseña: admin</label>
             </form>
             
         </div>
