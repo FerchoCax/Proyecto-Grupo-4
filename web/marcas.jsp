@@ -10,7 +10,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.servlet.http.HttpSession"%>
 <!DOCTYPE html>
-<%@include file="header.jsp" %>
 <html>
     <head>
         
@@ -24,7 +23,7 @@
         if(misession.getAttribute("inicio")=="iniciado"){
         //out.println("Hola");
         %>
-        <%@include file="header.jsp" %>
+       <%@include file="header.jsp" %>
     <body>
         
         <h1>Marcas</h1>

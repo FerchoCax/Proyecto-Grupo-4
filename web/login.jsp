@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <title>JSP Page</title>
+        <title>Login</title>
     </head>
     <body>
         <div class="container col-lg-3">
@@ -31,9 +31,9 @@
                     <input type="password" name="txt_pass" placeholder="Ingrese su contraseña" class="form-control">
                 </div>
                 <br><input class="btn btn-danger btn-block" type="submit" name="btn_ingresar" value="Ingresar">
-                <label>Primero agregar nuevamente la base de datos ya que sino no funcionara :p</label>
+                <!--<label>Primero agregar nuevamente la base de datos ya que sino no funcionara :p</label>
                 <label>despues usuario: admin</label>
-                <label>contraseña: admin</label>
+                <label>contraseña: admin</label>-->
             </form>
             
         </div>

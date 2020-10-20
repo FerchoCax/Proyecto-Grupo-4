@@ -52,8 +52,9 @@
             <input type="text" name="txt_descripcion" id="txt_descripcion"  class="form-control" placeholder="" required>
             <br> 
             <label for="lbl_imagen"><b>Imagen:</b></label>
-            <input type="text" name="txt_imagen" id="txt_imagen"  class="form-control" placeholder="" required>
-            <br> 
+            <br>
+            <input type="File" name="txt_imagen" id="txt_imagen"  required>
+            <br>
             <label for="lbl_precio_costo"><b>Precio costo:</b></label>
             <input type="number" step="0.01" name="txt_precio_costo" id="txt_precio_costo"  class="form-control" placeholder="0.00" required>
             <br> 

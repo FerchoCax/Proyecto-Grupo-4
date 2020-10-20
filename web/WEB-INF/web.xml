@@ -48,6 +48,18 @@
         <servlet-name>prueba3</servlet-name>
         <servlet-class>controlador.prueba3</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>sr_cerrarS</servlet-name>
+        <servlet-class>controlador.sr_cerrarS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>img</servlet-name>
+        <servlet-class>controlador.img</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controlador</servlet-name>
+        <servlet-class>com.controlador.Controlador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sr_productos</servlet-name>
         <url-pattern>/sr_productos</url-pattern>
@@ -95,6 +107,18 @@
     <servlet-mapping>
         <servlet-name>prueba3</servlet-name>
         <url-pattern>/prueba3</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sr_cerrarS</servlet-name>
+        <url-pattern>/sr_cerrarS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>img</servlet-name>
+        <url-pattern>/img</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controlador</servlet-name>
+        <url-pattern>/Controlador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

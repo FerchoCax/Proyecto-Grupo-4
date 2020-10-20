@@ -5,23 +5,19 @@
 	-moz-box-sizing:border-box;
 	box-sizing:border-box;
 }
-
-body {background:#FEFEFE;}
+body {}
 
 section {
 	padding:20px;
 }
-
 .menu_bar {
 	display:none;
 }
-
 header {
 	width: 100%;
 }
-
 header nav {
-	background:#023859;
+        background: #FF5722;
 	z-index:1000;
 	max-width: none;
 	width: 100%;
@@ -45,7 +41,7 @@ header nav ul li:hover .children {
 
 /*Submenu*/
 header nav ul li .children {
-	background:#011826;
+	background:#FF9800;
 	position: absolute;
 	display: none;
 	width: 150%;
@@ -61,6 +57,12 @@ header nav ul li .children li {
 
 header nav ul li .children li a {
 	display: block;
+        text-decoration: none;
+        color: white;
+}
+header nav ul a{
+        color: white;
+        text-decoration: none;
 }
 
 header nav ul .children li a span {
@@ -72,14 +74,18 @@ header nav ul .children li a span {
 }
 
 header nav ul li a {
-	color:#fff;
+	color:#FFFFFF;
 	text-decoration: none;
 	display: inline-block;
 	padding:20px;
 }
 
 header nav ul li:hover {
-	background:#E6344A;
+	background:#E64A19;
+        text-decoration: none;
+}
+header nav ul .children li:hover {
+        background:#ff6f00;
 }
 
 header nav ul li span {
@@ -99,7 +105,7 @@ header nav ul li .caret {
 	}
 	.menu_bar {
 		width: 100%;
-		background:#E6344A;
+		background:#d84315;
 		display: block;
 		position: fixed;
 		top:0;

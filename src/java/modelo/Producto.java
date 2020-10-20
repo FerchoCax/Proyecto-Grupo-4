@@ -4,9 +4,16 @@
  * and open the template in the editor.
  */
 package modelo;
+import com.mysql.cj.protocol.Resultset;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.servlet.http.HttpServletResponse;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -214,6 +221,38 @@ public int modificar(){
 }
  return retorno;
  }
+    public void imagen(int id, HttpServletResponse response) throws IOException, SQLException{
+        int retorno =0;
+        InputStream in = null;
+        OutputStream out = null;
+        BufferedInputStream bufferedInputStream= null;
+        BufferedOutputStream bufferedOutputStream= null;
+        response.setContentType("image/*");
+        try{
+            ResultSet rs;
+            String query="Select * from productos where idProducto="+idproducto;
+            out = response.getOutputStream();
+            cn = new Conexioon();
+            cn.abrir_conexion();
+            PreparedStatement parametro;
+            parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);    
+            rs = parametro.executeQuery();
+            if(rs.next()) {
+                in=rs.getBinaryStream("Imagen");
+            } 
+            bufferedInputStream = new BufferedInputStream(in);
+            bufferedOutputStream = new BufferedOutputStream(out);
+            int i=0;
+            while((i==bufferedInputStream.read())&&(i!=-1)){
+                bufferedOutputStream.write(i);
+            }
+        
+            cn.cerrar_conexion();
+        }catch (SQLException e){
+            
+        }
+    
+    }   
 }
  
  

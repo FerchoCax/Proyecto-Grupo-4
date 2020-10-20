@@ -1,12 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,16 +29,36 @@ public class sr_logins extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
             Login login = new Login(request.getParameter("txt_nom"),request.getParameter("txt_pass"));
+            
+                //out.println("error 3 :p");
+                
             if(login.verificar()>0){
                 HttpSession misession= request.getSession();
                 misession.setAttribute("inicio","iniciado");
-                response.sendRedirect("index.jsp");
+                int aux;
+                aux = login.getTipo();
+                if(aux==1){
+                    HttpSession sesion= request.getSession();
+                    sesion.setAttribute("Tipo","admin");
+                    response.sendRedirect("index.jsp");
+                }
+                if(aux==2){
+                    HttpSession sesion= request.getSession();
+                    sesion.setAttribute("Tipo","bodega");
+                    response.sendRedirect("index.jsp");
+                }
+                if(aux==3){
+                    HttpSession sesion= request.getSession();
+                    sesion.setAttribute("Tipo","gerente");
+                    response.sendRedirect("index.jsp");
+                }
             }else{
+                out.println("error 2 :p");
                 response.sendRedirect("login.jsp");
             }
                 try (PrintWriter pw = response.getWriter()) {
@@ -60,7 +79,11 @@ public class sr_logins extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(sr_logins.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -74,7 +97,11 @@ public class sr_logins extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(sr_logins.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

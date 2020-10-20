@@ -12,13 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import modelo.Login;
 
 /**
  *
  * @author ferch
  */
-public class prueba3 extends HttpServlet {
+public class sr_cerrarS extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,13 +31,22 @@ public class prueba3 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession misession= (HttpSession) request.getSession();
-        Login login= (Login) misession.getAttribute("producto");
-       
         try (PrintWriter out = response.getWriter()) {
-            PrintWriter pw= response.getWriter();
-            pw.println("<html><body>"+ login.getUsuario()+ "," +login.getPassword() + "</body></html>");
-            pw.close();
+            /* TODO output your page here. You may use following sample code. */
+            HttpSession misession= (HttpSession) request.getSession();
+            HttpSession sesion= (HttpSession) request.getSession();
+            //sesion.invalidate();
+            misession.invalidate();
+            response.sendRedirect("login.jsp");
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet sr_cerrarS</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet sr_cerrarS at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
