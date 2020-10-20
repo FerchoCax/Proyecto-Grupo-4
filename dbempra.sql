@@ -194,13 +194,13 @@ CREATE TABLE `productos` (
   `producto` varchar(45) DEFAULT NULL,
   `idMarca` smallint DEFAULT NULL,
   `Descripcion` varchar(100) DEFAULT NULL,
-  `Imagen` varchar(200) DEFAULT NULL,
+  `Imagen` longblob,
   `precio_costo` decimal(8,2) DEFAULT NULL,
   `precio_venta` decimal(8,2) DEFAULT NULL,
   `existencia` int DEFAULT NULL,
   `fecha_ingreso` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,7 +209,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (4,'chocolates',1,'Bebida Refrescante','url',1.00,0.04,54,'2020-10-02'),(5,'gsdsf',2,'Sopa sabor a pollo','url',1.00,32.00,2,'2020-10-14');
+INSERT INTO `productos` VALUES (4,'chocolates',1,'Bebida Refrescante',_binary 'url',1.00,0.04,54,'2020-10-02'),(5,'gsdsf',2,'Sopa sabor a pollo',_binary 'url',1.00,32.00,2,'2020-10-14'),(6,'chocolates',2,'Bebida Refrescante',_binary 'Captura de pantalla de 2020-09-11 12-14-40.png',12.00,12.00,12,'2020-10-13'),(7,'chocolates',1,'12',_binary 'Captura de pantalla de 2020-09-11 12-20-07.png',12.00,12.00,12,'2020-09-30');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,6 +265,30 @@ INSERT INTO `puestos` VALUES (1,'Gerente Principal'),(2,'Cajero');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tipo_usuario`
+--
+
+DROP TABLE IF EXISTS `tipo_usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tipo_usuario` (
+  `idtipo` int NOT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idtipo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tipo_usuario`
+--
+
+LOCK TABLES `tipo_usuario` WRITE;
+/*!40000 ALTER TABLE `tipo_usuario` DISABLE KEYS */;
+INSERT INTO `tipo_usuario` VALUES (1,'Administrador'),(2,'Bodeguero'),(3,'Gerente');
+/*!40000 ALTER TABLE `tipo_usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `usuarios`
 --
 
@@ -274,9 +298,10 @@ DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `idUsusario` int NOT NULL AUTO_INCREMENT,
   `usuario` varchar(45) DEFAULT NULL,
+  `tipo` int DEFAULT NULL,
   `contra` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idUsusario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -285,7 +310,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'admin','admin');
+INSERT INTO `usuarios` VALUES (1,'admin',1,'admin'),(2,'Fer',2,'fer123'),(3,'Alex',3,'alex123');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -352,4 +377,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-18 21:44:58
+-- Dump completed on 2020-10-20 13:33:52
