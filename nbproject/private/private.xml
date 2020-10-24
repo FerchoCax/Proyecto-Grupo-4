@@ -12,12 +12,14 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ferch/Desktop/universidad%20fer/Semestre%202%202020/Programacion%202/Proyecto%20Final/web/casa.jsp</file>
-            <file>file:/C:/Users/ferch/Desktop/universidad%20fer/Semestre%202%202020/Programacion%202/Proyecto%20Final/web/marcas.jsp</file>
-            <file>file:/C:/Users/ferch/Desktop/universidad%20fer/Semestre%202%202020/Programacion%202/Proyecto%20Final/web/productos.jsp</file>
-            <file>file:/C:/Users/ferch/Desktop/universidad%20fer/Semestre%202%202020/Programacion%202/Proyecto%20Final/web/index.jsp</file>
-            <file>file:/C:/Users/ferch/Desktop/universidad%20fer/Semestre%202%202020/Programacion%202/Proyecto%20Final/web/login.jsp</file>
+            <file>file:/C:/Users/ferch/Desktop/universidad%20fer/Semestre%202%202020/Programacion%202/Proyecto%20Final/src/java/modelo/Menu.java</file>
+            <file>file:/C:/Users/ferch/Desktop/universidad%20fer/Semestre%202%202020/Programacion%202/Proyecto%20Final/src/java/controlador/sr_usuarios.java</file>
+            <file>file:/C:/Users/ferch/Desktop/universidad%20fer/Semestre%202%202020/Programacion%202/Proyecto%20Final/src/java/controlador/sr_productos.java</file>
             <file>file:/C:/Users/ferch/Desktop/universidad%20fer/Semestre%202%202020/Programacion%202/Proyecto%20Final/web/header.jsp</file>
+            <file>file:/C:/Users/ferch/Desktop/universidad%20fer/Semestre%202%202020/Programacion%202/Proyecto%20Final/web/proveedores.jsp</file>
+            <file>file:/C:/Users/ferch/Desktop/universidad%20fer/Semestre%202%202020/Programacion%202/Proyecto%20Final/src/java/modelo/Proveedores.java</file>
+            <file>file:/C:/Users/ferch/Desktop/universidad%20fer/Semestre%202%202020/Programacion%202/Proyecto%20Final/web/usuarios.jsp</file>
+            <file>file:/C:/Users/ferch/Desktop/universidad%20fer/Semestre%202%202020/Programacion%202/Proyecto%20Final/src/java/modelo/Usuarios.java</file>
         </group>
     </open-files>
 </project-private>

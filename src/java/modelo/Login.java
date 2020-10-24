@@ -68,7 +68,6 @@ public class Login {
             setPassword(rs.getString("contra"));
             setTipo(rs.getInt("tipo"));
         }
-        
         if(retorno==1){
             cnn.cerrar_conexion();
             return 1;

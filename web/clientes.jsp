@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="javax.swing.table.DefaultTableModel"%>
+<%@page import="modelo.Menu"%>
 <%@page import="modelo.Cliente"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="javax.servlet.http.HttpSession"%>
@@ -21,6 +22,12 @@
         HttpSession misession= (HttpSession) request.getSession();
         if(misession.getAttribute("inicio")=="iniciado"){
         //out.println("Hola");
+        HttpSession usuario= (HttpSession) request.getSession();
+        String aux2 = (String)usuario.getAttribute("user2"); 
+        Menu menu2 = new Menu();
+        menu2.Pureba(aux2);
+        if(menu2.getClientes()==1){
+        
         %>
         <%@include file="header.jsp" %>
         <div class="container">
@@ -125,6 +132,8 @@
 });
 </script>
    <%}else{
+    response.sendRedirect("index.jsp");}
+       }else{
     response.sendRedirect("login.jsp");}
 %>
     </body>

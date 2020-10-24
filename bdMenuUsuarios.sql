@@ -150,7 +150,7 @@ CREATE TABLE `marcas` (
 
 LOCK TABLES `marcas` WRITE;
 /*!40000 ALTER TABLE `marcas` DISABLE KEYS */;
-INSERT INTO `marcas` VALUES (1,'Cocacolas'),(2,'Pepsi'),(3,'maggi');
+INSERT INTO `marcas` VALUES (1,'Cocacolas'),(2,'Pepsi'),(3,'Maggi');
 /*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,11 +164,10 @@ DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu` (
   `id` int NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
-  `padre_id` int DEFAULT NULL,
-  `icon` varchar(255) DEFAULT NULL,
+  `Activo` tinyint DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_padre_id` (`padre_id`),
-  CONSTRAINT `fk_menu_v1` FOREIGN KEY (`padre_id`) REFERENCES `menu` (`id`)
+  KEY `fk_padre_id` (`Activo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -178,7 +177,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'Menu 1',NULL,NULL),(2,'Menu 2 ',NULL,NULL),(3,'Menu 1.1',1,NULL),(5,'Menu 1.2',1,NULL),(6,'Menu 2.1',2,NULL);
+INSERT INTO `menu` VALUES (1,'Productos',1,'productos.jsp'),(2,'Marcas',1,'marcas.jsp'),(3,'Empleados',1,'empleados.jsp'),(4,'Ventas',1,'ventas.jsp'),(5,'Puestos',1,'puestos.jsp'),(6,'Clientes',1,'clientes.jsp'),(7,'Proveedores',1,'proveedores.jsp'),(8,'Compras',1,'#'),(9,'Usuarios',1,'usuarios.jsp'),(10,'Cerrar Sesion',1,'login.jsp');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -300,6 +299,15 @@ CREATE TABLE `usuarios` (
   `usuario` varchar(45) DEFAULT NULL,
   `tipo` int DEFAULT NULL,
   `contra` varchar(45) DEFAULT NULL,
+  `productos` tinyint DEFAULT NULL,
+  `marcas` tinyint DEFAULT NULL,
+  `empleados` tinyint DEFAULT NULL,
+  `puestos` tinyint DEFAULT NULL,
+  `clientes` tinyint DEFAULT NULL,
+  `proveedores` tinyint DEFAULT NULL,
+  `compras` tinyint DEFAULT NULL,
+  `ventas` tinyint DEFAULT NULL,
+  `usuarios` tinyint DEFAULT NULL,
   PRIMARY KEY (`idUsusario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -310,7 +318,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'admin',1,'admin'),(2,'Fer',2,'fer123'),(3,'Alex',3,'alex123');
+INSERT INTO `usuarios` VALUES (1,'Admin',1,'admin',1,1,1,1,1,1,1,1,1),(2,'Fer',2,'fer123',1,1,0,0,0,0,1,0,0),(3,'Alex',3,'alex123',1,1,1,1,1,1,1,1,1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,4 +385,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-20 13:33:52
+-- Dump completed on 2020-10-23 19:42:30

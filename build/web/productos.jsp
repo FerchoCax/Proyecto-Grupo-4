@@ -22,6 +22,11 @@
         HttpSession misession= (HttpSession) request.getSession();
         if(misession.getAttribute("inicio")=="iniciado"){
         //out.println("Hola");
+        HttpSession usuario= (HttpSession) request.getSession();
+        String aux2 = (String)usuario.getAttribute("user2"); 
+        Menu menu2 = new Menu();
+        menu2.Pureba(aux2);
+        if(menu2.getProductos()==1){
         %>
         <%@include file="header.jsp" %>
     <h1>productos</h1>
@@ -141,6 +146,8 @@
             
         </script>
         <%}else{
+    response.sendRedirect("index.jsp");}
+            }else{
     response.sendRedirect("login.jsp");}
 %>
     </body>

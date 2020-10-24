@@ -1,23 +1,23 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import modelo.Login;
+import modelo.Usuarios;
 
 /**
  *
  * @author ferch
  */
-public class sr_logins extends HttpServlet {
+public class sr_usuarios extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,33 +28,31 @@ public class sr_logins extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    Usuarios usuario;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            Login login = new Login(request.getParameter("txt_nom"),request.getParameter("txt_pass"));
-            
-                //out.println("error 3 :p");
-                
-            if(login.verificar()>0){
-                HttpSession misession= request.getSession();
-                misession.setAttribute("inicio","iniciado");
-                String aux;
-                aux = login.getUsuario();
-                HttpSession sesion= request.getSession();
-                    sesion.setAttribute("user",aux);
-                HttpSession user= request.getSession();
-                    user.setAttribute("user2",aux);
-                    response.sendRedirect("index.jsp");
-                
-            }else{
-                //out.println("error 2 :p");
-                response.sendRedirect("login.jsp");
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet sr_usuarios</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            if("Modificar".equals(request.getParameter("btn_modificar"))){
+                 usuario = new Usuarios (Integer.valueOf(request.getParameter("txt_id")),request.getParameter("txt_nombre"),Integer.valueOf(request.getParameter("drop_productos")),Integer.valueOf(request.getParameter("drop_marcas")),Integer.valueOf(request.getParameter("drop_empleados")),Integer.valueOf(request.getParameter("drop_puestos")),Integer.valueOf(request.getParameter("drop_clientes")),Integer.valueOf(request.getParameter("drop_proveedores")),Integer.valueOf(request.getParameter("drop_ventas")),Integer.valueOf(request.getParameter("drop_compras")),Integer.valueOf(request.getParameter("drop_usuarios")));
+          if(usuario.modificar()>0){  
+              response.sendRedirect("usuarios.jsp");
+          }else{
+              out.println("<h1>ERROR.............</h1>");
+              out.println("<a href ='usuarios.jsp'>regresar</a>");       
+           } 
+                   
             }
-                try (PrintWriter pw = response.getWriter()) {
-                 
-            }
+            out.println("<h1>Servlet sr_usuarios at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -70,11 +68,7 @@ public class sr_logins extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(sr_logins.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -88,11 +82,7 @@ public class sr_logins extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(sr_logins.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

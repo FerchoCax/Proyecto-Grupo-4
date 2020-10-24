@@ -23,6 +23,11 @@
         HttpSession misession= (HttpSession) request.getSession();
         if(misession.getAttribute("inicio")=="iniciado"){
         //out.println("Hola");
+        HttpSession usuario= (HttpSession) request.getSession();
+        String aux2 = (String)usuario.getAttribute("user2"); 
+        Menu menu2 = new Menu();
+        menu2.Pureba(aux2);
+        if(menu2.getProveedores()==1){
         %>
         <%@include file="header.jsp" %>
         <h1>Formulario Proveedores</h1>
@@ -112,7 +117,7 @@
    $("#txt_direccion").val('');
    $("#txt_telefono").val('');
      }   
-        $('#tbl_proveedores').on('click','tr td', function(evt){
+   $('#tbl_proveedores').on('click','tr td', function(evt){
    var target,idproveedores,proveedor,nit,direccion,telefono;
    
    target = $(event.target);
@@ -131,6 +136,8 @@
 });
 </script>
 <%}else{
+    response.sendRedirect("index.jsp");}
+    }else{
     response.sendRedirect("login.jsp");}
 %>
     </body>

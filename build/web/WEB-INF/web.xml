@@ -60,6 +60,10 @@
         <servlet-name>Controlador</servlet-name>
         <servlet-class>com.controlador.Controlador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>sr_usuarios</servlet-name>
+        <servlet-class>controlador.sr_usuarios</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sr_productos</servlet-name>
         <url-pattern>/sr_productos</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sr_usuarios</servlet-name>
+        <url-pattern>/sr_usuarios</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
