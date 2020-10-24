@@ -1,0 +1,113 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23/10/2020, 08:24:41 PM
+    Author     : Kim
+*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Segoe UI;
+}
+
+.contenedor{
+    padding: 60px 0;
+    width: 90%;
+    max-width: 1000px;
+    margin:auto;
+    overflow: hidden;
+}
+
+.titulo{
+    color:#090909;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+/*header*/
+header{
+    width: 100px;
+    height: 325px;
+    background: url(imagen/header.png);
+    background-size: cover;
+    background-attachment: fixed;
+    position:relative;
+}
+.wave{
+    position:absolute;
+    bottom: 0;
+    width:100%;
+}
+/*about us*/
+.contenedor-sobre-nosotros{
+    display:flex;
+    justify-content: space-around;
+}
+.imagen-about-us{
+    width: 48%;
+}
+.sobre-nosotros .contenido-textos{
+    width: 48%;
+}
+.contenido-textos h3{
+    margin-bottom: 15px;
+}
+.contenido-textos h3 span{
+    background: #090909;
+    color:#fff;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    box-shadow: 0 0 6px rgba(0,0,0,.5);
+    margin-right: 5px;
+}
+.contenido-textos p{
+    padding: 0px 0px 30px 15px;
+    font-weight: 300;
+    text-align: justify;
+}
+/*galeria*/
+.portafolio{
+    
+}
+.galeria-port{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.imagen-port{
+    width: 250px; height: 250px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 0 6px 0 rgba(0, 0,0,.5);
+}
+.imagen-port > img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.hover-galeria{
+    position: absolute;
+    width: 100%; height: 100%;
+    top: 0;
+    background: hsla(273,91%,27%,0.7);
+    transition: transform .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
