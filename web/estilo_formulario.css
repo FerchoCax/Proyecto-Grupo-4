@@ -1,0 +1,74 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24/10/2020, 08:50:30 PM
+    Author     : Kim
+*/
+body{ 
+    background-image: url(imagen/2.png);
+}
+#main-container{ /*posicion de la tabla e.e */
+    width: 800px;
+    margin: auto;
+    text-align: right;
+}
+
+table{ /*width-ancho de la tabla, text datos a la izquierda xd */
+    background-color:black; /*color tabla*/
+    text-align: left;
+    width: 100%; 
+    border-collapse: collapse;
+    color: white;
+    border-radius: 6px;
+    opacity: 0.8;
+}
+
+th, td{ /*separacion de datos*/
+    padding: 20px;
+    border-radius: 6px;
+}
+
+thead{/*posicion de la tabla e.e */
+    background-color:#0A0A57;/*color de parte de titulo*/
+    border-bottom: solid 5px #4E4E4D;/*color de borde que separa el tituloxd */
+    color: white;/*letra e.e */
+    text-align: center;
+    border-radius: 6px;
+}
+
+tr:nth-child(even){/*color de impares :u */
+    background-color:black ;
+    border-radius: 6px;
+}
+
+tr:hover td{/*iluminacion del los regidtros xd e.e */
+    background-color: #D35555;
+    color: white;/*eltra al seleccionar*/
+    border-radius: 6px;
+}
+#btn_nuevo{
+    width: 180px;
+    height: 45px;
+    border-radius: 6px;
+    background: #4E4E4D;
+    color:#ffffff;
+    font-size: 15px;
+    font-family: Segoe UI;
+    opacity: 0.8;
+    
+}
+.modal-content{
+     width:385px;
+    background: white;
+    color: black;
+    margin:auto;
+    margin-top: 80px;
+    padding: 5px 5px 10px 5px;
+    border-radius: 6px;
+    opacity: 0.9;
+    
+}
+

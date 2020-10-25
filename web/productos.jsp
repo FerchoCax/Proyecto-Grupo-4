@@ -92,7 +92,7 @@
     </div>
     </div>
                      
-    <table class="table table-striped">
+    <table >
     <thead>
     <tr>
         <th>Marca</th>

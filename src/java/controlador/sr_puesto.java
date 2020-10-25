@@ -41,7 +41,7 @@ public class sr_puesto extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             
-             if("agregar".equals(request.getParameter("btn_agregar"))){
+             if("Agregar".equals(request.getParameter("btn_agregar"))){
                 puesto = new Puesto(Integer.valueOf(request.getParameter("txt_id")),request.getParameter("txt_puesto"));
                 if(puesto.agregar() > 0){
                     response.sendRedirect("puestos.jsp");
@@ -53,7 +53,7 @@ public class sr_puesto extends HttpServlet {
                 }
             }
              
-             if("modificar".equals(request.getParameter("btn_modificar"))){
+             if("Modificar".equals(request.getParameter("btn_modificar"))){
                 puesto = new Puesto(Integer.valueOf(request.getParameter("txt_id")),request.getParameter("txt_puesto"));
                 if(puesto.modificar() > 0){
                     response.sendRedirect("puestos.jsp");
@@ -65,7 +65,7 @@ public class sr_puesto extends HttpServlet {
                 }
             }
              
-             if("eliminar".equals(request.getParameter("btn_eliminar"))){
+             if("Eliminar".equals(request.getParameter("btn_eliminar"))){
                 puesto = new Puesto(Integer.valueOf(request.getParameter("txt_id")),request.getParameter("txt_puesto"));
                 if(puesto.eliminar() > 0){
                     response.sendRedirect("puestos.jsp");
