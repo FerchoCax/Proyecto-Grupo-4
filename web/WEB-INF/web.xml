@@ -68,6 +68,10 @@
         <servlet-name>imagen</servlet-name>
         <servlet-class>controlador.imagen</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>sr_registro</servlet-name>
+        <servlet-class>controlador.sr_registro</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sr_productos</servlet-name>
         <url-pattern>/sr_productos</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>imagen</servlet-name>
         <url-pattern>/imagen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sr_registro</servlet-name>
+        <url-pattern>/sr_registro</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

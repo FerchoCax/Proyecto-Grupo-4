@@ -56,7 +56,7 @@ public class Login {
         PreparedStatement parametro;
         Conexioon cnn; 
         cnn= new Conexioon();
-        String query = "Select usuario,tipo,contra from usuarios where usuario=? and contra=?";
+        String query = "Select usuario,contra from usuarios where usuario=? and contra=?";
         cnn.abrir_conexion();
         parametro = (PreparedStatement)cnn.conexioonbd.prepareStatement(query);
         parametro.setString(1, getUsuario());
