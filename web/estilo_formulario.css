@@ -15,6 +15,11 @@ body{
     margin: auto;
     text-align: right;
 }
+#main-container-empleados{ /*posicion de la tabla e.e */
+    width: 1200px;
+    text-align: right;
+    padding: 0px 0px 20px 0px;
+}
 
 table{ /*width-ancho de la tabla, text datos a la izquierda xd */
     background-color:black; /*color tabla*/
@@ -39,15 +44,11 @@ thead{/*posicion de la tabla e.e */
     border-radius: 6px;
 }
 
-tr:nth-child(even){/*color de impares :u */
-    background-color:black ;
-    border-radius: 6px;
-}
 
 tr:hover td{/*iluminacion del los regidtros xd e.e */
     background-color: #D35555;
     color: white;/*eltra al seleccionar*/
-    border-radius: 6px;
+    
 }
 #btn_nuevo{
     width: 180px;
@@ -61,7 +62,7 @@ tr:hover td{/*iluminacion del los regidtros xd e.e */
     
 }
 .modal-content{
-     width:385px;
+    width:385px;
     background: white;
     color: black;
     margin:auto;
@@ -71,4 +72,5 @@ tr:hover td{/*iluminacion del los regidtros xd e.e */
     opacity: 0.9;
     
 }
+
 

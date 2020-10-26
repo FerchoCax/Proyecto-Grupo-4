@@ -17,6 +17,7 @@
         <title>CLIENTES</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="shortcut icon" href="imagen/icono.png" type="image/x-icon">
+        <link rel="stylesheet" href="estilo_formulario.css">
 
     </head>
     <body>
@@ -33,8 +34,6 @@
         %>
         <%@include file="header.jsp" %>
         <div class="container">
-        <h1>FORMULARIO CLIENTES</h1>
-        <button type="button" name="btn_nuevo" id="btn_nuevo" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_clientes" onclick="limpiar()">Nuevo</button>
         
         </div>
         <div class="container"> 
@@ -46,33 +45,33 @@
                 
                 <label for="lbl_id">ID:</label>
                 <input type="text" name="txt_id" id="txt_id" class="form-control" value="0" readonly>
-                
+                <br>
                 <label for="lbl_nombres">Nombres:</label>
                 <input type="text" name="txt_nombres" id="txt_nombres" class="form-control" placeholder="Ejemplo: nombre1 nombre2" required>
-                
+                <br>
                 <label for="lbl_apellidos">Aprellidos:</label>
                 <input type="text" name="txt_apellidos" id="txt_apellidos" class="form-control" placeholder=" Ejemplo: apellido1 apellido2" required>
-                
+                <br>
                 <label for="lbl_nit">NIT:</label>
                 <input type="text" name="txt_nit" id="txt_nit" class="form-control" placeholder="Ejemplo: 1750519-4" required>
-                
+                <br>
                 <label for="lbl_genero">Genero:</label>
                 <input type="text"  name="txt_genero" id="txt_genero" class="form-control" placeholder="Ejemplo: 0 " required>
-                
+                <br>
                 <label for="lbl_telefono">Telefono:</label>
                 <input type="number" name="txt_telefono" id="txt_telefono" class="form-control" placeholder="Ejemplo: 12345678" required>
-                
+                <br>
                 <label for="lbl_correo">Correo electronico:</label>
                 <input type="text" name="txt_correo" id="txt_correo" class="form-control" placeholder="Ejemplo: correo_ejemplo@gmail.com" required >
-                
+                <br>
                 <label for="lbl_fechaingreso">Fecha de ingreso:</label>
                 <input type="date" name="txt_fechaingreso" id="txt_fechaingreso" class="form-control" required >
                 
                 <br>
             
-            <button name="btn_agregar" id="btn_agregar" value="agregar" class="btn btn-primary" >Agregar</button>  
-            <button name="btn_modificar" id="btn_modificar" value="modificar" class="btn btn-success" >Modificar</button>  
-            <button name="btn_eliminar" id="btn_eliminar" value="eliminar" class="btn btn-danger" >Eliminar</button> 
+            <button name="btn_agregar" id="btn_agregar" value="agregar" class="btn btn-warning" >Agregar</button>  
+            <button name="btn_modificar" id="btn_modificar" value="modificar" class="btn btn-warning" >Modificar</button>  
+            <button name="btn_eliminar" id="btn_eliminar" value="eliminar" class="btn btn-warning" >Eliminar</button> 
             <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
 
            
@@ -81,8 +80,8 @@
         </div>
         </div>
         </div>
-
-            <table class="table table-striped">
+            <div id="main-container">
+            <table>
     <thead>
       <tr>
         <th>Nombres</th>
@@ -114,7 +113,10 @@
         %>
       
     </tbody>
-    </table>    
+    </table>  
+                <button type="button" name="btn_nuevo" id="btn_nuevo" data-toggle="modal" data-target="#modal_clientes" onclick="limpiar()">Nuevo</button>
+
+            </div>
         </div>
         
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
