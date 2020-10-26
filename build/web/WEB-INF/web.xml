@@ -64,6 +64,10 @@
         <servlet-name>sr_usuarios</servlet-name>
         <servlet-class>controlador.sr_usuarios</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>imagen</servlet-name>
+        <servlet-class>controlador.imagen</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sr_productos</servlet-name>
         <url-pattern>/sr_productos</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>sr_usuarios</servlet-name>
         <url-pattern>/sr_usuarios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>imagen</servlet-name>
+        <url-pattern>/imagen</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

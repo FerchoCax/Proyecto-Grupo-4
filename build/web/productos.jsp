@@ -3,6 +3,7 @@
     Created on : 5/10/2020, 02:47:45 PM
     Author     : ferperez
 --%>
+<%@page import="controlador.imagen"%>
 <%@page import="modelo.Marcas" %>
 <%@page import="modelo.Producto" %>
 <%@page import="java.util.HashMap"%>
@@ -33,18 +34,19 @@
         <%@include file="header.jsp" %>
     
         <h1>FORMULARIO PRODUCTOS</h1>
-        <button type="button" name="btn_nuevo" id="btn_nuevo" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_producto" onclick="limpiar()">Nuevo</button>
-
+        <button type="button" name="btn_nuevo" id="btn_nuevo" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_productos" onclick="limpiar()">Nuevo</button>
         <div class="container">
-        <div class="modal fade" id="modal_producto" role="dialog">
+        <div class="modal fade" id="modal_productos" role="dialog">
         <div class="modal-dialog">
+    
+        <!-- Modal content-->
         <div class="modal-content">
         <div class="modal-body">
         
-        <form action="sr_productos" method="post" class="form-group"> 
+        <form action="sr_productos" method="post" class="form-group" enctype="multipart/form-data"> 
            
             <label for="lbl_idproducto"><b>Id:</b></label>
-            <input type="text" name="txt_idproducto" id="txt_idproducto"  class="form-control" placeholder="0" required>
+            <input type="text" name="txt_idproducto" id="txt_idproducto"  class="form-control" placeholder="0" readonly>
             
             <label for="lbl_producto"><b>Producto:</b></label>
             <input type="text" name="txt_producto" id="txt_producto"  class="form-control" placeholder="" required>
@@ -63,10 +65,10 @@
              
             <label for="lbl_descripcion"><b>Descripcion:</b></label>
             <input type="text" name="txt_descripcion" id="txt_descripcion"  class="form-control" placeholder="" required>
-            
+            <br>
             <label for="lbl_imagen"><b>Imagen:</b></label> 
-            <input type="File" name="txt_imagen" id="txt_imagen"  required>
-           
+            <input type="File" name="imagen" id="imagen"  required>
+            <br>
             <label for="lbl_precio_costo"><b>Precio costo:</b></label>
             <input type="number" step="0.01" name="txt_precio_costo" id="txt_precio_costo"  class="form-control" placeholder="0.00" required>
             
@@ -87,11 +89,12 @@
             <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
 
         </form>
+        </div>
+      </div>
     </div>
+  </div>  
     </div>
-    </div>
-    </div>
-                     
+    
     <table >
     <thead>
     <tr>
@@ -116,7 +119,7 @@
             out.println("<td>" + tabla.getValueAt(t,8) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,1) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,2) + "</td>");
-            out.println("<td>" + tabla.getValueAt(t,3) + "</td>");
+            out.println("<td> <img src='imagen?id="+tabla.getValueAt(t,0)+"'/></td>");
             out.println("<td>" + tabla.getValueAt(t,4) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,5) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,6) + "</td>");
@@ -132,31 +135,32 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
     
     <script>
-        function limpiar(){
-            $("#txt_idproducto").val(0);
-            $("#txt_producto").val('');
-            $("#drop_marca").val(1);
-            $("#txt_descripcion").val('');
-           // $("#txt_imagen").val('');
-            $("#txt_precio_costo").val('');
-            $("#txt_precio_venta").val('');
-            $("#txt_existencia").val('');
-            $("#txt_fecha_ingreso").val('');}  
+    function limpiar(){
+   $("#txt_idproducto").val(0);
+        $("#txt_producto").val('');
+        $("#txt_descripcion").val('');
+        //$("#txt_imagen").val(imagen);
+        $("#txt_precio_costo").val(0);
+        $("#txt_precio_venta").val(0);
+        $("#txt_existencia").val(0);
+        $("#txt_fecha_ingreso").val('');
+        $("#drop_marca").val(1);
+     }      
 
-        $('#tbl_productos').on('click','tr td', function(evt){
-        var target,id,id_m,producto,descripcion,precio_costo,precio_venta,existencia,fecha_ingreso;
-   
-        target = $(event.target)
+    $('#tbl_productos').on('click','tr td', function(evt){
+   var target,id,id_m,producto,descripcion,precio_costo,precio_venta,existencia,fecha_ingreso;
+
+   target = $(event.target);
         id = target.parent().data('id');
         id_m = target.parent().data('id_m');
-        producto= target.parents("tr").find("td").eq(0).html();
-        descripcion= target.parents("tr").find("td").eq(1).html();
+        producto= target.parents("tr").find("td").eq(1).html();
+        descripcion= target.parents("tr").find("td").eq(2).html();
         //imagen= target.parents("tr").find("td").eq(2).html();
-        precio_costo= target.parents("tr").find("td").eq(3).html();
-        precio_venta= target.parents("tr").find("td").eq(4).html();
-        existencia= target.parents("tr").find("td").eq(5).html();
-        fecha_ingreso= target.parents("tr").find("td").eq(6).html();
-
+        precio_costo= target.parents("tr").find("td").eq(4).html();
+        precio_venta= target.parents("tr").find("td").eq(5).html();
+        existencia= target.parents("tr").find("td").eq(6).html();
+        fecha_ingreso= target.parents("tr").find("td").eq(7).html();
+   
         $("#txt_idproducto").val(id);
         $("#txt_producto").val(producto);
         $("#txt_descripcion").val(descripcion);
@@ -165,10 +169,10 @@
         $("#txt_precio_venta").val(precio_venta);
         $("#txt_existencia").val(existencia);
         $("#txt_fecha_ingreso").val(fecha_ingreso);
-        $("#drop_marca").val(id_marcas);
-        $("#modal_producto").modal('show');
-
-    });
+        $("#drop_marca").val(id_m);
+        $("#modal_productos").modal('show');
+        
+});
     </script>
     
     <%}else{

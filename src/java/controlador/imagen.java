@@ -5,19 +5,25 @@
  */
 package controlador;
 
+
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.InputStream;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Usuarios;
+import modelo.Conexioon;
 
 /**
  *
- * @author ferch
+ * @author David
  */
-public class sr_usuarios extends HttpServlet {
+@WebServlet(name = "imagen", urlPatterns = {"/imagen"})
+public class imagen extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,33 +34,41 @@ public class sr_usuarios extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    Usuarios usuario;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet sr_usuarios</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            if("Modificar".equals(request.getParameter("btn_modificar"))){
-                 usuario = new Usuarios (Integer.valueOf(request.getParameter("txt_id")),request.getParameter("txt_nombre"),Integer.valueOf(request.getParameter("drop_productos")),Integer.valueOf(request.getParameter("drop_marcas")),Integer.valueOf(request.getParameter("drop_empleados")),Integer.valueOf(request.getParameter("drop_puestos")),Integer.valueOf(request.getParameter("drop_clientes")),Integer.valueOf(request.getParameter("drop_proveedores")),Integer.valueOf(request.getParameter("drop_ventas")),Integer.valueOf(request.getParameter("drop_compras")),Integer.valueOf(request.getParameter("drop_usuarios")));
-          if(usuario.modificar()>0){  
-              response.sendRedirect("usuarios.jsp");
-          }else{
-              
-              response.sendRedirect("usuarios.jsp");
-              //out.println("<a href ='usuarios.jsp'>regresar</a>");       
-           } 
-                   
+
+        response.setContentType("image/png");
+
+        Conexioon con = new Conexioon();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        byte[] b = null;
+
+        try {
+            con.abrir_conexion();
+            int id = Integer.parseInt(request.getParameter("id"));
+            ps = con.conexioonbd.prepareStatement("SELECT Imagen FROM productos WHERE idProducto=?;");
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                b = rs.getBytes("Imagen");
             }
-            out.println("<h1>Servlet sr_usuarios at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            InputStream bos = new ByteArrayInputStream(b);
+
+            int tamanoInput = bos.available();
+            byte[] datosIMAGEN = new byte[tamanoInput];
+            bos.read(datosIMAGEN, 0, tamanoInput);
+
+            response.getOutputStream().write(datosIMAGEN);
+            bos.close();
+            ps.close();
+            rs.close();
+            con.cerrar_conexion();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -84,6 +98,7 @@ public class sr_usuarios extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
     }
 
     /**

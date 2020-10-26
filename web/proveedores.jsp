@@ -38,10 +38,10 @@
         
         <div class="container">
         <div class="modal fade" id="modal_proveedores" role="dialog">
-    <div class="modal-dialog">
+        <div class="modal-dialog">
     
-      <!-- Modal content-->
-      <div class="modal-content">
+        <!-- Modal content-->
+        <div class="modal-content">
         <div class="modal-body">
             <form action="sr_provedores" method="post" class="form-group">
                 

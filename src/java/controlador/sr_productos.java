@@ -7,19 +7,31 @@ package controlador;
  */
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import modelo.Producto;
 
 /**
  *
  * @author ferch
  */
+@WebServlet("/uploadServlet")
+@MultipartConfig(maxFileSize = 16177215*2)    // upload file's size up to 16MB
 public class sr_productos extends HttpServlet {
-
+ private String dbURL = "jdbc:mysql://localhost:3306/dbempresa?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private String dbUser = "root";
+    private String dbPass = "root";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -41,9 +53,24 @@ public class sr_productos extends HttpServlet {
             out.println("<title>Servlet sr_productos</title>");            
             out.println("</head>");
             out.println("<body>");
+            InputStream inputStream = null; // input stream of the upload file
+         
+        // obtains the upload file part in this multipart request
+        Part filePart = request.getPart("imagen");
+        if (filePart != null) {
+            // prints out some information for debugging
+            System.out.println(filePart.getName());
+            System.out.println(filePart.getSize());
+            System.out.println(filePart.getContentType());
+             
+            // obtains input stream of the upload file
+            inputStream = filePart.getInputStream();
+        }
             if("Agregar".equals(request.getParameter("btn_agregar"))){
-                producto = new Producto (0,request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),request.getParameter("txt_imagen"),Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
-          if(producto.agregar()>0){  
+                
+         producto = new Producto (0,request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),inputStream,Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
+                
+             if(producto.agregar()>0){  
               response.sendRedirect("productos.jsp");
           }else{
               out.println("<h1>ERROR.............</h1>");
@@ -52,7 +79,7 @@ public class sr_productos extends HttpServlet {
         }  
         //modificar
             if("Modificar".equals(request.getParameter("btn_modificar"))){
-               producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),request.getParameter("txt_imagen"),Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
+               producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),inputStream,Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
               if(producto.modificar() > 0){
                     response.sendRedirect("productos.jsp");
                 }else{
@@ -63,7 +90,7 @@ public class sr_productos extends HttpServlet {
     
             //eliminar
             if("Eliminar".equals(request.getParameter("btn_eliminar"))){
-             producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),request.getParameter("txt_imagen"),Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
+             producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),inputStream,Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
              
              if(producto.eliminar() > 0){
                     response.sendRedirect("productos.jsp");
@@ -104,7 +131,6 @@ public class sr_productos extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
     }
 
     /**
