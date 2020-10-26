@@ -1,8 +1,3 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
 /* 
     Created on : 24/10/2020, 08:50:30 PM
     Author     : Kim
@@ -15,9 +10,14 @@ body{
     margin: auto;
     text-align: right;
 }
+#main-container-empleados{ /*posicion de la tabla e.e */
+    width: 1200px;
+    text-align: right;
+    padding: 0px 0px 20px 0px;
+}
 
 table{ /*width-ancho de la tabla, text datos a la izquierda xd */
-    background-color:black; /*color tabla*/
+    background-color: black; /*color tabla*/
     text-align: left;
     width: 100%; 
     border-collapse: collapse;
@@ -28,7 +28,7 @@ table{ /*width-ancho de la tabla, text datos a la izquierda xd */
 
 th, td{ /*separacion de datos*/
     padding: 20px;
-    border-radius: 6px;
+    border-radius: 0px;
 }
 
 thead{/*posicion de la tabla e.e */
@@ -39,15 +39,11 @@ thead{/*posicion de la tabla e.e */
     border-radius: 6px;
 }
 
-tr:nth-child(even){/*color de impares :u */
-    background-color:black ;
-    border-radius: 6px;
-}
 
 tr:hover td{/*iluminacion del los regidtros xd e.e */
-    background-color: #D35555;
+    background-color: #3399ff;
     color: white;/*eltra al seleccionar*/
-    border-radius: 6px;
+    
 }
 #btn_nuevo{
     width: 180px;
@@ -61,7 +57,7 @@ tr:hover td{/*iluminacion del los regidtros xd e.e */
     
 }
 .modal-content{
-     width:385px;
+    width:385px;
     background: white;
     color: black;
     margin:auto;
@@ -71,4 +67,5 @@ tr:hover td{/*iluminacion del los regidtros xd e.e */
     opacity: 0.9;
     
 }
+
 

@@ -18,6 +18,7 @@
         <title>Empleados</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="shortcut icon" href="imagen/icono.png" type="image/x-icon">
+                 <link rel="stylesheet" href="estilo_formulario.css">
 
     </head>
     <body>
@@ -32,8 +33,6 @@
         if(menu2.getProveedores()==1){
         %>
         <%@include file="header.jsp" %>
-        <h1>Formulario Proveedores</h1>
-        <button type="button" name="btn_nuevo" id="btn_nuevo" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_proveedores" onclick="limpiar()">Nuevo</button>
        <br>
         
         <div class="container">
@@ -47,24 +46,24 @@
                 
                 <label for="lbl_idproveedor"><b>Id Proveedor:</b></label>
                 <input type="text" name="txt_idproveedor" id="txt_idproveedor" class="form-control" value ="0" readonly>  
-                  
+                <br> 
                 <label for="lbl_proveedor"><b>Proveedor:</b></label>
                 <input type="text" name="txt_proveedor" id="txt_proveedor" class="form-control" placeholder="Nombre Proveedor" required>
-               
+               <br>
                 <label for="lbl_nit"><b>Nit:</b></label>
                 <input type="text" name="txt_nit" id="txt_nit" class="form-control" placeholder="Nit 12345678" required>  
-                
+                <br>
                 <label for="lbl_direccion"><b>Direccion:</b></label>
                 <input type="text" name="txt_direccion" id="txt_direccion" class="form-control" placeholder="Ejemplo: # CASA CALLE ZONA CIUDAD" required>
-                
+                <br>
                 <label for="lbl_telefono"><b>Telefono:</b></label>
                 <input type="number" name="txt_telefono" id="txt_telefono" class="form-control" placeholder="Ejemplo:55555555" required>  
                 
                <br>
              
-                <input type="submit" class="btn btn-primary" name="btn_agregar" id="btn_agregar" value="Agregar" >
-                <input type="submit" class="btn btn-success" name="btn_modificar" id="btn_modificar" value="Modificar">
-                <input type="submit" class="btn btn-danger" name="btn_eliminar" id="btn_eliminar" value="Eliminar"onclick="javascript:if(!confirm('¿Desea Eliminar?'))return false">
+                <input type="submit" class="btn btn-warning" name="btn_agregar" id="btn_agregar" value="Agregar" >
+                <input type="submit" class="btn btn-warning" name="btn_modificar" id="btn_modificar" value="Modificar">
+                <input type="submit" class="btn btn-warning" name="btn_eliminar" id="btn_eliminar" value="Eliminar"onclick="javascript:if(!confirm('¿Desea Eliminar?'))return false">
                 <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
                 
                
@@ -77,8 +76,8 @@
             
           
                 
-                
-            <table class="table table-striped">
+            <div id="main-container">   
+            <table>
     <thead>
         <tr>
         <th>Proveedor</th>
@@ -106,6 +105,8 @@
       
     </tbody>
   </table>
+    <button type="button" name="btn_nuevo" id="btn_nuevo"  data-toggle="modal" data-target="#modal_proveedores" onclick="limpiar()">Nuevo</button>
+
         </div>
         
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

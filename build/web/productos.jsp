@@ -17,6 +17,8 @@
          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="shortcut icon" href="imagen/icono.png" type="image/x-icon">
          <title>Productos</title>
+                      <link rel="stylesheet" href="estilo_formulario.css">
+
     </head>
     
     <body>
@@ -32,9 +34,10 @@
         %>
         
         <%@include file="header.jsp" %>
-    
-        <h1>FORMULARIO PRODUCTOS</h1>
+  
+        <h1 style="color:white">FORMULARIO PRODUCTOS</h1>
         <button type="button" name="btn_nuevo" id="btn_nuevo" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_productos" onclick="limpiar()">Nuevo</button>
+
         <div class="container">
         <div class="modal fade" id="modal_productos" role="dialog">
         <div class="modal-dialog">
@@ -46,11 +49,12 @@
         <form action="sr_productos" method="post" class="form-group" enctype="multipart/form-data"> 
            
             <label for="lbl_idproducto"><b>Id:</b></label>
+
             <input type="text" name="txt_idproducto" id="txt_idproducto"  class="form-control" placeholder="0" readonly>
-            
+
             <label for="lbl_producto"><b>Producto:</b></label>
             <input type="text" name="txt_producto" id="txt_producto"  class="form-control" placeholder="" required>
-             
+            <br>
             <label for="lbl_producto"><b>Marca:</b></label>
             <select name="drop_marca" id="drop_marca" class="form-control">
                 <%
@@ -62,30 +66,32 @@
                 %>   
                     
             </select>
-             
+                <br>
             <label for="lbl_descripcion"><b>Descripcion:</b></label>
             <input type="text" name="txt_descripcion" id="txt_descripcion"  class="form-control" placeholder="" required>
             <br>
             <label for="lbl_imagen"><b>Imagen:</b></label> 
+
             <input type="File" name="imagen" id="imagen"  required>
+           
             <br>
             <label for="lbl_precio_costo"><b>Precio costo:</b></label>
             <input type="number" step="0.01" name="txt_precio_costo" id="txt_precio_costo"  class="form-control" placeholder="0.00" required>
-            
+            <br>
             <label for="lbl_precio_venta"><b>Precio venta:</b></label>
             <input type="number" step="0.01" name="txt_precio_venta" id="txt_precio_venta"  class="form-control" placeholder="0.00" required>
-             
+            <br>
             <label for="lbl_existencial"><b>Existencia:</b></label>
             <input type="number" name="txt_existencia" id="txt_existencia"  class="form-control" placeholder="0" required>
-             
+            <br>
             <label for="lbl_fecha_ingreso"><b>Fecha de ingreso:</b></label>
             <input type="date" name="txt_fecha_ingreso" id="txt_fecha_ingreso" class="form-control" required>
             
             <br>
             
-            <button  name="btn_agregar" id="btn_agregar"  value="Agregar" class="btn btn-primary">agregar</button>
-            <button name="btn_modificar" id="btn_modificar" value="Modificar" class="btn btn-primary" >Modificar</button>  
-            <button name="btn_eliminar" id="btn_eliminar" value="Eliminar" class="btn btn-primary" >Eliminar</button>       
+            <button  name="btn_agregar" id="btn_agregar"  value="Agregar"  class="btn btn-warning">agregar</button>
+            <button name="btn_modificar" id="btn_modificar" value="Modificar" class="btn btn-warning" >Modificar</button>  
+            <button name="btn_eliminar" id="btn_eliminar" value="Eliminar"  class="btn btn-warning" >Eliminar</button>       
             <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
 
         </form>
@@ -94,7 +100,12 @@
     </div>
   </div>  
     </div>
-    
+
+    </div>
+    </div>
+                
+    <div id="main-container-empleados">                
+
     <table >
     <thead>
     <tr>
@@ -129,6 +140,9 @@
         %>    
     </tbody>
     </table>
+           
+
+     </div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

@@ -37,6 +37,7 @@
                      <nav>
                     
 			<ul>    
+                                 <li><a href="index.jsp" style='text-decoration: none; color: #FFFFFF'>Inicio</a></li>
                                 <%
                                 Menu menu = new Menu(); 
                                 String aux = (String)session.getAttribute("user"); 
@@ -44,20 +45,37 @@
                                 menu.Pureba(aux);
                                 if(menu.getProductos()==1){
                                 menu.LeerUrl(1);
-                                out.println("<li><a href='"+menu.getRuta()+"' style='text-decoration: none; color: #FFFFFF'>"+menu.getNombre()+"</a></li>");
+                                out.println("<li class='submenu'><a href='#' style='text-decoration: none; color: #FFFFFF'>"+menu.getNombre()+"</a>");
+                                out.println("<ul class='children'>");
+						 //
+                                                 out.println("<li><a href='"+menu.getRuta()+"' style='text-decoration: none;'>Ver productos</a></li>");
+						 if(menu.getMarcas()==1){
+                                                    menu.LeerUrl(2);
+                                                    out.println("<li><a href='"+menu.getRuta()+"' style='text-decoration: none; color: #FFFFFF'>"+menu.getNombre()+"</a></li>");
+                                                 }
+					out.println("</ul></li>");
                                 }
-                                if(menu.getMarcas()==1){
-                                menu.LeerUrl(2);
-                                out.println("<li><a href='"+menu.getRuta()+"' style='text-decoration: none; color: #FFFFFF'>"+menu.getNombre()+"</a></li>");
+                                if(menu.getMarcas()==1 && menu.getProductos()!=1){
+                                                    menu.LeerUrl(2);
+                                                    out.println("<li><a href='"+menu.getRuta()+"' style='text-decoration: none; color: #FFFFFF'>"+menu.getNombre()+"</a></li>");
                                 }
+                                
                                 if(menu.getEmpleados()==1){
                                 menu.LeerUrl(3);
-                                out.println("<li><a href='"+menu.getRuta()+"' style='text-decoration: none; color: #FFFFFF'>"+menu.getNombre()+"</a></li>");
+                                out.println("<li class='submenu'><a href='#' style='text-decoration: none; color: #FFFFFF'>"+menu.getNombre()+"</a>");
+                                out.println("<ul class='children'>");
+						 //
+                                                 out.println("<li><a href='"+menu.getRuta()+"' style='text-decoration: none;'>Ver Empleados</a></li>");
+						 if(menu.getPuestos()==1){
+                                                    menu.LeerUrl(5);
+                                                    out.println("<li><a href='"+menu.getRuta()+"' style='text-decoration: none; color: #FFFFFF'>"+menu.getNombre()+"</a></li>");
+                                                 }
+					out.println("</ul></li>");    
                                 }
-                                if(menu.getPuestos()==1){
-                                menu.LeerUrl(5);
-                                out.println("<li><a href='"+menu.getRuta()+"' style='text-decoration: none; color: #FFFFFF'>"+menu.getNombre()+"</a></li>");
-                                }
+                                if(menu.getPuestos()==1 && menu.getEmpleados()!=1){
+                                                    menu.LeerUrl(5);
+                                                    out.println("<li><a href='"+menu.getRuta()+"' style='text-decoration: none; color: #FFFFFF'>"+menu.getNombre()+"</a></li>");
+                                                 }
                                 if(menu.getClientes()==1){
                                 menu.LeerUrl(6);
                                 out.println("<li><a href='"+menu.getRuta()+"' style='text-decoration: none; color: #FFFFFF'>"+menu.getNombre()+"</a></li>");
