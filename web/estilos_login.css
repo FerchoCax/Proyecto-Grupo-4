@@ -27,6 +27,19 @@ body{
     border-radius: 6px;
     opacity:0.8;
 }
+#cuadro2{
+    width:380px;
+    background: #090909;
+    color: #ffffff;
+    margin:auto;
+    margin-top: 30px;
+    padding: 5px 5px 30px 5px;
+    border-top: 35px solid #141414;
+    border-right: 35px solid #141414;
+    border-left: 35px solid #141414;
+    border-radius: 6px;
+    opacity:0.8;
+}
 .nombre{
     width:300px;
     height:40px;
