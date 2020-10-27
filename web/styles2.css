@@ -17,7 +17,7 @@ header {
 	width: 100%;
 }
 header nav {
-        background: #FF5722;
+        background: #424242;
 	z-index:1000;
 	max-width: none;
 	width: 100%;
@@ -30,8 +30,7 @@ header nav ul {
 
 header nav ul li {
 	display:inline-block;
-	/*La razon por la que no usamos floar en vez de inline-block es
-	porque no vamos a poder usar overflows en el header nav ul*/
+	
 	position: relative;
 }
 
@@ -41,7 +40,7 @@ header nav ul li:hover .children {
 
 /*Submenu*/
 header nav ul li .children {
-	background:#FF9800;
+	background:#616161;
 	position: absolute;
 	display: none;
 	width: 150%;
@@ -81,11 +80,11 @@ header nav ul li a {
 }
 
 header nav ul li:hover {
-	background:#E64A19;
+	background:#616161;
         text-decoration: none;
 }
 header nav ul .children li:hover {
-        background:#ff6f00;
+        background:#757575;
 }
 
 header nav ul li span {

@@ -14,7 +14,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="styles2.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="main.js"></script>

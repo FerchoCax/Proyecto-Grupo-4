@@ -16,7 +16,7 @@
     </head>
     <body>
        
-        <div id="cuadro2">
+        <div id="cuadro2" >
             <form action="sr_registro" method="post">
                     <p id="titulo"><strong>Registrarse</strong></p>             
                     <hr style="border-color:white;">

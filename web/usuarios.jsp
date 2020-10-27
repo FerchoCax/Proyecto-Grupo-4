@@ -102,10 +102,8 @@
         </tr>
         </tbody>
         </table>  
-            <button  name="btn_agregar" id="btn_agregar"  value="Agregar" class="btn btn-primary">agregar</button>
-             <button name="btn_modificar" id="btn_modificar" value="Modificar" class="btn btn-primary" >Modificar</button>  
-              <button name="btn_eliminar" id="btn_eliminar" value="Eliminar" class="btn btn-primary" >Eliminar</button>       
-        </form>
+            <button name="btn_modificar" id="btn_modificar" value="Modificar" class="btn btn-primary" >Modificar</button>  
+              </form>
          <table class="table table-striped">
         <thead>
         <tr>
