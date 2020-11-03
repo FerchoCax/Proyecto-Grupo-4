@@ -15,9 +15,9 @@ import modelo.Cliente;
 
 /**
  *
- * @author Mélida Pérez
+ * @author ferch
  */
-public class sr_cliente extends HttpServlet {
+public class sr_cliente_ventas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,13 +28,13 @@ public class sr_cliente extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    Cliente cliente;
+     Cliente cliente;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
+             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet sr_cliente</title>");            
@@ -44,31 +44,12 @@ public class sr_cliente extends HttpServlet {
             cliente = new Cliente(Integer.valueOf(request.getParameter("txt_id")), Integer.valueOf(request.getParameter("txt_genero")),  request.getParameter("txt_nombres"), request.getParameter("txt_apellidos"),request.getParameter("txt_nit"), request.getParameter("txt_telefono"), request.getParameter("txt_correo"), request.getParameter("txt_fechaingreso"));
             
             out.println("<h1>Error 1</h1>");
-            //Boton agregar
             if("agregar".equals(request.getParameter("btn_agregar"))){    
                 if(cliente.agregar() > 0){
-                   response.sendRedirect("clientes.jsp");
+                   response.sendRedirect("VentasDetalle.jsp");
                 }else{
                     out.println("<h1>Error al ingresar.... </h1>");
-                    out.println("<a href='clientes.jsp'>Regresar</a>");
-                }
-            }
-            //Boton modificar
-            if("modificar".equals(request.getParameter("btn_modificar"))){   
-            if(cliente.modificar() > 0){
-                    response.sendRedirect("clientes.jsp");
-                }else{
-                    out.println("<h1>Error al ingresar.... </h1>");
-                    out.println("<a href='clientes.jsp'>Regresar</a>");
-                }
-            }
-            //Boton eliminar
-            if("eliminar".equals(request.getParameter("btn_eliminar"))){  
-                if(cliente.eliminar() > 0){
-                    response.sendRedirect("clientes.jsp");
-                }else{
-                    out.println("<h1>Error al ingresar.... </h1>");
-                    out.println("<a href='clientes.jsp'>Regresar</a>");
+                    out.println("<a href='VentasDetalle.jsp'>Regresar</a>");
                 }
             }
             out.println("<h1>Servlet sr_cliente at " + request.getContextPath() + "</h1>");

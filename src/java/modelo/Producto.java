@@ -13,6 +13,7 @@ import java.io.OutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.table.DefaultTableModel;
 
@@ -254,7 +255,71 @@ public int modificar(){
             
         }
     
-    }   
+    }
+    
+    public HashMap ListaProductos(){
+    HashMap<String,String> drop = new HashMap();
+    try{
+        cn = new Conexioon();
+        String query= "SELECT idProducto as id,producto FROM productos;";
+        cn.abrir_conexion();
+        ResultSet consulta = cn.conexioonbd.createStatement().executeQuery(query);
+        while(consulta.next()){
+            drop.put(consulta.getString("id"), consulta.getString("producto"));
+        }
+        cn.cerrar_conexion();
+        
+    }catch(SQLException ex){
+        System.out.println(ex.getMessage());
+    }
+    return drop;   
+    }
+    
+    public HashMap<String, String> PrescioVenta() throws SQLException{
+        
+        HashMap<String,String> precio = new HashMap();
+        cn = new Conexioon();
+        String query = "SELECT idProducto as id,precio_venta FROM productos;";
+        cn.abrir_conexion();
+        ResultSet consulta = cn.conexioonbd.createStatement().executeQuery(query);
+        while(consulta.next()){
+            precio.put(consulta.getString("id"), consulta.getString("precio_venta"));
+        }
+        cn.cerrar_conexion();
+        return precio;
+    }
+    public DefaultTableModel agregarProducto(int i){
+    
+        DefaultTableModel tabla = new DefaultTableModel();
+        try{
+            cn = new Conexioon();
+            cn.abrir_conexion();
+            PreparedStatement parametro;
+            String query = "SELECT e.idproducto as id,e.producto,p.marca,e.precio_venta,p.idmarca  FROM productos as e inner join marcas as p on e.idmarca = p.idmarca and idProducto=?;";
+            parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
+             parametro.setInt(1,i); 
+            ResultSet consulta;
+            consulta = parametro.executeQuery();
+            String encabezado[] = {"idproducto","producto","marca","precio_venta","idmarca"};
+      tabla.setColumnIdentifiers(encabezado);
+      String datos[] = new String[5];
+      while (consulta.next()){
+          datos[0] = consulta.getString("id");
+          datos[1] = consulta.getString("producto");
+          datos[2] = consulta.getString("marca");
+          datos[3] = consulta.getString("precio_venta");
+          datos[4] = consulta.getString("idmarca");
+          tabla.addRow(datos);
+      
+      } 
+            cn.cerrar_conexion();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        return tabla;
+    
+    }
 }
+
  
  

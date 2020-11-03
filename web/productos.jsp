@@ -101,12 +101,10 @@
   </div>  
     </div>
 
-    </div>
-    </div>
                 
     <div id="main-container-empleados">                
 
-    <table >
+    <table>
     <thead>
     <tr>
         <th>Marca</th>

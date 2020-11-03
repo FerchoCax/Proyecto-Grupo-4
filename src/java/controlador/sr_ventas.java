@@ -11,13 +11,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Cliente;
-
+import modelo.Datos;
+import java.util.ArrayList;
+import modelo.Ventas;
+import modelo.VentasDetalle;
 /**
  *
- * @author Mélida Pérez
+ * @author ferch
  */
-public class sr_cliente extends HttpServlet {
+public class sr_ventas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,7 +30,6 @@ public class sr_cliente extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    Cliente cliente;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -37,41 +38,34 @@ public class sr_cliente extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet sr_cliente</title>");            
+            out.println("<title>Servlet sr_ventas</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Error 1</h1>");
-            cliente = new Cliente(Integer.valueOf(request.getParameter("txt_id")), Integer.valueOf(request.getParameter("txt_genero")),  request.getParameter("txt_nombres"), request.getParameter("txt_apellidos"),request.getParameter("txt_nit"), request.getParameter("txt_telefono"), request.getParameter("txt_correo"), request.getParameter("txt_fechaingreso"));
+            double Total=0;
+            for(VentasDetalle ventasD : Datos.listador) {
+            Total = Total + ventasD.getSubtotal();
+            }
+            out.println("Error1");
+            if("Pagar".equals(request.getParameter("btn_pagar"))){
+                out.println("Error2");
+                Ventas ventas = new Ventas (0,Integer.parseInt(request.getParameter("txt_nofactura")),request.getParameter("txt_serie"),Integer.parseInt(request.getParameter("txt_idCliente")),Integer.parseInt(request.getParameter("txt_idEmpleado")),request.getParameter("fecha_factura"));
+                out.println("Error3");
+                if(ventas.agregar() > 0){
+                  out.println("Error4");
+                  response.sendRedirect("VentasDetalle.jsp");
+                 //  out.println("<h1>Ingreso Exitoso....................</h1>");
+                   // out.println("<a href ='index.jsp'>Regresar</a>");
+                }else{
+                    out.println("<h1>Error....................</h1>");
+                    out.println("<a href ='VentasDetalle.jsp'>Regresar</a>");
+                }
+                Datos.listador.forEach(_item -> {
+                    VentasDetalle ventasD = new VentasDetalle(_item.getCantidad(),_item.getProducto(),_item.getMarca(),_item.getPrecio_venta(),_item.getSubtotal(),_item.getIdVenta());
+                    ventasD.agregar();
+                });
+                Datos.listador.clear();
+            }
             
-            out.println("<h1>Error 1</h1>");
-            //Boton agregar
-            if("agregar".equals(request.getParameter("btn_agregar"))){    
-                if(cliente.agregar() > 0){
-                   response.sendRedirect("clientes.jsp");
-                }else{
-                    out.println("<h1>Error al ingresar.... </h1>");
-                    out.println("<a href='clientes.jsp'>Regresar</a>");
-                }
-            }
-            //Boton modificar
-            if("modificar".equals(request.getParameter("btn_modificar"))){   
-            if(cliente.modificar() > 0){
-                    response.sendRedirect("clientes.jsp");
-                }else{
-                    out.println("<h1>Error al ingresar.... </h1>");
-                    out.println("<a href='clientes.jsp'>Regresar</a>");
-                }
-            }
-            //Boton eliminar
-            if("eliminar".equals(request.getParameter("btn_eliminar"))){  
-                if(cliente.eliminar() > 0){
-                    response.sendRedirect("clientes.jsp");
-                }else{
-                    out.println("<h1>Error al ingresar.... </h1>");
-                    out.println("<a href='clientes.jsp'>Regresar</a>");
-                }
-            }
-            out.println("<h1>Servlet sr_cliente at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

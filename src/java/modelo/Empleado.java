@@ -8,6 +8,7 @@ package modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -224,6 +225,24 @@ public class Empleado {
         }
         return retorno;  
     }
-
+    
+    public  HashMap ListaEmpleados(){
+ HashMap <String,String> drop = new  HashMap();
+ 
+try{
+        String query ="Select idEmpleado as id,nombres from empleados";
+         cn = new Conexioon();
+         cn.abrir_conexion();
+            ResultSet consulta = cn.conexioonbd.createStatement().executeQuery(query);
+            while (consulta.next()){
+            drop.put(consulta.getString("id"),consulta.getString("nombres"));
+            }   
+         cn.cerrar_conexion();
+    }catch(SQLException ex){
+        System.out.println(ex.getMessage());
+    }
+ 
+ return drop;
+}
 
 }

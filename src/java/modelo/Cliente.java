@@ -192,7 +192,41 @@ public class Cliente{
         }
         return retorno;  
     }
-
+    
+    public int Buscar_cliente(String nit) throws SQLException{
+        int retorno=1;
+        PreparedStatement parametro;
+        Conexioon cn = new Conexioon();
+        String query = "SELECT nombres,NIT FROM clientes where nit = 12345;";
+        parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
+        return retorno;
+        }
+    private int aux(String nit) throws SQLException{
+        int retorno =0;
+        //PreparedStatement parametro;
+        
+        Conexioon cn = new Conexioon();
+        //String query = "SELECT nombres, NIT FROM clientes where nit = 12;";
+        //parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
+        //parametro.setString(1, nit);
+        //parametro.executeUpdate();
+        //consulta = parametro.executeQuery();
+        //ResultSet consulta = cn.conexioonbd.createStatement().executeQuery(query);
+        //while (consulta.next()){
+           // retorno= retorno+1;
+           // setNombres(consulta.getString("nombres"));
+            //setNit(consulta.getString("NIT"));
+            
+        //}
+        if(retorno==1){
+            cn.cerrar_conexion();
+            return 1;
+        }else{
+            cn.cerrar_conexion();
+            return 1;
+        }
+    }
+    
 
   
 }
