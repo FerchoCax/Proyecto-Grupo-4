@@ -103,7 +103,6 @@
             <th>Direccion</th>
             <th>Telefono</th>
             <th>DPI</th>
-            <th>Genero</th>
             <th>Nacimiento</th>
             <th>Fecha inicio de labores</th>
             <th>Fecha de ingreso</th>
@@ -122,7 +121,7 @@
             out.println("<td>" + tabla.getValueAt(t,3) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,4) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,5) + "</td>");
-            out.println("<td>" + tabla.getValueAt(t,6) + "</td>");
+         
             out.println("<td>" + tabla.getValueAt(t,7) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,8) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,9) + "</td>");

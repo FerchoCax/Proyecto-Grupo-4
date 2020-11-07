@@ -35,51 +35,39 @@
          </header>
          
          <main>
-             <section class="contenedor sobre-nosotros">
-                 <h2 class="titulo">Nuestro producto</h2>
-                 <div class="contenedor-sobre-nosotros">
-                     <img src="imagen/contenedor.jpeg" alt="" class="imagen-about-us">
-                     <div class="contenido-textos">
-                         <h3><span>1</span>Los mejores productos</h3>
-                         <p>ljahsdkjahsjkdhaksjdha</p>
-                         <h3><span>2</span>Los mejores productos</h3>
-                         <p>ljahsdkjahsjkdhaksjdha</p>
-                     </div>
-                 </div>
-             </section>
-             <section class="portafolio">
+             <section  class="portafolio">
                 <div class="contenedor">
-                    <h2 class="titulo">Portafolio</h2>
+                    <h2 class="titulo">NUESTROS PRODUCTOS</h2>
                     <div class="galeria-port">
                         <div class="imagen-port">
                             <img src="imagen/relojgg.jpg" alt="">
                          </div>     
                         <div class="imagen-port">
-                            <img src="imagen/relojgg.jpg" alt="">
+                            <img src="imagen/3.jpg" alt="">
                            
                          </div>  
                         <div class="imagen-port">
-                            <img src="imagen/relojgg.jpg" alt="">
+                            <img src="imagen/4.jpg" alt="">
                             
                          </div>     
                         <div class="imagen-port">
-                            <img src="imagen/relojgg.jpg" alt="">
+                            <img src="imagen/camara.jpg" alt="">
                           
                          </div>     
                         <div class="imagen-port">
-                            <img src="imagen/relojgg.jpg" alt="">
+                            <img src="imagen/telefono.jpg" alt="">
                             
                          </div>     
                         <div class="imagen-port">
-                            <img src="imagen/relojgg.jpg" alt="">
+                            <img src="imagen/5.jpg" alt="">
                           
                          </div>     
                         <div class="imagen-port">
-                            <img src="imagen/relojgg.jpg" alt="">
+                            <img src="imagen/6.jpg" alt="">
                             
                          </div>     
                         <div class="imagen-port">
-                            <img src="imagen/relojgg.jpg" alt="">
+                            <img src="imagen/7.jpg" alt="">
                             
                          </div>     
                     </div>  

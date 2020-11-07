@@ -42,11 +42,11 @@
     <div class="modal-body">
     <form action="sr_marca" method="post" class="form-group"> 
            
-        <label for="lbl_idmarca"><b>id marca:</b></label>
+        <label for="lbl_idmarca"><b>ID</b></label>
         <input type="number" name="txt_idmarca" id="txt_idmarca"  class="form-control" readonly>
         <br>     
-        <label for="lbl_marca"><b>marca:</b></label>
-        <input type="text" name="txt_marca" id="txt_marca"  class="form-control" placeholder="marca" required>
+        <label for="lbl_marca"><b>Marca</b></label>
+        <input type="text" name="txt_marca" id="txt_marca"  class="form-control" required>
                 
         <br> 
              
@@ -64,7 +64,7 @@
     <table>
     <thead>
     <tr>
-        <th>marca</th>
+        <th>Marca</th>
     </tr>
     </thead>
     <tbody id="tbl_marcas">
@@ -80,7 +80,7 @@
         %>    
     </tbody>
     </table>
-    <button type="button" name="btn_nuevo" id="btn_nuevo" data-toggle="modal" data-target="#modal_marcas" onclick="limpiar()">Nuevo</button>       
+    <button type="button" name="btn_nuevo" id="btn_nuevo" data-toggle="modal" data-target="#modal_marcas" onclick="limpiar()">Formulario</button>       
 
     </div>
  

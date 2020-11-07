@@ -55,9 +55,8 @@
                 <label for="lbl_nit">NIT:</label>
                 <input type="text" name="txt_nit" id="txt_nit" class="form-control" placeholder="Ejemplo: 1750519-4" required>
                 <br>
-                <label for="lbl_genero">Genero:</label>
-                <input type="text"  name="txt_genero" id="txt_genero" class="form-control" placeholder="Ejemplo: 0 " required>
-                <br>
+                
+             
                 <label for="lbl_telefono">Telefono:</label>
                 <input type="number" name="txt_telefono" id="txt_telefono" class="form-control" placeholder="Ejemplo: 12345678" required>
                 <br>
@@ -87,7 +86,7 @@
         <th>Nombres</th>
         <th>Apellidos</th>
         <th>Nit</th>
-        <th>Genero</th>
+        
         <th>Telefono</th>
         <th>Correo electronico</th>
         <th>Fecha de ingreso</th>
@@ -103,7 +102,7 @@
             out.println("<td>" + tabla.getValueAt(t,1) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,2) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,3) + "</td>");
-            out.println("<td>" + tabla.getValueAt(t,4) + "</td>");
+            
             out.println("<td>" + tabla.getValueAt(t,5) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,6) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,7) + "</td>");
@@ -128,7 +127,7 @@
             $("#txt_nombres").val('');
             $("#txt_apellidos").val('');
             $("#txt_nit").val('');
-            $("#txt_genero").val('');
+         
             $("#txt_telefono").val('');
             $("#txt_correo").val('');
              $("#txt_fechaingreso").val('');
@@ -141,16 +140,16 @@
    nombres = target.parents("tr").find("td").eq(0).html();
    apellidos = target.parents("tr").find("td").eq(1).html();
    nit = target.parents("tr").find("td").eq(2).html();
-   genero = target.parents("tr").find("td").eq(3).html();
-   telefono = target.parents("tr").find("td").eq(4).html();
-   correo = target.parents("tr").find("td").eq(5).html();
-   fechaingreso = target.parents("tr").find("td").eq(6).html();
+   
+   telefono = target.parents("tr").find("td").eq(3).html();
+   correo = target.parents("tr").find("td").eq(4).html();
+   fechaingreso = target.parents("tr").find("td").eq(5).html();
    
    $("#txt_id").val(id);
    $("#txt_nombres").val(nombres);
    $("#txt_apellidos").val(apellidos);
    $("#txt_nit").val(nit);
-   $("#txt_genero").val(genero);
+  
    $("#txt_telefono").val(telefono);
    $("#txt_correo").val(correo);
    $("#txt_fechaingreso").val(fechaingreso);

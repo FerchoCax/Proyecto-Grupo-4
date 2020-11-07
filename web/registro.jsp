@@ -25,7 +25,7 @@
                     <br/>
                     <input class="nombre" type="email" name="txt_correo" placeholder=" " required>
                     <br/><br/>
-                    <label id="subtitulo1">Nombre de usuario</label>
+                    <label id="subtitulo1">Usuario</label>
                     <br/>
                     <input class="nombre" type="text" name="txt_nom" placeholder=" " required>
                     <br/><br/>

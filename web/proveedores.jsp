@@ -44,19 +44,19 @@
         <div class="modal-body">
             <form action="sr_provedores" method="post" class="form-group">
                 
-                <label for="lbl_idproveedor"><b>Id Proveedor:</b></label>
+                <label for="lbl_idproveedor"><b>ID</b></label>
                 <input type="text" name="txt_idproveedor" id="txt_idproveedor" class="form-control" value ="0" readonly>  
                 <br> 
-                <label for="lbl_proveedor"><b>Proveedor:</b></label>
+                <label for="lbl_proveedor"><b>Proveedor</b></label>
                 <input type="text" name="txt_proveedor" id="txt_proveedor" class="form-control" placeholder="Nombre Proveedor" required>
                <br>
-                <label for="lbl_nit"><b>Nit:</b></label>
+                <label for="lbl_nit"><b>NIT</b></label>
                 <input type="text" name="txt_nit" id="txt_nit" class="form-control" placeholder="Nit 12345678" required>  
                 <br>
-                <label for="lbl_direccion"><b>Direccion:</b></label>
+                <label for="lbl_direccion"><b>Dirección</b></label>
                 <input type="text" name="txt_direccion" id="txt_direccion" class="form-control" placeholder="Ejemplo: # CASA CALLE ZONA CIUDAD" required>
                 <br>
-                <label for="lbl_telefono"><b>Telefono:</b></label>
+                <label for="lbl_telefono"><b>Telefono</b></label>
                 <input type="number" name="txt_telefono" id="txt_telefono" class="form-control" placeholder="Ejemplo:55555555" required>  
                 
                <br>

@@ -1,9 +1,8 @@
 <%-- 
-    Document   : VentasDetalle
-    Created on : 20/10/2020, 14:15:06
+    Document   : newjsp
+    Created on : 14/10/2020, 21:24:14
     Author     : DanielRuiz
 --%>
-
 <%@page import="modelo.Cliente"%>
 <%@page import="java.lang.String"%>
 <%@page import="java.util.ArrayList"%>
@@ -20,7 +19,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+        <link rel="shortcut icon" href="imagen/icono.png" type="image/x-icon">
+         <link rel="stylesheet" href="estilo_ventas.css">
         <%
         HttpSession misession= (HttpSession) request.getSession();
         if(misession.getAttribute("inicio")=="iniciado"){
@@ -35,63 +35,65 @@
        
         <title>Ventas Detalle</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-         <link rel="stylesheet" href="estilo_formulario.css">
+
          <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
          <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
          <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" /> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
          
     </head>
       <body>
+          <div id="cuadrox">
                  <%@include file="clientes_ventas.jsp" %>
              
                  <%//action="sr_ventasdetalle" method="post"%>
                  <!-- --------------- Inicia formulario de ventas -------------- -->
                  <form action="sr_ventas" method="post">
-                <button name="btn_pagar" id="btn_pagar"  value="Pagar" class="btn btn-success btn-lg">Terminar la compra</button>
+                     <div id="xd">
+                <button name="btn_pagar" id="btn_pagar"  value="Pagar" >Terminar la compra</button>
+                </div>
                 <br>
-                     <label for="lbl_id_Ventas" Style="color: white;">ID Factura:</label>
+                     <label id="tituloins" for="lbl_id_Ventas" Style="color: white;">ID Factura:</label>
                 <%
                      Ventas venta= new Ventas();
                      venta.leer();
                      int idVenta=venta.getIdventa()+1;
-                     out.println("<input type='text' name='txt_idVentas' id='txt_idVentas' class='form-control' value ='"+idVenta+"' readonly>");
+                     out.println("<input class='corto' type='text' name='txt_idVentas' id='txt_idVentas' value ='"+idVenta+"' readonly>");
                  %>
-                <label for="lbl_nofactura"  Style="color: white;">No.Factura:</label>
+                <label id="tituloins" for="lbl_nofactura"  Style="color: white;">No.Factura:</label>
                 
                 <%
-                     out.println("<input type='text' name='txt_nofactura' id='txt_nofactura' class='form-control' value ='"+(venta.getNofactura()+1)+"' readonly>");
+                     out.println("<input class='corto' type='text' name='txt_nofactura' id='txt_nofactura'  value ='"+(venta.getNofactura()+1)+"' readonly>");
                  %>
                 
-                <label for="lbl_serie"  Style="color: white;">Serie:</label>
+                <label id="tituloins" for="lbl_serie"  Style="color: white;">Serie:</label>
                 
                
                 <%
-                     out.println("<input type='text' name='txt_serie' id='txt_serie' class='form-control' value ='"+venta.getSerie()+"' readonly>");
+                     out.println("<input class='corto' type='text' name='txt_serie' id='txt_serie'  value ='"+venta.getSerie()+"' readonly>");
                  %>
                 
-                 <br>
-                <label Style="color: white;">Fecha Factura:</label>
-                <br>
+                <label id="titulof" Style="color: white;">Fecha</label>
+               
                 <%    
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
                 Date date = new Date();  
                
                 String fecha=  date.toString();
-                out.println("<input type='text' name='fecha_factura' id='fecha_factura' value='"+fecha+"' class='form-control' readonly>");
+                out.println("<input class='fecha' type='text' name='fecha_factura' id='fecha_factura' value='"+fecha+"' readonly>");
                 //System.out.println("<input type='date' name='fechaFactura' id='fechaFactura' value="+date+" class='form-control' readonly>");
                 
                 %>
-                 <input type="text" Style="display:none;"  name="txt_idCliente" id="txt_idCliente" class="form-control" readonly>
-                 <input type="text" Style="display:none;"  name="txt_idEmpleado" id="txt_idEmpleado" class="form-control" readonly>
+                 <input type="text" Style="display:none;"  name="txt_idCliente" id="txt_idCliente"  readonly>
+                 <input type="text" Style="display:none;"  name="txt_idEmpleado" id="txt_idEmpleado"  readonly>
                  </form>
                  <br>
                  <!-- --------------- Finaliza formulario de ventas -------------- -->
                  
                  
                  <!-- --------------- Inicia formulario de los clientes -------------- -->
-                <form method="post">
-                <label for="lbl_idcliente"  Style="color: white;">Nit:</label>
+                <form  method="post">
+                <label id="tituloins" for="lbl_idcliente"  Style="color: white;">Nit:</label>
                 
                 <select class="SelectClientes" id="drop_clientes1" name="drop_clientes1" >
         <% 
@@ -114,20 +116,20 @@
                     %>
                 </select>
                 
-                <button type="button" name="btn_nuevo" id="btn_nuevo" data-toggle="modal" data-target="#modal_clientes" >Crear Cliente</button>
-                <br>
-                <br><label Style="color: white;">Nombre Cliente:</label>
-                <br>
-                <input type="text"  name="text_nombreC" id="txt_nombreC" class="form-control"  required readonly>
-               
-      </form>    
+                
+                <label id="tituloins" Style="color: white;">Nombre Cliente:</label>
+                
+                <input class='clientes' type="text"  name="text_nombreC" id="txt_nombreC"  required readonly>
+
+               <button type="button" name="btn_nuevo" id="btn_nuevoc" data-toggle="modal" data-target="#modal_clientes" >Crear Cliente</button>
+                 </form>    
                 
                 <!-- --------------- Finaliza formulario de Clientes -------------- -->
+                <form>
+                <br>
+                <label  id="tituloins" for="lbl_idempleado" Style="color: white;">Empleado:</label>
                 
-                <br>
-                <label for="lbl_idempleado" Style="color: white;">Empleado:</label>
-                <br>
-                 <select name="drop_empleados" class="selectEmpleado" id="drop_empleados" >
+                 <select class="empleados" name="drop_empleados" class="selectEmpleado" id="drop_empleados" >
                 <%
                         Empleado empleado=new Empleado();
                         HashMap<String,String> dropempleados = empleado.ListaEmpleados();
@@ -140,11 +142,13 @@
                   <br>
                 
                 <br>
+                </form>
+                 
                 <!-- --------------- Inicia formulario de ventasDetalle -------------- -->
-                <form>
-                <label for="lbl_Producto" Style="color: white;"><b>Producto</b></label>
+                <form class="formulario_vd">
+                <label id="tituloins" for="lbl_Producto" Style="color: white;"><b>Producto</b></label>
                     
-                <select name="drop_producto" id="drop_producto" class="form-control">
+                <select class="producto" name="drop_producto" id="drop_producto" >
                 <%
                 Producto producto=new Producto();
                 HashMap<String,String> dropproductos = producto.ListaProductos();
@@ -156,8 +160,8 @@
                 }
                    %>
                    </select>
-                    <label for="lbl_PrecioUnitario"  Style="color: white;"><b>Precio Unitario</b></label>
-                    <select name="drop_precio" Style="display:none;" id="drop_precio" class="form-control" disabled>
+                    <label id="tituloins" for="lbl_PrecioUnitario"  Style="color: white;"><b>Precio Unitario</b></label>
+                    <select  name="drop_precio" Style="display:none;" id="drop_precio"  disabled>
                 <%
                 HashMap<String,String> dropPrecio = producto.PrescioVenta();
                 out.println("<option value='0'>0.00</option>");
@@ -167,19 +171,20 @@
                 }
                 %>
                  </select>
-                 <input type="text"  name="txt_precio" id="txt_precio" class="form-control"  required readonly>
+                 <input class='corto1' type="text"  name="txt_precio" id="txt_precio"  required readonly>
+                
+                <label id="tituloins" for="lbl_Cantidad" Style="color: white;" ><b>Cantidad</b></label>
+                <input  class='corto1' type="number"  name="txt_cantidad" id="txt_cantidad"  required>
                 <br>
-                <label for="lbl_Cantidad" Style="color: white;" ><b>Cantidad</b></label>
-                <input type="number"  name="txt_cantidad" id="txt_cantidad" class="form-control"  required>
                 <br>
-                <br>
-                <button name="btn_agregar" id="btn_agregar"  value="agregar" class="btn btn-success btn-lg">Agregar</button>
+                <button name="btn_agregar" id="btn_agregar"  value="agregar" >Agregar producto</button>
                 
       
               <br>
               <br>
              
-       </form>   
+       </form>  
+                 </div>
                  
                  <!-- --------------- Finaliza formulario de ventasDetalle -------------- -->
                  
@@ -206,6 +211,8 @@
                 }
                 }  
                 %>
+                <br>
+                 <div id="main-container-productos">    
                  <table>
                 <thead>
                     <tr>
@@ -251,8 +258,9 @@
   </tfoot>
   
   <!-- --------------- Finaliza tabla ventasDetalle -------------- -->
-            </table>
-                 
+           
+                 </table>
+      </div>      
                 <br>
             <br>
             <%out.println("<h1 Style='color: white;'>"+Datos.listador.size()+"</h1>");%>
