@@ -32,10 +32,10 @@ public class Producto {
     private int existencia;
     private Conexioon cn;
     private String fecha_ingreso;
-    InputStream imagen;
+    private String imagen;
 
     public Producto (){}
-    public Producto(int idproducto, String producto, int idmarca, String descripcion, InputStream imagen, double precio_costo, double precio_venta, int existencia, String fecha_ingreso) {
+    public Producto(int idproducto, String producto, int idmarca, String descripcion, String imagen, double precio_costo, double precio_venta, int existencia, String fecha_ingreso) {
         this.idproducto = idproducto;
         this.producto = producto;
         this.idmarca = idmarca;
@@ -80,11 +80,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public InputStream getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
-    public void setImagen(InputStream imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
@@ -123,7 +123,7 @@ public class Producto {
 public int agregar(){
     
 int retorno;
-            InputStream inputStream = null; // input stream of the upload file
+
         try{
             PreparedStatement parametro;
             cn = new Conexioon();
@@ -133,7 +133,7 @@ int retorno;
             parametro.setString(1,getProducto());        
             parametro.setInt(2,getId_marca()); 
             parametro.setString(3,getDescripcion());
-            parametro.setBlob(4, getImagen());
+            parametro.setString(4, getImagen());
             parametro.setDouble(5,getPrecio_costo());
             parametro.setDouble(6,getPrecio_venta());
             parametro.setInt(7,getExistencia());
@@ -193,7 +193,7 @@ public int modificar(){
             parametro.setString(1,getProducto());
             parametro.setInt(2,getId_marca());
             parametro.setString(3,getDescripcion());
-            parametro.setBlob(4, getImagen());
+            parametro.setString(4, getImagen());
             parametro.setDouble(5,getPrecio_costo());
             parametro.setDouble(6,getPrecio_venta());
             parametro.setInt(7,getExistencia());

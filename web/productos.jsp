@@ -3,7 +3,7 @@
     Created on : 5/10/2020, 02:47:45 PM
     Author     : ferperez
 --%>
-<%@page import="controlador.imagen"%>
+
 <%@page import="modelo.Marcas" %>
 <%@page import="modelo.Producto" %>
 <%@page import="java.util.HashMap"%>
@@ -19,6 +19,14 @@
          <title>Productos</title>
                       <link rel="stylesheet" href="estilo_formulario.css">
 
+   <script type="text/javascript">
+            function guard(e){
+                var arch=e.files[0];
+                var objHidden=document.datos.nameimg;
+                objHidden.value=arch.name;
+            };
+            </script>
+    
     </head>
     
     <body>
@@ -34,6 +42,9 @@
         %>
         
         <%@include file="header.jsp" %>
+  
+        <h1 style="color:white">FORMULARIO PRODUCTOS</h1>
+        <button type="button" name="btn_nuevo" id="btn_nuevo" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_productos" onclick="limpiar()">Nuevo</button>
 
         <div class="container">
         <div class="modal fade" id="modal_productos" role="dialog">
@@ -43,16 +54,16 @@
         <div class="modal-content">
         <div class="modal-body">
         
-        <form action="sr_productos" method="post" class="form-group" enctype="multipart/form-data"> 
+        <form action="sr_productos" method="post" class="form-group" enctype="multipart/form-data" name="datos"> 
            
-            <label for="lbl_idproducto"><b>ID</b></label>
+            <label for="lbl_idproducto"><b>Id:</b></label>
 
             <input type="text" name="txt_idproducto" id="txt_idproducto"  class="form-control" placeholder="0" readonly>
 
-            <label for="lbl_producto"><b>Producto</b></label>
+            <label for="lbl_producto"><b>Producto:</b></label>
             <input type="text" name="txt_producto" id="txt_producto"  class="form-control" placeholder="" required>
             <br>
-            <label for="lbl_producto"><b>Marca</b></label>
+            <label for="lbl_producto"><b>Marca:</b></label>
             <select name="drop_marca" id="drop_marca" class="form-control">
                 <%
                     Marcas marca = new Marcas();
@@ -64,25 +75,27 @@
                     
             </select>
                 <br>
-            <label for="lbl_descripcion"><b>Descripción</b></label>
+            <label for="lbl_descripcion"><b>Descripcion:</b></label>
             <input type="text" name="txt_descripcion" id="txt_descripcion"  class="form-control" placeholder="" required>
             <br>
-            <label for="lbl_imagen"><b>Imagen</b></label> 
-
-            <input type="File" name="imagen" id="imagen"  required>
+            <label for="lbl_imagen"><b>Imagen:</b></label> 
+             <input type="file" name="imag" id="txt_imagen" class="form-control" onchange="guard(this)">
+             <input type="text"  name="nameimg" id="file" class="nameimg">
+             
+             
+          <!--<input type="File" name="imagen" id="imagen"  required style="display:none;"> -->
+           
             <br>
-            <br>
-            <label for="lbl_precio_costo"><b>Precio Costo</b></label>
+            <label for="lbl_precio_costo"><b>Precio costo:</b></label>
             <input type="number" step="0.01" name="txt_precio_costo" id="txt_precio_costo"  class="form-control" placeholder="0.00" required>
             <br>
-            <label for="lbl_precio_venta"><b>Precio Venta</b></label>
+            <label for="lbl_precio_venta"><b>Precio venta:</b></label>
             <input type="number" step="0.01" name="txt_precio_venta" id="txt_precio_venta"  class="form-control" placeholder="0.00" required>
             <br>
-            <label for="lbl_existencial"><b>Existencia</b></label>
+            <label for="lbl_existencial"><b>Existencia:</b></label>
             <input type="number" name="txt_existencia" id="txt_existencia"  class="form-control" placeholder="0" required>
             <br>
-            <label for="lbl_fecha_ingreso"><b>Fecha de ingreso</b></label>
-            
+            <label for="lbl_fecha_ingreso"><b>Fecha de ingreso:</b></label>
             <input type="date" name="txt_fecha_ingreso" id="txt_fecha_ingreso" class="form-control" required>
             
             <br>
@@ -108,11 +121,11 @@
         <th>Marca</th>
         <th>Producto</th>
         <th>Descripcion</th>
-        <th>Imagen</th>
+        <th>imagen</th>
         <th>Precio Costo</th>
         <th>Precio Venta</th>
         <th>Existencia</th>
-        <th>Fecha Ingreso</th>
+        <th>fecha ingreso</th>
         
     </tr>
     </thead>
@@ -126,18 +139,22 @@
             out.println("<td>" + tabla.getValueAt(t,8) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,1) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,2) + "</td>");
-            out.println("<td> <img width=150 height=150px src='imagen?id="+tabla.getValueAt(t,0)+"'/></td>");
+             out.println("<td><img src='img/" + tabla.getValueAt(t,3) + "' style='max-widht:120px;max-height:120px;'</img></td>");
+//out.println("<td>" +tabla.getValueAt(t,3)+"</td>");
             out.println("<td>" + tabla.getValueAt(t,4) + "</td>");
-            out.println("<td>" + tabla.getValueAt(t,5) + "</td>");
+           out.println("<td>" + tabla.getValueAt(t,5) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,6) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,7) + "</td>"); 
             out.println("</tr>");
+        
+        
+        
         }
+        
         %>    
     </tbody>
     </table>
-    <button type="button" name="btn_nuevo" id="btn_nuevo" data-toggle="modal" data-target="#modal_productos" onclick="limpiar()">Formulario</button>
- 
+           
 
      </div>
     </div>
@@ -149,7 +166,8 @@
     function limpiar(){
    $("#txt_idproducto").val(0);
         $("#txt_producto").val('');
-        $("#txt_descripcion").val('');
+        $("#txt_descripcion").val(''); 
+        //$("#txt_imagen").val(imagen); 
         $("#txt_precio_costo").val(0);
         $("#txt_precio_venta").val(0);
         $("#txt_existencia").val(0);
@@ -165,6 +183,7 @@
         id_m = target.parent().data('id_m');
         producto= target.parents("tr").find("td").eq(1).html();
         descripcion= target.parents("tr").find("td").eq(2).html();
+        //imagen = target.parent("tr").find("td").eq(3).html(); //
         //imagen= target.parents("tr").find("td").eq(2).html();
         precio_costo= target.parents("tr").find("td").eq(4).html();
         precio_venta= target.parents("tr").find("td").eq(5).html();
@@ -174,6 +193,7 @@
         $("#txt_idproducto").val(id);
         $("#txt_producto").val(producto);
         $("#txt_descripcion").val(descripcion);
+        //$("#file").val(imagen); //
         //$("#txt_imagen").val(imagen);
         $("#txt_precio_costo").val(precio_costo);
         $("#txt_precio_venta").val(precio_venta);

@@ -6,6 +6,8 @@ package controlador;
  * and open the template in the editor.
  */
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -26,12 +28,10 @@ import modelo.Producto;
  *
  * @author ferch
  */
-@WebServlet("/uploadServlet")
-@MultipartConfig(maxFileSize = 16177215*2)    // upload file's size up to 16MB
+
+@MultipartConfig    // upload file's size up to 16MB
 public class sr_productos extends HttpServlet {
- private String dbURL = "jdbc:mysql://localhost:3306/dbempresa?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private String dbUser = "root";
-    private String dbPass = "root";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -52,46 +52,68 @@ public class sr_productos extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet sr_productos</title>");            
             out.println("</head>");
-            out.println("<body>");
-            InputStream inputStream = null; // input stream of the upload file
-         
-        // obtains the upload file part in this multipart request
-        Part filePart = request.getPart("imagen");
-        if (filePart != null) {
-            // prints out some information for debugging
-            System.out.println(filePart.getName());
-            System.out.println(filePart.getSize());
-            System.out.println(filePart.getContentType());
-             
-            // obtains input stream of the upload file
-            inputStream = filePart.getInputStream();
-        }
-            if("Agregar".equals(request.getParameter("btn_agregar"))){
+            out.println("<body>"); 
+            out.println("<h1>Xd</h1>");
+        
+          
+            String nombreIMAGEN=request.getParameter("nameimg");  
+            out.println("<h1>Xd 2</h1>");
+             if("Agregar".equals(request.getParameter("btn_agregar"))){
+                 Producto prod = new Producto(0,request.getParameter("txt_productso"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),nombreIMAGEN,Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
+          
+           if (prod.agregar()>0) { 
+               
+                   Part Archivo=request.getPart("imag");
+                    InputStream is=Archivo.getInputStream();
+                    File im=new File("C:/Users/ferch/Desktop/universidad/Semestre_2_2020/Programacion_2/Proyecto Final/web/img/" + nombreIMAGEN);
                 
-         producto = new Producto (0,request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),inputStream,Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
-                
-             if(producto.agregar()>0){  
-              response.sendRedirect("productos.jsp");
-          }else{
-              out.println("<h1>ERROR.............</h1>");
-              out.println("<a href ='productos.jsp'>regresar</a>");       
-           }
-        }  
+                    FileOutputStream ou=new FileOutputStream(im);
+                    int d=is.read();
+                    while (d!=-1) { 
+                     ou.write(d);
+                     d=is.read();
+                    }
+                    ou.close();
+                    is.close();
+                   response.sendRedirect("productos.jsp");
+                }else{
+                    out.print("<h1>Error!!</h1>");
+                   
+                }
+             }
+           out.println("<h1>Va por aqui 1</h1>");
         //modificar
             if("Modificar".equals(request.getParameter("btn_modificar"))){
-               producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),inputStream,Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
+               producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),nombreIMAGEN,Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
               if(producto.modificar() > 0){
+                  Part Archivo=request.getPart("imag");
+                    InputStream is=Archivo.getInputStream();
+                    File im=new File("C:/Users/ferch/Desktop/universidad/Semestre_2_2020/Programacion_2/Proyecto Final/web/img/" + nombreIMAGEN);
+
+                   
+                    FileOutputStream ou=new FileOutputStream(im);
+                    int d=is.read();
+                    while (d!=-1) { 
+                     ou.write(d);
+                     d=is.read();
+                    }
+                    ou.close();
+                    is.close();
                     response.sendRedirect("productos.jsp");
                 }else{
                  out.println("<h1>no se modifico......</h1>");
               out.println("<a href ='index.jsp'>regresar</a>");    
             }
             }
-    
+            out.println("<h1>Va por aqui 2</h1>");
             //eliminar
             if("Eliminar".equals(request.getParameter("btn_eliminar"))){
-             producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),inputStream,Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
+               out.println("<h1>Va por aqui</h1>");
+
+             producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),"iamgen",Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
              
+                out.println("<h1>no se elimino........</h1>");
+
              if(producto.eliminar() > 0){
                     response.sendRedirect("productos.jsp");
                 }else{
@@ -101,8 +123,11 @@ public class sr_productos extends HttpServlet {
             }
             out.println("</body>");
             out.println("</html>");
-        }
+        
     }
+    }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

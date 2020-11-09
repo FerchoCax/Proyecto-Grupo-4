@@ -12,5 +12,11 @@ import modelo.VentasDetalle;
  * @author ferch
  */
 public class Datos {
+
     public static ArrayList<VentasDetalle> listador = new ArrayList<VentasDetalle>();
+
+
+    
+    
+    
 }

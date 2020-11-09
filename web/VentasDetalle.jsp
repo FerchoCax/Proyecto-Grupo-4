@@ -47,7 +47,8 @@
                  <%@include file="clientes_ventas.jsp" %>
              
                  <%//action="sr_ventasdetalle" method="post"%>
-                 <!-- --------------- Inicia formulario de ventas -------------- -->
+                 
+                 <!-- - -  - - - - - - - - - - -  - - Inicia formulario de ventas - - - - - - - - - - - - - - -->
                  <form action="sr_ventas" method="post">
                      <div id="xd">
                 <button name="btn_pagar" id="btn_pagar"  value="Pagar" >Terminar la compra</button>
@@ -55,6 +56,7 @@
                 <br>
                      <label id="tituloins" for="lbl_id_Ventas" Style="color: white;">ID Factura:</label>
                 <%
+                     
                      Ventas venta= new Ventas();
                      venta.leer();
                      int idVenta=venta.getIdventa()+1;
@@ -76,7 +78,7 @@
                 <label id="titulof" Style="color: white;">Fecha</label>
                
                 <%    
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
                 Date date = new Date();  
                
                 String fecha=  date.toString();
@@ -88,15 +90,17 @@
                  <input type="text" Style="display:none;"  name="txt_idEmpleado" id="txt_idEmpleado"  readonly>
                  </form>
                  <br>
-                 <!-- --------------- Finaliza formulario de ventas -------------- -->
+                 <!-- - - - - - - - - - - - - - - - Finaliza formulario de ventas - - - - - - - - - - - -  - - -->
                  
                  
-                 <!-- --------------- Inicia formulario de los clientes -------------- -->
+                 <!-- - - - - - - - - - - - - - - - Inicia formulario de los clientes  - - - - - - - - - - - -  - - -->
                 <form  method="post">
                 <label id="tituloins" for="lbl_idcliente"  Style="color: white;">Nit:</label>
                 
                 <select class="SelectClientes" id="drop_clientes1" name="drop_clientes1" >
-        <% 
+                    
+                    
+                    <% 
                          Ventas ventas=new Ventas();
                         HashMap<String,String> dropclientes = ventas.ListaC();
                         out.println("<option value='0'>Seleccione</option>");
@@ -107,7 +111,7 @@
                 </select>
                  
                 <select Style="display:none;" class="SelectClientesI" id="drop_clientesI" name="drop_clientesI" >
-        <%
+                    <%
             HashMap<String,String> dropclientesI = ventas.ListaCI();
                         out.println("<option value='0'>Seleccione</option>");
                          for (String i:dropclientesI.keySet()){
@@ -122,14 +126,13 @@
                 <input class='clientes' type="text"  name="text_nombreC" id="txt_nombreC"  required readonly>
 
                <button type="button" name="btn_nuevo" id="btn_nuevoc" data-toggle="modal" data-target="#modal_clientes" >Crear Cliente</button>
-                 </form>    
+                    
                 
-                <!-- --------------- Finaliza formulario de Clientes -------------- -->
-                <form>
+                
                 <br>
                 <label  id="tituloins" for="lbl_idempleado" Style="color: white;">Empleado:</label>
                 
-                 <select class="empleados" name="drop_empleados" class="selectEmpleado" id="drop_empleados" >
+                 <select class="empleados" name="drop_empleados" id="drop_empleados" >
                 <%
                         Empleado empleado=new Empleado();
                         HashMap<String,String> dropempleados = empleado.ListaEmpleados();
@@ -143,8 +146,9 @@
                 
                 <br>
                 </form>
+                <!-- - - - - -  - - - - - - - - - - Finaliza formulario de Clientes - - - - - - - - - - - - - -   -->
                  
-                <!-- --------------- Inicia formulario de ventasDetalle -------------- -->
+                <!-- - - - - - - - - - - - - - - -  Inicia formulario de ventasDetalle - - - - - - - - - - - - - -  -->
                 <form class="formulario_vd">
                 <label id="tituloins" for="lbl_Producto" Style="color: white;"><b>Producto</b></label>
                     
@@ -186,9 +190,9 @@
        </form>  
                  </div>
                  
-                 <!-- --------------- Finaliza formulario de ventasDetalle -------------- -->
+                 <!-- - - - - - - - - - - -  - - - - Finaliza  Style="display:none;" formulario de ventasDetalle - - -  - - - - - -  - - - - -  -->
                  
-                 <!-- --------------- Tabla Ventas detalle -------------- -->
+                 <!-- - - - - - - - - - - - - - - - Tabla Ventas detalle - - - - - - - - - - - - - - -->
                 <%
               if("agregar".equals(request.getParameter("btn_agregar"))){
                    Producto prod = new Producto();
@@ -208,6 +212,7 @@
                     ventaD.setSubtotal(Sub);
                     ventaD.setidVenta(idVenta);
                     Datos.listador.add(ventaD);
+      
                 }
                 }  
                 %>
@@ -257,7 +262,7 @@
 
   </tfoot>
   
-  <!-- --------------- Finaliza tabla ventasDetalle -------------- -->
+  <!-- - - - - - - - -  - - - - -  - - Finaliza tabla ventasDetalle  - - - - - - - - - - - - - - -->
            
                  </table>
       </div>      
@@ -278,19 +283,27 @@
             $("select[name=drop_clientes1]").change(function(){
             var combo = document.getElementById("drop_clientes1");
             var selected = combo.options[combo.selectedIndex].value;
+            var selected5 = combo.options[combo.selectedIndex].text;
+            
             document.getElementById("txt_nombreC").value = selected;
+
             $('select[name=drop_clientesI]').val($(this).val());
             var combo2 = document.getElementById("drop_clientesI");
             var selected2 = combo2.options[combo2.selectedIndex].text;
             document.getElementById("txt_idCliente").value = selected2;
+
+
             });
             
             $("select[name=drop_empleados]").change(function(){
             
            $('select[name=drop_empleados]').val($(this).val());
            var combo3 = document.getElementById("drop_empleados");
+           var combo4 = document.getElementById("drop_empleados");
             var selected3 = combo3.options[combo3.selectedIndex].value;
+
             document.getElementById("txt_idEmpleado").value = selected3;
+
         //('input[name=txt_precio]').val($(this).val(selected));
             });
            </script>
@@ -311,8 +324,11 @@
     $('.SelectClientes').select2();
 }); 
 $(document).ready(function() {
-    $('.selectEmpleado').select2();
+    $('.empleados').select2();
 }); 
+$(document).ready(function() {
+    $('.producto').select2();
+});
     </script>
     </body>
 </html>
