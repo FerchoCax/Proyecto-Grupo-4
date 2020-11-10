@@ -1,0 +1,140 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9/11/2020, 10:17:22 PM
+    Author     : Kim
+*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#cuadrox{
+    width:1100px;
+    background: #090909;
+    color: #ffffff;
+    margin:auto;
+    margin-top: 30px;
+    padding: 5px 5px 30px 5px;
+    border-top: 35px solid #141414;
+    border-right: 35px solid #141414;
+    border-left: 35px solid #141414;
+    border-radius: 6px;
+      
+}
+#tituloins{
+    padding-left: 10px;
+    font-family: Segoe UI;
+}
+.corto{
+    width:55px;
+    height:30px;
+    border-radius: 6px;
+    font-family: Segoe UI;
+}
+#titulofp{
+    padding-left: 35px;
+    font-family: Segoe UI;
+}
+.fecha{
+    width:215px;
+    height:30px;
+    border-radius: 6px;
+    font-family: Segoe UI;
+}
+.fechaorden{
+    width:150px;
+    height:30px;
+    border-radius: 6px;
+    font-family: Segoe UI;
+}
+.proveedores{
+    width:645px;
+    height:30px;
+    border-radius: 6px;
+    font-family: Segoe UI;
+}
+#btn_nuevoc{
+    width: 125px;
+    height: 40px;
+    border-radius: 6px;
+    background: #4E4E4D;
+    color:#ffffff;
+    font-size: 15px;
+    font-family: Segoe UI;
+    opacity: 0.8;
+    
+}
+
+.producto{
+    width:450px;
+    height:30px;
+    border-radius: 6px;
+    font-family: Segoe UI;
+}
+.corto1{
+    width:135px;
+    height:30px;
+    border-radius: 6px;
+    font-family: Segoe UI;
+}
+#main-container-productos{ /*posicion de la tabla e.e */
+    width: 1200px;
+    text-align: right;
+    padding: 0px 0px 20px 0px;
+    margin:auto;
+}
+
+table{ /*width-ancho de la tabla, text datos a la izquierda xd */
+    background-color: black; /*color tabla*/
+    text-align: left;
+    width: 100%; 
+    border-collapse: collapse;
+    color: white;
+    border-radius: 6px;
+    opacity: 0.8;
+}
+
+th, td{ /*separacion de datos*/
+    padding: 20px;
+    border-radius: 0px;
+}
+
+thead{/*posicion de la tabla e.e */
+    background-color:#0A0A57;/*color de parte de titulo*/
+    border-bottom: solid 5px #4E4E4D;/*color de borde que separa el tituloxd */
+    color: white;/*letra e.e */
+    text-align: center;
+    border-radius: 6px;
+}
+
+
+tr:hover td{/*iluminacion del los regidtros xd e.e */
+    background-color: #3399ff;
+    color: white;/*eltra al seleccionar*/
+    
+}
+#btn_pagar{
+    width: 200px;
+    height: 40px;
+    border-radius: 6px;
+    background: #3CBB6C;
+    color:#ffffff;
+    font-size: 15px;
+    font-family: Segoe UI;
+}
+#xd{
+    text-align: right;
+}
+#btn_agregar{
+    width: 200px;
+    height: 40px;
+    border-radius: 6px;
+    background: #3CBB6C;
+    color:#ffffff;
+    font-size: 15px;
+    font-family: Segoe UI;
+}
