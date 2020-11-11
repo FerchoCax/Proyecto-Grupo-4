@@ -47,7 +47,7 @@
           <div id="cuadrox">
                  <%@include file="clientes_ventas.jsp" %>
                  <!-- --------------- Inicia formulario de compras -------------- -->
-                 <form action="sr_ventas" method="post">
+                 <form action="sr_compras" method="post">
                      <div id="xd">
                 <button name="btn_pagar" id="btn_pagar"  value="Pagar" >Terminar la compra</button>
                 </div>
@@ -83,12 +83,13 @@
                 <input class='fechaorden' type='date' name='fecha_orden' id='fecha_factura' required>
                 
 
-                 <input type="text" Style="display:none;"  name="txt_idProveedor" id="txt_idProveedor"  readonly>
+                 <input type="text" Style="display:none;" name="txt_idProveedor" id="txt_idProveedor"  readonly>
+                 
                  </form>
                 <br>
                  
                  
-                 <!-- --------------- Inicia formulario de Proveedores -------------- -->
+                 <!-- --------- ------ Inicia formulario de Proveedores -------------- -->
                 <form  method="post">
                 <label id="tituloins" for="lbl_idproveedores"  Style="color: white;">Nit:</label>
                 
@@ -103,7 +104,7 @@
                     %>
                 </select>
                  
-                <select Style="display:none;" class="SelectProveedoresI" id="drop_proveedoresI" name="drop_proveedoresI" >
+                <select style="display: none;" class="SelectProveedoresI" id="drop_proveedoresI" name="drop_proveedoresI" >
         <%
             HashMap<String,String> droproveedoresI = compras.ListaPC();
                         out.println("<option value='0'>Seleccione</option>");
@@ -150,14 +151,14 @@
                 }
                 %>
                  </select>
-                 <input class='corto1' type="text"  name="txt_precio" id="txt_precio"  required readonly>
+                 <input class='corto1' type="text"  name="txt_precio" id="txt_precio"  required >
                 
                 <label id="tituloins" for="lbl_Cantidad" Style="color: white;" >Cantidad</label>
                 <input  class='corto1' type="number"  name="txt_cantidad" id="txt_cantidad"  required>
                 <br>
                 <br>
                 <button name="btn_agregar" id="btn_agregar"  value="agregar" >Agregar producto</button>
-                
+                <input type="text" style="display: none;" name="txt_idProd" id="txt_idProd"  readonly>
       
               <br>
               <br>
@@ -171,13 +172,14 @@
               if("agregar".equals(request.getParameter("btn_agregar"))){
                    Producto prod = new Producto();
                     DefaultTableModel tabla = new DefaultTableModel();
-                    tabla = prod.agregarProducto(Integer.valueOf(request.getParameter("drop_producto")));
+                    tabla = prod.agregarProducto2(Integer.valueOf(request.getParameter("drop_producto")),Double.valueOf(request.getParameter("txt_precio")));
                     for (int t=0;t<tabla.getRowCount();t++){
                     ComprasDetalle comprasD= new ComprasDetalle();
                     String str1 = (String) tabla.getValueAt(t,1);
                     String str2 = (String) tabla.getValueAt(t,2);
                     String str3 = (String) tabla.getValueAt(t,3);
                     comprasD.setProducto(str1);
+                    comprasD.setIdProducto(Integer.valueOf(request.getParameter("txt_idProd")));
                     comprasD.setCantidad(Integer.valueOf(request.getParameter("txt_cantidad")));
                     comprasD.setMarca(str2);
                     double r = Double.valueOf(str3);
@@ -241,11 +243,13 @@
       </div>      
                 <br>
             <br>
-            <%out.println("<h1 Style='color: white;'>"+Datosc.listador.size()+"</h1>");%>
+            <%//out.println("<h1 Style='color: white;'>"+Datosc.listador.size()+"</h1>");%>
                  
               <script type="text/javascript">
            $("select[name=drop_producto]").change(function(){
-            
+            var combo4 = document.getElementById("drop_producto");
+            var selected4 = combo4.options[combo4.selectedIndex].value;
+            document.getElementById("txt_idProd").value = selected4;
            $('select[name=drop_precio]').val($(this).val());
            var combo = document.getElementById("drop_precio");
             var selected = combo.options[combo.selectedIndex].text;
@@ -264,7 +268,7 @@
             });
             
         //('input[name=txt_precio]').val($(this).val(selected));
-            });
+            //});
            </script>
            
         <script>
@@ -282,6 +286,10 @@
        $(document).ready(function() {
     $('.SelectProveedores').select2();
 }); 
+$(document).ready(function() {
+    $('.producto').select2();
+}); 
+
 
     </script>
     </body>

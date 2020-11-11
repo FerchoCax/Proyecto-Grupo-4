@@ -85,7 +85,7 @@ public class Compras {
         PreparedStatement parametro;
      
         cn = new Conexioon();
-        String query="INSERT INTO compras(no_orden_compra,idproveedor,fecha_orden,fecha_ingreso)VALUES(?,?,?,?);";
+        String query="INSERT INTO compras(no_orden_compra,idproveedor,fecha_orden,fechaingreso)VALUES(?,?,?,?);";
         cn.abrir_conexion();
         parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
         parametro.setInt(1, getNo_orden());
@@ -109,7 +109,7 @@ public class Compras {
         try{
             PreparedStatement parametro;
             cn = new Conexioon();
-            String query = "update compras set no_orden_compra=?, idproveedor=?, fecha_orden=?, fecha_ingreso=? where idcompra=?;";
+            String query = "update compras set no_orden_compra=?, idproveedor=?, fecha_orden=?, fechaingreso=? where idcompra=?;";
             cn.abrir_conexion();
             parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
             parametro.setInt(1, getNo_orden());
@@ -149,7 +149,7 @@ public class Compras {
          cn.abrir_conexion();
             ResultSet consulta = cn.conexioonbd.createStatement().executeQuery(query);
             while (consulta.next()){
-            drop.put(consulta.getString("proveedores"),consulta.getString("nit"));
+            drop.put(consulta.getString("proveedor"),consulta.getString("nit"));
             }
          cn.cerrar_conexion();
     }catch(SQLException ex){
@@ -161,12 +161,12 @@ public class Compras {
   public  HashMap ListaPC(){
   HashMap<String,String> drop = new  HashMap();
  try{
-        String query ="Select idproveedor as id,proveedor from proveedores";
+        String query ="Select idproveedor as id,proveedor from proveedores;";
          cn = new Conexioon();
          cn.abrir_conexion();
             ResultSet consulta = cn.conexioonbd.createStatement().executeQuery(query);
             while (consulta.next()){
-            drop.put(consulta.getString("proveedores"),consulta.getString("id"));
+            drop.put(consulta.getString("proveedor"),consulta.getString("id"));
             }
          cn.cerrar_conexion();
     }catch(SQLException ex){

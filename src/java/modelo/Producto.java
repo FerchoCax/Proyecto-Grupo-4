@@ -302,12 +302,45 @@ public int modificar(){
             consulta = parametro.executeQuery();
             String encabezado[] = {"idproducto","producto","marca","precio_venta","idmarca"};
       tabla.setColumnIdentifiers(encabezado);
+
       String datos[] = new String[5];
       while (consulta.next()){
           datos[0] = consulta.getString("id");
           datos[1] = consulta.getString("producto");
           datos[2] = consulta.getString("marca");
           datos[3] = consulta.getString("precio_venta");
+          datos[4] = consulta.getString("idmarca");
+          tabla.addRow(datos);
+      
+      } 
+            cn.cerrar_conexion();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        return tabla;
+    
+    }
+    public DefaultTableModel agregarProducto2(int i,double precio){
+    
+        DefaultTableModel tabla = new DefaultTableModel();
+        try{
+            cn = new Conexioon();
+            cn.abrir_conexion();
+            PreparedStatement parametro;
+            String query = "SELECT e.idproducto as id,e.producto,p.marca,e.precio_venta,p.idmarca  FROM productos as e inner join marcas as p on e.idmarca = p.idmarca and idProducto=?;";
+            parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
+             parametro.setInt(1,i); 
+            ResultSet consulta;
+            consulta = parametro.executeQuery();
+            String encabezado[] = {"idproducto","producto","marca","precio_venta","idmarca"};
+      tabla.setColumnIdentifiers(encabezado);
+      String str3 = String.valueOf(precio);
+      String datos[] = new String[5];
+      while (consulta.next()){
+          datos[0] = consulta.getString("id");
+          datos[1] = consulta.getString("producto");
+          datos[2] = consulta.getString("marca");
+          datos[3] = str3;
           datos[4] = consulta.getString("idmarca");
           tabla.addRow(datos);
       

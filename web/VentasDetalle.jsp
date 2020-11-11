@@ -268,7 +268,7 @@
       </div>      
                 <br>
             <br>
-            <%out.println("<h1 Style='color: white;'>"+Datos.listador.size()+"</h1>");%>
+           <%//out.println("<h1 Style='color: white;'>"+Datos.listador.size()+"</h1>");%>
                  
               <script type="text/javascript">
            $("select[name=drop_producto]").change(function(){

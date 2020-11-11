@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import modelo.Conexioon;
 /**
@@ -20,15 +22,17 @@ public class ComprasDetalle {
     private int idcompra,cantidad;
     private String producto,marca;
     private double precio_venta,subtotal;
+    private int idProducto;
 
     public ComprasDetalle(){}
-    public ComprasDetalle(int idcompra, int cantidad, String producto, String marca, double precio_venta, double subtotal) {
+    public ComprasDetalle( int cantidad, String producto, String marca, double precio_venta, double subtotal, int idcompra,int idProducto) {
         this.idcompra = idcompra;
         this.cantidad = cantidad;
         this.producto = producto;
         this.marca = marca;
         this.precio_venta = precio_venta;
         this.subtotal = subtotal;
+        this.idProducto = idProducto;
     }
 
     public int getIdcompra() {
@@ -78,6 +82,13 @@ public class ComprasDetalle {
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
     
     public int agregar(){
         int retorno = 0;
@@ -89,7 +100,7 @@ public class ComprasDetalle {
         cn.abrir_conexion();
         parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
         parametro.setInt(1, getIdcompra());
-        parametro.setString(2, getProducto());
+        parametro.setInt(2, getIdProducto());
         parametro.setInt(3, getCantidad());
         parametro.setDouble(4, getPrecio_venta());
         
@@ -103,4 +114,67 @@ public class ComprasDetalle {
     
     return retorno;
     }
+    
+    public int verExistencia(int id){
+        
+         int retorno= 0;
+        int existencia=0;
+         try {
+             cn = new Conexioon();
+        ResultSet rs;
+        PreparedStatement parametro;
+        String query = "Select existencia from productos where idProducto = ?;";
+        cn.abrir_conexion();
+        parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
+        parametro.setInt(1, id);
+        rs = parametro.executeQuery();
+        while (rs.next()){
+            retorno= retorno+1;
+            existencia=rs.getInt("existencia");
+            
+        }
+        if(retorno==1){
+            cn.cerrar_conexion();
+            return existencia;
+        }else{
+            cn.cerrar_conexion();
+            return 0;
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return retorno;
+
+    }
+    
+    public int actualizarProd(int producto, double preciocompra, int cantidad){
+        int retorno =0;
+        try{
+        PreparedStatement parametro;
+        int existentes;
+        existentes=verExistencia(producto)+cantidad;
+        cn = new Conexioon();
+            String query="UPDATE productos SET precio_costo = ?, precio_venta = ?, existencia = ?  Where idProducto = ?;";
+        cn.abrir_conexion();
+        double precionuevo;
+        precionuevo = preciocompra*1.25;
+        parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
+        parametro.setDouble(1, getPrecio_venta());
+        parametro.setDouble(2, precionuevo);
+        parametro.setInt(3, existentes);
+        parametro.setInt(4, producto);
+        
+        retorno =parametro.executeUpdate();
+        cn.cerrar_conexion();
+        
+    }catch(SQLException ex){
+        System.out.println(ex.getMessage());
+        retorno = 0;
+    }
+    
+    return retorno;
+    }
+
+    
 }

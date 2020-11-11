@@ -48,10 +48,16 @@ public class sr_compras extends HttpServlet {
             out.println("Error1");
             if("Pagar".equals(request.getParameter("btn_pagar"))){
                 out.println("Error2");
-                Compras compras = new Compras (0,Integer.parseInt(request.getParameter("txt_no_orden_compra")),Integer.parseInt(request.getParameter("txt_serie")),request.getParameter("fecha_factura"),request.getParameter("fecha_factura"));
+                Compras compras = new Compras (0,Integer.parseInt(request.getParameter("txt_no_orden_compra")),Integer.parseInt(request.getParameter("txt_idProveedor")),request.getParameter("fecha_orden"),request.getParameter("fecha_compra"));
                 out.println("Error3");
                 if(compras.agregar() > 0){
                   out.println("Error4");
+                   Datosc.listador.forEach(_item -> {
+                    ComprasDetalle comprasD = new ComprasDetalle(_item.getCantidad(),_item.getProducto(),_item.getMarca(),_item.getPrecio_venta(),_item.getSubtotal(),_item.getIdcompra(),_item.getIdProducto());
+                    comprasD.agregar();
+                    comprasD.actualizarProd(_item.getIdProducto(), _item.getPrecio_venta(),_item.getCantidad());
+                });
+                Datosc.listador.clear();
                   response.sendRedirect("ComprasDetalle.jsp");
                  //  out.println("<h1>Ingreso Exitoso....................</h1>");
                    // out.println("<a href ='index.jsp'>Regresar</a>");
@@ -59,11 +65,7 @@ public class sr_compras extends HttpServlet {
                     out.println("<h1>Error....................</h1>");
                     out.println("<a href ='ComprasDetalle.jsp'>Regresar</a>");
                 }
-                Datosc.listador.forEach(_item -> {
-                    ComprasDetalle comprasD = new ComprasDetalle(_item.getCantidad(),_item.getProducto(),_item.getMarca(),_item.getPrecio_venta(),_item.getSubtotal(),_item.getIdcompra());
-                    comprasD.agregar();
-                });
-                Datosc.listador.clear();
+               
             }
             out.println("</body>");
             out.println("</html>");
