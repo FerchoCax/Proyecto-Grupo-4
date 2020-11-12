@@ -30,9 +30,9 @@ CREATE TABLE `clientes` (
   `genero` bit(1) DEFAULT NULL,
   `telefono` varchar(45) DEFAULT NULL,
   `correo_electronico` varchar(45) DEFAULT NULL,
-  `fechaingreso` datetime DEFAULT NULL,
+  `fechaingreso` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`idCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (2,'Fernando','Caxaj','12345',_binary '\0','3354','fcaxajl@miumg.edu.gt','2020-10-02 00:00:00'),(4,'descarga.jpg','Marquez','12',_binary '\0','3354','fcaxajl@miumg.edu.gt','2020-11-10 00:00:00'),(5,'Javier','Tobar','1964632-1',_binary '\0','521271','javier@gmail.com','2020-11-11 00:00:00'),(6,'Andres','LÃ³pez','876545678-2',_binary '\0','1234543','fcaxajl@miumg.edu.gt','2020-11-17 00:00:00'),(7,'lucia','garcia','77777',_binary '','2345678','lkjvgn@ghj.com','2020-11-12 00:00:00'),(8,'Mayra','Lopez','1234',_binary '\0','737383','sdasd','2020-11-22 00:00:00');
+INSERT INTO `clientes` VALUES (2,'Fernando','Caxaj','12345',_binary '\0','3354','fcaxajl@miumg.edu.gt','2020-10-02 00:00:00'),(4,'descarga.jpg','Marquez','12',_binary '\0','3354','fcaxajl@miumg.edu.gt','2020-11-10 00:00:00'),(5,'Javier','Tobar','1964632-1',_binary '\0','521271','javier@gmail.com','2020-11-11 00:00:00'),(6,'Andres','LÃ³pez','876545678-2',_binary '\0','1234543','fcaxajl@miumg.edu.gt','2020-11-17 00:00:00'),(7,'lucia','garcia','77777',_binary '','2345678','lkjvgn@ghj.com','2020-11-12 00:00:00'),(8,'Mayra','Lopez','1234',_binary '\0','737383','sdasd','2020-11-22 00:00:00'),(9,'Kimberely','Thomas','45678876',_binary '','234233','kim@gmail.com','Thu Nov 12 15:32:54 CST 2020');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,9 +117,9 @@ CREATE TABLE `empleados` (
   `fecha_nacimiento` date DEFAULT NULL,
   `idPuesto` int DEFAULT NULL,
   `fecha_inicio_labores` date DEFAULT NULL,
-  `fechaingreso` date DEFAULT NULL,
+  `fechaingreso` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`idEmpleado`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +128,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
-INSERT INTO `empleados` VALUES (2,'Fernando','Caxaj','casablanca','53185325','2906041090301',NULL,'2020-10-01',2,'2020-10-01','2020-10-08'),(3,'Jose','Marquez','12','3354','196465454',NULL,'2020-10-02',1,'2020-10-08','2020-10-06');
+INSERT INTO `empleados` VALUES (2,'Fernando','Caxaj','casablanca','53185325','2906041090301',NULL,'2020-10-01',2,'2020-10-01','2020-10-08'),(3,'Jose','Marquez','12','3354','196465454',NULL,'2020-10-02',1,'2020-10-08','2020-10-06'),(4,'Alex','Garcia','Jocotenango','647383838','636373',_binary '\0','2020-11-17',2,'2020-11-11','2020-10-08');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,7 +201,7 @@ CREATE TABLE `productos` (
   `existencia` int DEFAULT NULL,
   `fecha_ingreso` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,7 +210,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (27,'Coca lata',1,'bebida refrescante','DOGSPORTS.png',5.00,6.25,32,'2020-12-02'),(29,'chocolates',3,'Sopa sabor a pollo','DOG LOVER.png',7.00,8.75,44,'2020-11-13');
+INSERT INTO `productos` VALUES (27,'Coca lata',1,'bebida refrescante','DOGSPORTS.png',5.00,6.25,32,'2020-12-02'),(29,'chocolates',3,'Sopa sabor a pollo','DOG LOVER.png',7.00,8.75,44,'2020-11-13'),(30,NULL,3,'Bebida Refrescante','RETRO F.png',33.00,2.00,50,'Thu Nov 12 15:31:53 CST 2020');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -390,4 +390,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-11 17:59:34
+-- Dump completed on 2020-11-12 15:34:08

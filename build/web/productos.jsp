@@ -81,7 +81,7 @@
             <br>
             <label for="lbl_imagen"><b>Imagen:</b></label> 
              <input type="file" name="imag" id="txt_imagen" class="form-control" onchange="guard(this)">
-             <input type="text"  name="nameimg" id="file" class="nameimg">
+             <input type="text" Style="display: none;" name="nameimg" id="file" class="nameimg">
              
              
           <!--<input type="File" name="imagen" id="imagen"  required style="display:none;"> -->
