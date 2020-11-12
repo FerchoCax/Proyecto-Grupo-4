@@ -57,9 +57,9 @@ CREATE TABLE `compras` (
   `no_orden_compra` int DEFAULT NULL,
   `idproveedor` int DEFAULT NULL,
   `fecha_orden` date DEFAULT NULL,
-  `fechaingreso` datetime DEFAULT NULL,
+  `fechaingreso` varchar(69) DEFAULT NULL,
   PRIMARY KEY (`idcompra`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,6 +68,7 @@ CREATE TABLE `compras` (
 
 LOCK TABLES `compras` WRITE;
 /*!40000 ALTER TABLE `compras` DISABLE KEYS */;
+INSERT INTO `compras` VALUES (1,1,2,'2020-11-26','Wed Nov 11 15:45:02 CST 2020'),(2,2,2,'2020-11-02','Wed Nov 11 16:11:35 CST 2020'),(3,3,3,'2020-11-04','Wed Nov 11 16:26:23 CST 2020'),(4,4,2,'2020-11-03','Wed Nov 11 16:29:38 CST 2020'),(5,5,3,'2020-11-02','Wed Nov 11 16:31:22 CST 2020'),(6,6,3,'2020-11-08','Wed Nov 11 16:33:58 CST 2020'),(7,7,3,'2020-11-03','Wed Nov 11 16:49:37 CST 2020'),(8,8,2,'2020-11-13','Wed Nov 11 16:51:42 CST 2020');
 /*!40000 ALTER TABLE `compras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,11 +82,11 @@ DROP TABLE IF EXISTS `compras_detalle`;
 CREATE TABLE `compras_detalle` (
   `idcompra_detalle` bigint NOT NULL AUTO_INCREMENT,
   `idcompra` int DEFAULT NULL,
-  `idproducto` int DEFAULT NULL,
+  `producto` int DEFAULT NULL,
   `cantidad` int DEFAULT NULL,
   `precio_costo_unitario` decimal(8,2) DEFAULT NULL,
   PRIMARY KEY (`idcompra_detalle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,6 +95,7 @@ CREATE TABLE `compras_detalle` (
 
 LOCK TABLES `compras_detalle` WRITE;
 /*!40000 ALTER TABLE `compras_detalle` DISABLE KEYS */;
+INSERT INTO `compras_detalle` VALUES (2,2,27,6,8.00),(3,3,27,7,8.00),(4,4,27,3,10.00),(5,4,29,10,0.04),(6,5,29,8,0.05),(7,5,29,4,0.05),(8,6,29,5,7.00),(9,7,29,5,13.00),(10,8,27,10,5.00),(11,8,29,8,7.00);
 /*!40000 ALTER TABLE `compras_detalle` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,7 +179,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'Productos',1,'productos.jsp'),(2,'Marcas',1,'marcas.jsp'),(3,'Empleados',1,'empleados.jsp'),(4,'Ventas',1,'VentasDetalle.jsp'),(5,'Puestos',1,'puestos.jsp'),(6,'Clientes',1,'clientes.jsp'),(7,'Proveedores',1,'proveedores.jsp'),(8,'Compras',1,'#'),(9,'Usuarios',1,'usuarios.jsp'),(10,'Cerrar Sesion',1,'login.jsp');
+INSERT INTO `menu` VALUES (1,'Productos',1,'productos.jsp'),(2,'Marcas',1,'marcas.jsp'),(3,'Empleados',1,'empleados.jsp'),(4,'Ventas',1,'VentasDetalle.jsp'),(5,'Puestos',1,'puestos.jsp'),(6,'Clientes',1,'clientes.jsp'),(7,'Proveedores',1,'proveedores.jsp'),(8,'Compras',1,'ComprasDetalle.jsp'),(9,'Usuarios',1,'usuarios.jsp'),(10,'Cerrar Sesion',1,'login.jsp');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +201,7 @@ CREATE TABLE `productos` (
   `existencia` int DEFAULT NULL,
   `fecha_ingreso` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +210,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (27,'Coca lata',1,'bebida refrescante','OIP.jpg',5.00,6.00,10,'2020-10-08T19:51');
+INSERT INTO `productos` VALUES (27,'Coca lata',1,'bebida refrescante','DOGSPORTS.png',5.00,6.25,32,'2020-12-02'),(29,'chocolates',3,'Sopa sabor a pollo','DOG LOVER.png',7.00,8.75,44,'2020-11-13');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,7 +228,7 @@ CREATE TABLE `proveedores` (
   `direccion` varchar(80) DEFAULT NULL,
   `telefono` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`idproveedor`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -235,7 +237,7 @@ CREATE TABLE `proveedores` (
 
 LOCK TABLES `proveedores` WRITE;
 /*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
-INSERT INTO `proveedores` VALUES (2,'coca','12345','casa','3354');
+INSERT INTO `proveedores` VALUES (2,'coca','12345','casa','3354'),(3,'maggi','3232323','Guatemala','773974733');
 /*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -319,7 +321,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Admin','1','admin',NULL,1,1,1,1,1,1,1,1,1),(2,'Fer','2','fer123',NULL,1,1,1,1,1,1,1,1,0),(3,'Alex','3','alex123',NULL,1,1,1,1,1,1,1,1,0),(6,'Andres','Andres@gmail.com','andres',NULL,1,1,1,1,1,1,1,1,0),(7,'Fernando','ferchonando26@gmail.com','ferluan123',NULL,1,1,1,1,1,1,1,1,0);
+INSERT INTO `usuarios` VALUES (1,'Admin','1','admin',NULL,1,1,1,1,1,1,1,1,1),(2,'Fer','2','fer123',NULL,1,0,0,0,0,0,0,1,0),(3,'Alex','3','alex123',NULL,1,1,1,1,1,1,1,1,0),(6,'Andres','Andres@gmail.com','andres',NULL,1,1,1,1,1,1,1,1,0),(7,'Fernando','ferchonando26@gmail.com','ferluan123',NULL,1,1,1,1,1,1,1,1,0);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,7 +341,7 @@ CREATE TABLE `ventas` (
   `idempleado` int DEFAULT NULL,
   `fechaingreso` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`idVenta`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -348,7 +350,7 @@ CREATE TABLE `ventas` (
 
 LOCK TABLES `ventas` WRITE;
 /*!40000 ALTER TABLE `ventas` DISABLE KEYS */;
-INSERT INTO `ventas` VALUES (1,1,'a',NULL,NULL,NULL,NULL),(2,2,'a','Hola',6,2,NULL),(3,3,'a','Mon Nov 02 20:03:50 CST 2020',5,2,NULL),(4,4,'a','Mon Nov 02 20:06:16 CST 2020',5,2,NULL),(5,5,'a','Mon Nov 02 20:30:51 CST 2020',4,2,NULL),(6,6,'a','Mon Nov 02 20:31:34 CST 2020',6,2,NULL),(7,7,'a','Mon Nov 02 20:33:08 CST 2020',5,2,NULL);
+INSERT INTO `ventas` VALUES (1,1,'a',NULL,NULL,NULL,NULL),(2,2,'a','Hola',6,2,NULL),(3,3,'a','Mon Nov 02 20:03:50 CST 2020',5,2,NULL),(4,4,'a','Mon Nov 02 20:06:16 CST 2020',5,2,NULL),(5,5,'a','Mon Nov 02 20:30:51 CST 2020',4,2,NULL),(6,6,'a','Mon Nov 02 20:31:34 CST 2020',6,2,NULL),(7,7,'a','Mon Nov 02 20:33:08 CST 2020',5,2,NULL),(8,8,'a','Mon Nov 02 20:37:58 CST 2020',6,2,NULL),(9,9,'a','Sat Nov 07 16:27:17 CST 2020',6,3,NULL),(10,10,'a','Mon Nov 09 15:29:54 CST 2020',6,2,NULL);
 /*!40000 ALTER TABLE `ventas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,7 +368,7 @@ CREATE TABLE `ventas_detalle` (
   `cantidad` int DEFAULT NULL,
   `precio_unitario` decimal(8,2) DEFAULT NULL,
   PRIMARY KEY (`idventa_detalle`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -375,7 +377,7 @@ CREATE TABLE `ventas_detalle` (
 
 LOCK TABLES `ventas_detalle` WRITE;
 /*!40000 ALTER TABLE `ventas_detalle` DISABLE KEYS */;
-INSERT INTO `ventas_detalle` VALUES (1,1,'pollo',12,12.00),(2,5,'Coca lata',3,6.00),(3,5,'Coca lata',3,6.00),(4,6,'Coca lata',10,6.00),(5,6,'Coca lata',12,6.00),(6,6,'Coca lata',70,6.00),(7,7,'Coca lata',1,6.00),(8,7,'Coca lata',3,6.00);
+INSERT INTO `ventas_detalle` VALUES (1,1,'pollo',12,12.00),(2,5,'Coca lata',3,6.00),(3,5,'Coca lata',3,6.00),(4,6,'Coca lata',10,6.00),(5,6,'Coca lata',12,6.00),(6,6,'Coca lata',70,6.00),(7,7,'Coca lata',1,6.00),(8,7,'Coca lata',3,6.00),(9,8,'Coca lata',5,6.00),(10,8,'Coca lata',1,6.00),(11,9,'Coca lata',7,6.00),(12,9,'Coca lata',7,6.00),(13,9,'Coca lata',66,6.00),(14,10,'chocolates',2,0.04),(15,10,'Coca lata',2,6.00);
 /*!40000 ALTER TABLE `ventas_detalle` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -388,4 +390,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-02 20:36:26
+-- Dump completed on 2020-11-11 17:59:34
