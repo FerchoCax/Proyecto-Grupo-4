@@ -41,7 +41,7 @@ public class sr_cliente_ventas extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Error 1</h1>");
-            cliente = new Cliente(Integer.valueOf(request.getParameter("txt_id")), Integer.valueOf(request.getParameter("txt_genero")),  request.getParameter("txt_nombres"), request.getParameter("txt_apellidos"),request.getParameter("txt_nit"), request.getParameter("txt_telefono"), request.getParameter("txt_correo"), request.getParameter("txt_fechaingreso"));
+            cliente = new Cliente(Integer.valueOf(request.getParameter("txt_id")), Integer.valueOf(request.getParameter("gender")),  request.getParameter("txt_nombres"), request.getParameter("txt_apellidos"),request.getParameter("txt_nit"), request.getParameter("txt_telefono"), request.getParameter("txt_correo"), request.getParameter("txt_fechaingreso"));
             
             out.println("<h1>Error 1</h1>");
             if("agregar".equals(request.getParameter("btn_agregar"))){    

@@ -40,11 +40,7 @@ public class sr_cliente extends HttpServlet {
             out.println("<title>Servlet sr_cliente</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Error 1</h1>");
-            cliente = new Cliente(Integer.valueOf(request.getParameter("txt_id")), Integer.valueOf(request.getParameter("txt_genero")),  request.getParameter("txt_nombres"), request.getParameter("txt_apellidos"),request.getParameter("txt_nit"), request.getParameter("txt_telefono"), request.getParameter("txt_correo"), request.getParameter("txt_fechaingreso"));
-            
-            out.println("<h1>Error 1</h1>");
-            //Boton agregar
+            cliente = new Cliente(Integer.valueOf(request.getParameter("txt_id")), Integer.valueOf(request.getParameter("gender")),  request.getParameter("txt_nombres"), request.getParameter("txt_apellidos"),request.getParameter("txt_nit"), request.getParameter("txt_telefono"), request.getParameter("txt_correo"), request.getParameter("fecha_factura"));
             if("agregar".equals(request.getParameter("btn_agregar"))){    
                 if(cliente.agregar() > 0){
                    response.sendRedirect("clientes.jsp");

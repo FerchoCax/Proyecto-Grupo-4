@@ -59,7 +59,7 @@ public class sr_productos extends HttpServlet {
             String nombreIMAGEN=request.getParameter("nameimg");  
             out.println("<h1>Xd 2</h1>");
              if("Agregar".equals(request.getParameter("btn_agregar"))){
-                 Producto prod = new Producto(0,request.getParameter("txt_productso"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),nombreIMAGEN,Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
+                 Producto prod = new Producto(0,request.getParameter("txt_productso"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),nombreIMAGEN,Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("fecha_factura"));
           
            if (prod.agregar()>0) { 
                
@@ -84,7 +84,7 @@ public class sr_productos extends HttpServlet {
            out.println("<h1>Va por aqui 1</h1>");
         //modificar
             if("Modificar".equals(request.getParameter("btn_modificar"))){
-               producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),nombreIMAGEN,Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
+               producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),nombreIMAGEN,Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("fecha_factura"));
               if(producto.modificar() > 0){
                   Part Archivo=request.getPart("imag");
                     InputStream is=Archivo.getInputStream();
@@ -110,7 +110,7 @@ public class sr_productos extends HttpServlet {
             if("Eliminar".equals(request.getParameter("btn_eliminar"))){
                out.println("<h1>Va por aqui</h1>");
 
-             producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),"iamgen",Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("txt_fecha_ingreso"));
+             producto = new Producto (Integer.valueOf(request.getParameter("txt_idproducto")),request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),"iamgen",Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("fecha_factura"));
              
                 out.println("<h1>no se elimino........</h1>");
 

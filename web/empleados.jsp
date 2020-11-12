@@ -9,6 +9,8 @@
 <%@page import="java.util.HashMap"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="java.text.SimpleDateFormat"%>  
+<%@page import="java.util.Date"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -60,6 +62,12 @@
             <label for="lbl_DPI"><b>DPI:</b></label>
             <input type="number" name="txt_DPI" id="txt_DPI" class="form-control" placeholder="Ejemplo:55555555" required> 
             <br>    
+            <label><b>Género: </b></label> <br>
+            <input type="radio" id="gender" name="gender" value="0" required>
+            <label for="male">Hombre</label>
+             <input type="radio" id="gender" name="gender" value="1" required>
+            <label for="female">Mujer</label>
+            <br>
             <label for="lbl_fn"><b>Fecha nacmiento:</b></label>
             <input type="date" name="txt_fn" id="txt_fn" class="form-control" required>
             <br>    
@@ -77,9 +85,18 @@
             <label for="lbl_fil"><b>Fecha inicio de labores:</b></label>
             <input type="date" name="txt_fil" id="txt_fil" class="form-control" required>
             <br>    
-            <label for="lbl_fi"><b>Fecha de ingreso:</b></label>
-            <input type="date" name="txt_fi" id="txt_fi" class="form-control" required>
+           <label Style="color: black;"><b>Fecha de ingreso:</b></label>
+               
+                <%    
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+                Date date = new Date();  
+               
+                String fecha=  date.toString();
+                out.println("<input class='form-control' type='text' name='fecha_factura' id='fecha_factura' value='"+fecha+"' readonly>");
+                //System.out.println("<input type='date' name='fechaFactura' id='fechaFactura' value="+date+" class='form-control' readonly>");
                 
+                %>
+
             <br>
              
             <input type="submit" class="btn btn-warning" name="btn_agregar" id="btn_agregar" value="agregar" >
@@ -121,7 +138,7 @@
             out.println("<td>" + tabla.getValueAt(t,3) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,4) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,5) + "</td>");
-         
+          
             out.println("<td>" + tabla.getValueAt(t,7) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,8) + "</td>");
             out.println("<td>" + tabla.getValueAt(t,9) + "</td>");
@@ -149,14 +166,17 @@
             $("#txt_direccion").val('');
             $("#txt_telefono").val('');
             $("#txt_DPI").val('');
-            //$("#txt_genero").val('');
             $("#txt_fn").val('');
             $("#drop_list").val(1);
             $("#txt_fil").val('');
-            $("#txt_fi").val('');}   
+            $("#fi").val('');
+
+        }
+
+            
 
         $('#tbl_empleados').on('click','tr td', function(evt){
-        var target,id,id_p,nombres,apellidos,direccion,telefono,dpi,nacimiento,labores,ingreso;
+        var target,id,id_p,nombres,apellidos,direccion,telefono,dpi,nacimiento,labores,ingreso,genero;
 
         target = $(event.target);
         id = target.parent().data('id');
@@ -166,10 +186,9 @@
         direccion= target.parents("tr").find("td").eq(2).html();
         telefono= target.parents("tr").find("td").eq(3).html();
         dpi= target.parents("tr").find("td").eq(4).html();
-        //genero= target.parents("tr").find("td").eq(6).html();
-        nacimiento= target.parents("tr").find("td").eq(6).html();
-        labores= target.parents("tr").find("td").eq(7).html();
-        ingreso= target.parents("tr").find("td").eq(8).html();
+        nacimiento= target.parents("tr").find("td").eq(5).html();
+        labores= target.parents("tr").find("td").eq(6).html();
+        ingreso=target.parents("tr").find("td").eq(7).html();
 
         $("#txt_id").val(id);
         $("#txt_nombres").val(nombres);
@@ -178,7 +197,7 @@
         $("#txt_telefono").val(telefono);
         $("#txt_DPI").val(dpi);
         $("#txt_fn").val(nacimiento);
-        $("#txt_fi").val(ingreso);
+        $("#fecha_factura").val(ingreso);
         $("#txt_fil").val(labores);
         $("#drop_list").val(id_p);
         $("#modal_empleado").modal('show');

@@ -9,6 +9,8 @@
 <%@page import="modelo.Cliente"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="java.text.SimpleDateFormat"%>  
+<%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
@@ -43,28 +45,43 @@
         <div class="modal-body">
         <form action="sr_cliente" method="post" class="formg-roup">
                 
-                <label for="lbl_id">ID:</label>
+            <label for="lbl_id"><b>ID:</b></label>
                 <input type="text" name="txt_id" id="txt_id" class="form-control" value="0" readonly>
                 <br>
-                <label for="lbl_nombres">Nombres:</label>
+                <label for="lbl_nombres"><b>Nombres:</b></label>
                 <input type="text" name="txt_nombres" id="txt_nombres" class="form-control" placeholder="Ejemplo: nombre1 nombre2" required>
                 <br>
-                <label for="lbl_apellidos">Aprellidos:</label>
+                <label for="lbl_apellidos"><b>Apellidos:</b></label>
                 <input type="text" name="txt_apellidos" id="txt_apellidos" class="form-control" placeholder=" Ejemplo: apellido1 apellido2" required>
                 <br>
-                <label for="lbl_nit">NIT:</label>
+                <label for="lbl_nit"><b>NIT:</b></label>
                 <input type="text" name="txt_nit" id="txt_nit" class="form-control" placeholder="Ejemplo: 1750519-4" required>
                 <br>
                 
+                <label><b>Género: </b></label> <br>
+                <input type="radio" id="gender" name="gender" value="0" required>
+                <label for="male">Hombre</label>
+                <input type="radio" id="gender" name="gender" value="1" required>
+                <label for="female">Mujer</label>
+                <br>
              
-                <label for="lbl_telefono">Telefono:</label>
+                <label for="lbl_telefono"><b>Telefono:</b></label>
                 <input type="number" name="txt_telefono" id="txt_telefono" class="form-control" placeholder="Ejemplo: 12345678" required>
                 <br>
-                <label for="lbl_correo">Correo electronico:</label>
+                <label for="lbl_correo"><b>Correo electronico:</b></label>
                 <input type="text" name="txt_correo" id="txt_correo" class="form-control" placeholder="Ejemplo: correo_ejemplo@gmail.com" required >
                 <br>
-                <label for="lbl_fechaingreso">Fecha de ingreso:</label>
-                <input type="date" name="txt_fechaingreso" id="txt_fechaingreso" class="form-control" required >
+                 <label Style="color: black;"><b>Fecha de ingreso:</b></label>
+               
+                <%    
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+                Date date = new Date();  
+               
+                String fecha=  date.toString();
+                out.println("<input class='form-control' type='text' name='fecha_factura' id='fecha_factura' value='"+fecha+"' readonly>");
+                //System.out.println("<input type='date' name='fechaFactura' id='fechaFactura' value="+date+" class='form-control' readonly>");
+                
+                %>
                 
                 <br>
             
@@ -152,7 +169,7 @@
   
    $("#txt_telefono").val(telefono);
    $("#txt_correo").val(correo);
-   $("#txt_fechaingreso").val(fechaingreso);
+   $("#fecha_factura").val(fechaingreso);
    $("#modal_clientes").modal('show');
 
    

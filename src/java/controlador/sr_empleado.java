@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Empleado;
 
+
+
 /**
  *
  * @author Kim
@@ -40,9 +42,11 @@ public class sr_empleado extends HttpServlet {
             out.println("<title>Servlet sr_empleado</title>");            
             out.println("</head>");
             out.println("<body>");
-            if("agregar".equals(request.getParameter("btn_agregar"))){
-                empleado = new Empleado(0,Integer.valueOf(request.getParameter("drop_puesto")),request.getParameter("txt_DPI") ,request.getParameter("txt_nombres"),request.getParameter("txt_apellidos"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"),request.getParameter("txt_fn"),request.getParameter("txt_fil"),request.getParameter("txt_fi"));
-                if(empleado.agregar() > 0){
+            
+            if ("agregar".equals(request.getParameter("btn_agregar"))){
+            empleado = new Empleado(0,Integer.valueOf(request.getParameter("drop_puesto")),request.getParameter("txt_DPI") ,request.getParameter("txt_nombres"),request.getParameter("txt_apellidos"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"),request.getParameter("txt_fn"),request.getParameter("txt_fil"),request.getParameter("fecha_factura"),Integer.valueOf(request.getParameter("gender")));
+            out.println("<p>"+ request.getParameter("gender")+"</p>");
+            if(empleado.agregar() > 0){
                     response.sendRedirect("empleados.jsp");
                  //  out.println("<h1>Ingreso Exitoso....................</h1>");
                    // out.println("<a href ='index.jsp'>Regresar</a>");
@@ -53,7 +57,7 @@ public class sr_empleado extends HttpServlet {
             }
             
              if("modificar".equals(request.getParameter("btn_modificar"))){
-                empleado = new Empleado(Integer.valueOf(request.getParameter("txt_id")),Integer.valueOf(request.getParameter("drop_puesto")),request.getParameter("txt_DPI") ,request.getParameter("txt_nombres"),request.getParameter("txt_apellidos"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"),request.getParameter("txt_fn"),request.getParameter("txt_fil"),request.getParameter("txt_fi"));
+                empleado = new Empleado(Integer.valueOf(request.getParameter("txt_id")),Integer.valueOf(request.getParameter("drop_puesto")),request.getParameter("txt_DPI") ,request.getParameter("txt_nombres"),request.getParameter("txt_apellidos"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"),request.getParameter("txt_fn"),request.getParameter("txt_fil"),request.getParameter("fecha_factura"),Integer.valueOf(request.getParameter("gender")));
                 if(empleado.modificar() > 0){
                     response.sendRedirect("empleados.jsp");
                  /* out.println("<h1>Ingreso Exitoso....................</h1>");
@@ -65,7 +69,7 @@ public class sr_empleado extends HttpServlet {
             }
              
              if("eliminar".equals(request.getParameter("btn_eliminar"))){
-                empleado = new Empleado(Integer.valueOf(request.getParameter("txt_id")),Integer.valueOf(request.getParameter("drop_puesto")),request.getParameter("txt_DPI"),request.getParameter("txt_nombres"),request.getParameter("txt_apellidos"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"),request.getParameter("txt_fn"),request.getParameter("txt_fil"),request.getParameter("txt_fi"));
+                empleado = new Empleado(Integer.valueOf(request.getParameter("txt_id")),Integer.valueOf(request.getParameter("drop_puesto")),request.getParameter("txt_DPI"),request.getParameter("txt_nombres"),request.getParameter("txt_apellidos"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"),request.getParameter("txt_fn"),request.getParameter("txt_fil"),request.getParameter("fecha_factura"),Integer.valueOf(request.getParameter("gender")));
                 if(empleado.eliminar() > 0){
                     response.sendRedirect("empleados.jsp");
                  //  out.println("<h1>Ingreso Exitoso....................</h1>");

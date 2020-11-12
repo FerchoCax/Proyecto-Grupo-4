@@ -16,12 +16,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Kim
  */
 public class Empleado {
-    private int id,idPuesto;
+    private int id,idPuesto,genero;
     private String dpi,nombres, apellidos, direccion, telefono, fecha_nacimiento, fecha_inicio_labores,fechaingreso;
    private Conexioon cn;
     public Empleado (){}
 
-    public Empleado(int id, int idPuesto, String dpi, String nombres, String apellidos, String direccion, String telefono, String fecha_nacimiento, String fecha_inicio_labores, String fechaingreso) {
+    public Empleado(int id, int idPuesto, String dpi, String nombres, String apellidos, String direccion, String telefono, String fecha_nacimiento, String fecha_inicio_labores, String fechaingreso, int genero) {
         this.id = id;
         this.idPuesto = idPuesto;
         this.dpi = dpi;
@@ -32,6 +32,7 @@ public class Empleado {
         this.fecha_nacimiento = fecha_nacimiento;
         this.fecha_inicio_labores = fecha_inicio_labores;
         this.fechaingreso = fechaingreso;
+        this.genero = genero;
     }
 
    
@@ -118,6 +119,13 @@ public class Empleado {
     public void setFechaingreso(String fechaingreso) {
         this.fechaingreso = fechaingreso;
     }
+    public int getGenero() {
+        return genero;
+    }
+
+    public void setGenero(int genero) {
+        this.genero = genero;
+    }
     
     public DefaultTableModel leer(){
    DefaultTableModel tabla = new DefaultTableModel();
@@ -159,7 +167,7 @@ public class Empleado {
         PreparedStatement parametro;
      
         cn = new Conexioon();
-        String query="INSERT INTO empleados(nombres,apellidos,dirreccion,telefono,DPI,fecha_nacimiento,idPuesto,fecha_inicio_labores,fechaingreso)VALUES(?,?,?,?,?,?,?,?,?);";
+        String query="INSERT INTO empleados(nombres,apellidos,dirreccion,telefono,DPI,genero,fecha_nacimiento,idPuesto,fecha_inicio_labores,fechaingreso)VALUES(?,?,?,?,?,?,?,?,?,?);";
         cn.abrir_conexion();
         parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
         parametro.setString(1, getNombres());
@@ -167,10 +175,11 @@ public class Empleado {
         parametro.setString(3, getDireccion());
         parametro.setString(4, getTelefono());
         parametro.setString(5, getDpi());
-        parametro.setString(6, getFecha_nacimiento());
-        parametro.setInt(7, getIdPuesto());
-        parametro.setString(8, getFecha_inicio_labores());
-        parametro.setString(9, getFechaingreso());
+        parametro.setInt(6, getGenero());
+        parametro.setString(7, getFecha_nacimiento());
+        parametro.setInt(8, getIdPuesto());
+        parametro.setString(9, getFecha_inicio_labores());
+        parametro.setString(10, getFechaingreso());
         retorno =parametro.executeUpdate();
         cn.cerrar_conexion();
         
@@ -187,7 +196,7 @@ public class Empleado {
         try{
             PreparedStatement parametro;
             cn = new Conexioon();
-            String query = "update empleados set nombres=?, apellidos=?, dirreccion=?, telefono=?, DPI=?, fecha_nacimiento=?, idPuesto=?,fecha_inicio_labores=?,fechaingreso=? where idEmpleado=?;";
+            String query = "update empleados set nombres=?, apellidos=?, dirreccion=?, telefono=?, DPI=?, genero=?, fecha_nacimiento=?, idPuesto=?,fecha_inicio_labores=?,fechaingreso=? where idEmpleado=?;";
             cn.abrir_conexion();
             parametro = (PreparedStatement)cn.conexioonbd.prepareStatement(query);
             parametro.setString(1, this.getNombres());
@@ -195,11 +204,12 @@ public class Empleado {
             parametro.setString(3, this.getDireccion());
             parametro.setString(4, this.getTelefono());
             parametro.setString(5, this.getDpi());
-            parametro.setString(6, this.getFecha_nacimiento());
-            parametro.setInt(7, this.getIdPuesto());
-            parametro.setString(8, this.getFecha_inicio_labores());
-            parametro.setString(9, this.getFechaingreso());
-            parametro.setInt(10, this.getId());
+            parametro.setInt(6, this.getGenero());
+            parametro.setString(7, this.getFecha_nacimiento());
+            parametro.setInt(8, this.getIdPuesto());
+            parametro.setString(9, this.getFecha_inicio_labores());
+            parametro.setString(10, this.getFechaingreso());
+            parametro.setInt(11, this.getId());
             retorno = parametro.executeUpdate();
             cn.cerrar_conexion();
         }catch(SQLException ex){

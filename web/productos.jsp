@@ -10,6 +10,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.swing.table.DefaultTableModel"%>
 <%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="java.text.SimpleDateFormat"%>  
+<%@page import="java.util.Date"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,8 +45,7 @@
         
         <%@include file="header.jsp" %>
   
-        <h1 style="color:white">FORMULARIO PRODUCTOS</h1>
-        <button type="button" name="btn_nuevo" id="btn_nuevo" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_productos" onclick="limpiar()">Nuevo</button>
+     
 
         <div class="container">
         <div class="modal fade" id="modal_productos" role="dialog">
@@ -95,8 +96,17 @@
             <label for="lbl_existencial"><b>Existencia:</b></label>
             <input type="number" name="txt_existencia" id="txt_existencia"  class="form-control" placeholder="0" required>
             <br>
-            <label for="lbl_fecha_ingreso"><b>Fecha de ingreso:</b></label>
-            <input type="date" name="txt_fecha_ingreso" id="txt_fecha_ingreso" class="form-control" required>
+              <label Style="color: black;"><b>Fecha de ingreso:</b></label>
+               
+                <%    
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+                Date date = new Date();  
+               
+                String fecha=  date.toString();
+                out.println("<input class='form-control' type='text' name='fecha_factura' id='fecha_factura' value='"+fecha+"' readonly>");
+                //System.out.println("<input type='date' name='fechaFactura' id='fechaFactura' value="+date+" class='form-control' readonly>");
+                
+                %>
             
             <br>
             
@@ -154,7 +164,8 @@
         %>    
     </tbody>
     </table>
-           
+                <button type="button" name="btn_nuevo" id="btn_nuevo" data-toggle="modal" data-target="#modal_productos" onclick="limpiar()">Formulario</button>
+   
 
      </div>
     </div>
@@ -171,7 +182,7 @@
         $("#txt_precio_costo").val(0);
         $("#txt_precio_venta").val(0);
         $("#txt_existencia").val(0);
-        $("#txt_fecha_ingreso").val('');
+        $("#fecha_ingreso").val('');
         $("#drop_marca").val(1);
      }      
 
@@ -198,7 +209,7 @@
         $("#txt_precio_costo").val(precio_costo);
         $("#txt_precio_venta").val(precio_venta);
         $("#txt_existencia").val(existencia);
-        $("#txt_fecha_ingreso").val(fecha_ingreso);
+        $("#fecha_factura").val(fecha_ingreso);
         $("#drop_marca").val(id_m);
         $("#modal_productos").modal('show');
         
