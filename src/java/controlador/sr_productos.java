@@ -59,13 +59,13 @@ public class sr_productos extends HttpServlet {
             String nombreIMAGEN=request.getParameter("nameimg");  
             out.println("<h1>Xd 2</h1>");
              if("Agregar".equals(request.getParameter("btn_agregar"))){
-                 Producto prod = new Producto(0,request.getParameter("txt_productso"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),nombreIMAGEN,Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("fecha_factura"));
+                 Producto prod = new Producto(0,request.getParameter("txt_producto"),Integer.valueOf(request.getParameter("drop_marca")),request.getParameter("txt_descripcion"),nombreIMAGEN,Double.valueOf(request.getParameter("txt_precio_costo")),Double.valueOf(request.getParameter("txt_precio_venta")),Integer.valueOf(request.getParameter("txt_existencia")),request.getParameter("fecha_factura"));
           
            if (prod.agregar()>0) { 
                
                    Part Archivo=request.getPart("imag");
                     InputStream is=Archivo.getInputStream();
-                    File im=new File("C:/Users/ferch/Desktop/universidad/Semestre_2_2020/Programacion_2/Proyecto Final/web/img/" + nombreIMAGEN);
+                    File im=new File("C:/Users/AlekeyJr/OneDrive - mail.ccsf.edu/Escritorio/travez/travez/travez/Proyecto-Grupo-4/web/img/" + nombreIMAGEN);
                 
                     FileOutputStream ou=new FileOutputStream(im);
                     int d=is.read();
@@ -88,7 +88,7 @@ public class sr_productos extends HttpServlet {
               if(producto.modificar() > 0){
                   Part Archivo=request.getPart("imag");
                     InputStream is=Archivo.getInputStream();
-                    File im=new File("C:/Users/ferch/Desktop/universidad/Semestre_2_2020/Programacion_2/Proyecto Final/web/img/" + nombreIMAGEN);
+                    File im=new File("C:/Users/AlekeyJr/OneDrive - mail.ccsf.edu/Escritorio/travez/travez/travez/Proyecto-Grupo-4/web/img/" + nombreIMAGEN);
 
                    
                     FileOutputStream ou=new FileOutputStream(im);

@@ -18,9 +18,9 @@ import java.sql.SQLException;
 public class Conexioon {
     public Connection conexioonbd;
     public final String bd="dbempresa";
-    public final String urlConexioon= String.format("jdbc:mysql://localhost:3306/%s ", bd +  "?useTimezone=true&serverTimezone=UTC") ;
-    public final String usuario = "usr_empresa_parcial"; 
-    public final String contra="P@rcial02";
+    public final String urlConexioon= String.format("jdbc:mysql://proyectofinalapi.mysql.database.azure.com:3306/%s ", bd +  "?useTimezone=true&serverTimezone=UTC") ;
+    public final String usuario = "WebApi@proyectofinalapi"; 
+    public final String contra="Web@p1F1n@l";
     public final String jdbc="com.mysql.cj.jdbc.Driver";
     
     public void abrir_conexion(){
